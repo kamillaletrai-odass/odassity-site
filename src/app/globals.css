@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --color-ink: #0b0b0c;
+  --color-ink-soft: #16161850;
+  --color-paper: #f4f1ea;
+  --color-paper-dim: #f4f1ea99;
+  --color-paper-faint: #f4f1ea4d;
+
+  --color-mirror: #9db4ff;
+  --color-mirror-dim: #9db4ff26;
+  --color-raw: #ff7a59;
+  --color-raw-dim: #ff7a5926;
+  --color-autopsy: #7fd9a8;
+  --color-autopsy-dim: #7fd9a826;
+
+  --text-hero: clamp(2.75rem, 3.2vw + 2rem, 6.5rem);
+  --text-display: clamp(2rem, 2vw + 1.4rem, 3.75rem);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+::selection {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Article body typography */
+.prose-odassity {
+  font-family: var(--font-body);
+  color: var(--color-paper-dim);
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+.prose-odassity p {
+  margin-bottom: 1.5em;
+}
+
+.prose-odassity p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 4.2em;
+  line-height: 0.85;
+  float: left;
+  padding-right: 0.1em;
+  padding-top: 0.05em;
+  color: var(--color-paper);
+}
+
+.prose-odassity blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.6em;
+  line-height: 1.4;
+  color: var(--color-paper);
+  border-left: 2px solid var(--color-paper-faint);
+  padding-left: 0.9em;
+  margin: 1.4em 0;
+}
+
+.prose-odassity a {
+  color: var(--color-paper);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-paper-faint);
+}
+
+.prose-odassity h2 {
+  font-family: var(--font-display);
+  font-size: 1.6em;
+  color: var(--color-paper);
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
 }
