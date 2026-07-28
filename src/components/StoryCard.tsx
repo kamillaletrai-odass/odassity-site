@@ -1,13 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 import type { ArticleMeta } from "@/lib/articles";
+import { AUTHORS } from "@/lib/authors";
 import LensTag from "./LensTag";
-
-const GRADIENTS: Record<string, string> = {
-  mirror: "from-mirror/25 via-ink to-ink",
-  raw: "from-raw/25 via-ink to-ink",
-  autopsy: "from-autopsy/25 via-ink to-ink",
-};
+import AuthorAvatar from "./AuthorAvatar";
 
 export default function StoryCard({
   article,
@@ -16,23 +13,36 @@ export default function StoryCard({
   article: ArticleMeta;
   size?: "lg" | "md" | "sm";
 }) {
+  const author = AUTHORS[article.author];
+
   return (
     <Link
       href={`/stories/${article.slug}`}
       className={clsx(
-        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-paper-faint/10 bg-gradient-to-br p-6 transition-transform duration-300 hover:-translate-y-1",
-        GRADIENTS[article.lens],
-        size === "lg" && "min-h-[26rem] p-8 sm:p-10",
-        size === "md" && "min-h-[19rem]",
-        size === "sm" && "min-h-[14rem]",
+        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-paper-faint/10 p-6 transition-transform duration-300 hover:-translate-y-1",
+        size === "lg" && "min-h-[28rem] p-8 sm:p-10",
+        size === "md" && "min-h-[22rem]",
+        size === "sm" && "min-h-[16rem]",
       )}
     >
-      <div className="mb-4">
+      {article.cover && (
+        <Image
+          src={article.cover}
+          alt=""
+          fill
+          sizes={size === "lg" ? "100vw" : "(min-width: 1024px) 33vw, 100vw"}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          priority={size === "lg"}
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10" />
+
+      <div className="relative mb-4">
         <LensTag lens={article.lens} size={size === "lg" ? "md" : "sm"} />
       </div>
       <h3
         className={clsx(
-          "font-display leading-tight text-paper transition-colors group-hover:text-paper/90",
+          "relative font-display leading-tight text-paper transition-colors group-hover:text-paper/90",
           size === "lg" ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl",
         )}
       >
@@ -40,12 +50,18 @@ export default function StoryCard({
       </h3>
       <p
         className={clsx(
-          "mt-3 text-paper-dim",
+          "relative mt-3 text-paper-dim",
           size === "lg" ? "max-w-lg text-base" : "text-sm",
         )}
       >
         {article.dek}
       </p>
+      {author && (
+        <div className="relative mt-5 flex items-center gap-2">
+          <AuthorAvatar author={author} size="sm" />
+          <span className="text-xs text-paper-dim">{author.name}</span>
+        </div>
+      )}
     </Link>
   );
 }

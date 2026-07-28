@@ -43,7 +43,7 @@ export default function AboutPage() {
           const meta = LENSES[lens];
           return (
             <div key={lens} className="rounded-2xl border border-paper-faint/10 p-6">
-              <span className={`text-xs font-medium uppercase tracking-[0.18em] ${meta.text}`}>
+              <span className="text-xs font-medium uppercase tracking-[0.18em] text-yellow">
                 {meta.label}
               </span>
               <p className="mt-2 font-display text-lg text-paper">{meta.tagline}</p>

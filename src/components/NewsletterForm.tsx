@@ -49,12 +49,12 @@ export default function NewsletterForm({ compact = false }: { compact?: boolean 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="whitespace-nowrap rounded-full bg-paper px-5 py-2.5 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+        className="whitespace-nowrap rounded-full bg-pink px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Subscribe"}
       </button>
       {status === "error" && (
-        <p className="text-xs text-raw sm:hidden">
+        <p className="text-xs text-pink sm:hidden">
           Something went wrong — try again in a moment.
         </p>
       )}

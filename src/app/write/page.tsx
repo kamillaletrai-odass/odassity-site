@@ -80,13 +80,13 @@ export default function WritePage() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="mt-2 w-fit rounded-full bg-paper px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+          className="mt-2 w-fit rounded-full bg-pink px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
         >
           {status === "sending" ? "Sending…" : "Submit"}
         </button>
 
         {status === "error" && (
-          <p className="text-sm text-raw">
+          <p className="text-sm text-pink">
             Something went wrong sending that — email kamilla@odassity.com
             directly instead.
           </p>

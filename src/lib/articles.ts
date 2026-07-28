@@ -14,6 +14,7 @@ export type ArticleMeta = {
   lens: Lens;
   date: string;
   cover: string;
+  author: string;
   featured?: boolean;
 };
 

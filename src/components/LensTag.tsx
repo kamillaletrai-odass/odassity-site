@@ -12,9 +12,7 @@ export default function LensTag({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full font-medium uppercase tracking-[0.18em]",
-        meta.text,
-        meta.bg,
+        "inline-flex items-center rounded-full bg-yellow-dim font-medium uppercase tracking-[0.18em] text-yellow",
         size === "sm" ? "px-2.5 py-1 text-[0.65rem]" : "px-3 py-1.5 text-xs",
       )}
     >

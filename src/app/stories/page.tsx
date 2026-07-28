@@ -31,7 +31,7 @@ export default async function StoriesPage({
           className={clsx(
             "rounded-full border px-4 py-1.5 text-sm transition-colors",
             !activeLens
-              ? "border-paper bg-paper text-ink"
+              ? "border-pink bg-pink text-white"
               : "border-paper-faint/30 text-paper-dim hover:border-paper/60",
           )}
         >
@@ -44,7 +44,7 @@ export default async function StoriesPage({
             className={clsx(
               "rounded-full border px-4 py-1.5 text-sm transition-colors",
               activeLens === l
-                ? "border-paper bg-paper text-ink"
+                ? "border-pink bg-pink text-white"
                 : "border-paper-faint/30 text-paper-dim hover:border-paper/60",
             )}
           >

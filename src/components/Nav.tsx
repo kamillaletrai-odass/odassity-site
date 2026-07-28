@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -11,11 +12,21 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-paper-faint/10 bg-ink/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="font-display text-xl tracking-tight text-paper"
-        >
-          Odassity
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={22}
+            height={22}
+            className="opacity-90"
+          />
+          <Image
+            src="/logo.png"
+            alt="Odassity"
+            width={112}
+            height={33}
+            priority
+          />
         </Link>
         <nav className="hidden gap-8 text-sm tracking-wide text-paper-dim sm:flex">
           {links.map((link) => (
