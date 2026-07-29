@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Open_Sans, Figtree } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import RippleEffect from "@/components/RippleEffect";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -37,7 +36,6 @@ export default function RootLayout({
       className={`${openSans.variable} ${figtree.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ink text-paper font-body">
-        <RippleEffect />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
