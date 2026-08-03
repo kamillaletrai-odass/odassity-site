@@ -1,7 +1,7 @@
 ---
 title: "Why Queerness Is Okay In Movies But Not In Schools"
 dek: "Has society become more accepting of queer people, or just more comfortable consuming queer stories?"
-lens: raw
+lens: fitting-room
 date: "2026-06-14"
 cover: "/covers/why-queerness-is-okay-in-movies-but-not-in-schools.jpeg"
 author: serena

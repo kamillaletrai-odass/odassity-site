@@ -3,7 +3,7 @@ import NewsletterForm from "./NewsletterForm";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-paper-faint/10">
+    <footer className="border-t border-paper-faint/10 bg-ink text-paper">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:flex-row sm:items-start sm:justify-between">
         <div className="max-w-sm">
           <h2 className="font-display text-2xl text-paper">
@@ -27,6 +27,9 @@ export default function Footer() {
             </Link>
             <Link href="/stories" className="hover:text-paper">
               Stories
+            </Link>
+            <Link href="/community" className="hover:text-paper">
+              Community
             </Link>
             <Link href="/about" className="hover:text-paper">
               About

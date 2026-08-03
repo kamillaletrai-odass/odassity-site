@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LENS_ORDER, LENSES } from "@/lib/lenses";
 
 export const metadata: Metadata = { title: "About" };
@@ -6,7 +7,7 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="font-display text-display text-paper">About</h1>
+      <h1 className="font-display text-display text-ink">About</h1>
 
       <div className="prose-odassity mt-10">
         <p>
@@ -27,27 +28,32 @@ export default function AboutPage() {
           generation chronically online.
         </p>
         <blockquote>
-          Odassity is a mirror. A lab. A (deep) conversation starter.
+          Odassity is a mirror. A portal. A (deep) conversation starter.
         </blockquote>
       </div>
 
-      <h2 className="mt-16 font-display text-2xl text-paper">
-        The three lenses
+      <h2 className="mt-16 font-display text-2xl text-ink">
+        The four lenses
       </h2>
-      <p className="mt-2 text-paper-dim">
+      <p className="mt-2 text-ink-dim">
         As you explore our stories, you&rsquo;ll come across essays that fall
-        into one of these three categories.
+        into one of these categories.
       </p>
       <div className="mt-6 flex flex-col gap-6">
         {LENS_ORDER.map((lens) => {
           const meta = LENSES[lens];
           return (
-            <div key={lens} className="rounded-2xl border border-paper-faint/10 p-6">
-              <span className="text-xs font-medium uppercase tracking-[0.18em] text-yellow">
+            <div
+              key={lens}
+              className="rounded-2xl border border-ink-faint bg-lavender-dim p-6"
+            >
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-pink">
                 {meta.label}
               </span>
-              <p className="mt-2 font-display text-lg text-paper">{meta.tagline}</p>
-              <p className="mt-2 text-sm text-paper-dim">{meta.description}</p>
+              <p className="mt-2 font-display text-lg text-ink">
+                {meta.tagline}
+              </p>
+              <p className="mt-2 text-sm text-ink-dim">{meta.description}</p>
             </div>
           );
         })}
@@ -64,8 +70,13 @@ export default function AboutPage() {
         <p>
           The goal is simple: we&rsquo;re gathering writers, thinkers, and
           creators who are passionate about social perception, human
-          behavior, and the nuances of online communication, to build a new
-          creator habit — <strong>Odass</strong>.
+          behavior, and the nuances of online communication — a{" "}
+          <strong>coven of thinkerbells</strong>, thinking hard about ideas
+          without taking themselves too seriously.
+        </p>
+        <p>
+          Meet the people writing it on the{" "}
+          <Link href="/community">Community page</Link>.
         </p>
       </div>
     </div>

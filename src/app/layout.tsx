@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Open_Sans, Figtree } from "next/font/google";
+import { Fraunces, Figtree } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const openSans = Open_Sans({
+const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
+  axes: ["opsz", "SOFT", "WONK"],
+  style: ["normal", "italic"],
 });
 
 const figtree = Figtree({
@@ -18,11 +19,11 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: {
-    default: "Odassity — Read today. Understand tomorrow.",
+    default: "Odassity — A magazine between dimensions",
     template: "%s — Odassity",
   },
   description:
-    "Psychology, social dynamics, and the art of being seen online. Essays for digital creators who want to understand themselves, not just perform for everyone else.",
+    "Personality, identity, and self-expression for a coven of thinkerbells — a digital publication about who we are and how we show up.",
 };
 
 export default function RootLayout({
@@ -33,9 +34,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${openSans.variable} ${figtree.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${figtree.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ink text-paper font-body">
+      <body className="min-h-full flex flex-col bg-cloud text-ink font-body">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

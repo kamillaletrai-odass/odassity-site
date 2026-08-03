@@ -1,7 +1,7 @@
 ---
 title: "The Unhinged Era Is Over. Nobody Told the Interns."
 dek: "Every brand wants to sound human online. The problem is that most are performing personality instead of having one."
-lens: raw
+lens: fitting-room
 date: "2026-05-03"
 cover: "/covers/the-unhinged-era-is-over-nobody-told-the-interns.png"
 author: kamilla

@@ -1,7 +1,7 @@
 ---
 title: "Travel Destinations as Identity Statements: Ego Trips Formerly Known as Wanderlust"
 dek: "We used to travel because the world was interesting. Now we travel to show that we are."
-lens: raw
+lens: fitting-room
 date: "2026-07-05"
 cover: "/covers/travel-destinations-as-identity-statements-the-ego-trip-formerly-known-as-wanderlust.png"
 author: kamilla

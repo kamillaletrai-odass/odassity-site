@@ -39,10 +39,10 @@ export default function WritePage() {
   if (status === "sent") {
     return (
       <div className="mx-auto max-w-xl px-6 py-24 text-center">
-        <h1 className="font-display text-display text-paper">
+        <h1 className="font-display text-display text-ink">
           Got it.
         </h1>
-        <p className="mt-4 text-paper-dim">
+        <p className="mt-4 text-ink-dim">
           Thanks for reaching out — we read every submission and will get
           back to you soon.
         </p>
@@ -52,11 +52,12 @@ export default function WritePage() {
 
   return (
     <div className="mx-auto max-w-xl px-6 py-16">
-      <h1 className="font-display text-display text-paper">
+      <h1 className="font-display text-display text-ink">
         Become a writer
       </h1>
-      <p className="mt-3 text-paper-dim">
-        Do you like what we do? Fill out this form to write for Odassity.
+      <p className="mt-3 text-ink-dim">
+        Join the coven of thinkerbells. Fill out this form to write for
+        Odassity.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6">
@@ -112,13 +113,13 @@ function Field({
   optional?: boolean;
 }) {
   const shared =
-    "w-full rounded-xl border border-paper-faint/30 bg-transparent px-4 py-3 text-paper placeholder:text-paper-faint focus:border-paper/60 focus:outline-none";
+    "w-full rounded-xl border border-ink-faint bg-white/60 px-4 py-3 text-ink placeholder:text-ink-dim focus:border-pink/60 focus:outline-none";
 
   return (
-    <label className="flex flex-col gap-2 text-sm text-paper-dim">
+    <label className="flex flex-col gap-2 text-sm text-ink-dim">
       <span>
         {label}
-        {optional && <span className="text-paper-faint"> (optional)</span>}
+        {optional && <span className="text-ink-dim"> (optional)</span>}
       </span>
       {textarea ? (
         <textarea name={name} required={required} rows={4} className={shared} />

@@ -19,7 +19,7 @@ export default function StoryCard({
     <Link
       href={`/stories/${article.slug}`}
       className={clsx(
-        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-paper-faint/10 p-6 transition-transform duration-300 hover:-translate-y-1",
+        "group relative flex flex-col justify-end overflow-hidden rounded-2xl border border-ink-faint p-6 shadow-sm transition-transform duration-300 hover:-translate-y-1",
         size === "lg" && "min-h-[28rem] p-8 sm:p-10",
         size === "md" && "min-h-[22rem]",
         size === "sm" && "min-h-[16rem]",

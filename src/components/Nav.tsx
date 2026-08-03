@@ -4,6 +4,7 @@ import Image from "next/image";
 const links = [
   { href: "/", label: "Home" },
   { href: "/stories", label: "Stories" },
+  { href: "/community", label: "Community" },
   { href: "/about", label: "About" },
   { href: "/write", label: "Become a writer" },
 ];
