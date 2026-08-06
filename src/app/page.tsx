@@ -5,7 +5,6 @@ import { LENS_ORDER, LENSES } from "@/lib/lenses";
 import StoryCard from "@/components/StoryCard";
 import AuthorAvatar from "@/components/AuthorAvatar";
 import NewsletterForm from "@/components/NewsletterForm";
-import Marquee from "@/components/Marquee";
 import ScrollReveal from "@/components/ScrollReveal";
 import HomeHero from "@/components/HomeHero";
 
@@ -19,8 +18,6 @@ export default function HomePage() {
   return (
     <>
       <HomeHero teaser1={teaser1} teaser2={teaser2} />
-
-      <Marquee />
 
       {featured && (
         <ScrollReveal className="mx-auto max-w-6xl px-6 py-16">
