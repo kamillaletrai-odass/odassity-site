@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Figtree } from "next/font/google";
+import { Open_Sans, Figtree } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const openSans = Open_Sans({
   variable: "--font-display",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
-  style: ["normal", "italic"],
+  weight: ["600", "700", "800"],
 });
 
 const figtree = Figtree({
@@ -34,9 +33,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${figtree.variable} h-full antialiased`}
+      className={`${openSans.variable} ${figtree.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-cloud text-ink font-body">
+      <body className="min-h-full flex flex-col bg-ink text-paper font-body">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

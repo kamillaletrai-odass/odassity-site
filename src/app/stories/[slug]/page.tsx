@@ -52,7 +52,7 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-2xl px-6">
         <Link
           href="/stories"
-          className={`inline-block text-sm text-paper hover:text-paper/80 ${article.cover ? "-mt-10 relative" : "mt-16 text-ink-dim hover:text-ink"}`}
+          className={`inline-block text-sm text-paper-dim hover:text-paper ${article.cover ? "-mt-10 relative" : "mt-16"}`}
         >
           ← All stories
         </Link>
@@ -61,19 +61,19 @@ export default async function ArticlePage({
           <LensTag lens={article.lens} size="md" />
         </div>
 
-        <h1 className="mt-6 font-display text-display leading-[1.05] text-ink">
+        <h1 className="mt-6 font-display text-display leading-[1.05] text-paper">
           {article.title}
         </h1>
-        <p className="mt-4 text-lg text-ink-dim">{article.dek}</p>
+        <p className="mt-4 text-lg text-paper-dim">{article.dek}</p>
 
         <div className="mt-6 flex items-center gap-3">
           {author && (
             <>
               <AuthorAvatar author={author} size="sm" />
               <div className="text-sm">
-                <span className="text-ink">{author.name}</span>
-                <span className="mx-2 text-ink-faint">·</span>
-                <time dateTime={article.date} className="text-ink-dim">
+                <span className="text-paper">{author.name}</span>
+                <span className="mx-2 text-paper-faint">·</span>
+                <time dateTime={article.date} className="text-paper-dim">
                   {new Date(article.date).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
@@ -91,16 +91,16 @@ export default async function ArticlePage({
         />
 
         {author && (
-          <div className="mt-16 flex items-start gap-4 rounded-2xl border border-ink-faint bg-lavender-dim p-6">
+          <div className="glass mt-16 flex items-start gap-4 rounded-2xl p-6">
             <AuthorAvatar author={author} size="lg" />
             <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-ink-dim">
+              <p className="text-xs uppercase tracking-[0.18em] text-paper-dim">
                 Written by
               </p>
-              <p className="mt-1 font-display text-lg text-ink">
+              <p className="mt-1 font-display text-lg text-paper">
                 {author.name}
               </p>
-              <p className="mt-1 text-sm text-ink-dim">{author.bio}</p>
+              <p className="mt-1 text-sm text-paper-dim">{author.bio}</p>
             </div>
           </div>
         )}

@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="font-display text-display text-ink">About</h1>
+      <h1 className="font-display text-display text-paper">About</h1>
 
       <div className="prose-odassity mt-10">
         <p>
@@ -32,10 +32,10 @@ export default function AboutPage() {
         </blockquote>
       </div>
 
-      <h2 className="mt-16 font-display text-2xl text-ink">
+      <h2 className="mt-16 font-display text-2xl text-paper">
         The four lenses
       </h2>
-      <p className="mt-2 text-ink-dim">
+      <p className="mt-2 text-paper-dim">
         As you explore our stories, you&rsquo;ll come across essays that fall
         into one of these categories.
       </p>
@@ -43,17 +43,16 @@ export default function AboutPage() {
         {LENS_ORDER.map((lens) => {
           const meta = LENSES[lens];
           return (
-            <div
-              key={lens}
-              className="rounded-2xl border border-ink-faint bg-lavender-dim p-6"
-            >
+            <div key={lens} className="glass rounded-2xl p-6">
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-pink">
                 {meta.label}
               </span>
-              <p className="mt-2 font-display text-lg text-ink">
+              <p className="mt-2 font-display text-lg text-paper">
                 {meta.tagline}
               </p>
-              <p className="mt-2 text-sm text-ink-dim">{meta.description}</p>
+              <p className="mt-2 text-sm text-paper-dim">
+                {meta.description}
+              </p>
             </div>
           );
         })}

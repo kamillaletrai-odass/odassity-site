@@ -20,8 +20,8 @@ export default async function StoriesPage({
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16">
-      <h1 className="font-display text-display text-ink">All stories</h1>
-      <p className="mt-3 max-w-lg text-ink-dim">
+      <h1 className="font-display text-display text-paper">All stories</h1>
+      <p className="mt-3 max-w-lg text-paper-dim">
         Every essay, sorted by the lens it looks through.
       </p>
 
@@ -32,7 +32,7 @@ export default async function StoriesPage({
             "rounded-full border px-4 py-1.5 text-sm transition-colors",
             !activeLens
               ? "border-pink bg-pink text-white"
-              : "border-ink-faint text-ink-dim hover:border-ink/30",
+              : "border-paper-faint/20 text-paper-dim hover:border-paper-faint/40",
           )}
         >
           All
@@ -45,7 +45,7 @@ export default async function StoriesPage({
               "rounded-full border px-4 py-1.5 text-sm transition-colors",
               activeLens === l
                 ? "border-pink bg-pink text-white"
-                : "border-ink-faint text-ink-dim hover:border-ink/30",
+                : "border-paper-faint/20 text-paper-dim hover:border-paper-faint/40",
             )}
           >
             {LENSES[l].label}
@@ -58,7 +58,7 @@ export default async function StoriesPage({
           <StoryCard key={article.slug} article={article} size="md" />
         ))}
         {articles.length === 0 && (
-          <p className="text-ink-dim">No stories in this lens yet.</p>
+          <p className="text-paper-dim">No stories in this lens yet.</p>
         )}
       </div>
     </div>

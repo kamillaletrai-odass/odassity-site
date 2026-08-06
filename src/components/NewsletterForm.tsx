@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 
-export default function NewsletterForm({
-  compact = false,
-  theme = "dark",
-}: {
-  compact?: boolean;
-  theme?: "dark" | "light";
-}) {
+export default function NewsletterForm({ compact = false }: { compact?: boolean }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
@@ -31,15 +25,9 @@ export default function NewsletterForm({
     }
   }
 
-  const textColor = theme === "dark" ? "text-paper" : "text-ink";
-  const inputClass =
-    theme === "dark"
-      ? "border-paper-faint/30 text-paper placeholder:text-paper-faint focus:border-paper/60"
-      : "border-ink-faint text-ink placeholder:text-ink-dim focus:border-pink/60";
-
   if (status === "sent") {
     return (
-      <p className={compact ? `text-sm ${textColor}` : textColor}>
+      <p className={compact ? "text-sm text-paper" : "text-paper"}>
         You&rsquo;re on the list. First story lands in your inbox soon.
       </p>
     );
@@ -56,7 +44,7 @@ export default function NewsletterForm({
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="you@email.com"
-        className={`w-full rounded-full border bg-transparent px-4 py-2.5 text-sm focus:outline-none ${inputClass}`}
+        className="w-full rounded-full border border-paper-faint/30 bg-transparent px-4 py-2.5 text-sm text-paper placeholder:text-paper-faint focus:border-paper/60 focus:outline-none"
       />
       <button
         type="submit"

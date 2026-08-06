@@ -4,57 +4,79 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 
-  --color-ink: #0b0b0c;
-  --color-ink-dim: #0b0b0ca6;
-  --color-ink-faint: #0b0b0c1f;
-
-  --color-paper: #f4f1ea;
-  --color-paper-dim: #f4f1ea99;
-  --color-paper-faint: #f4f1ea4d;
-
-  --color-cloud: #faf7fe;
-  --color-cloud-dim: #faf7fecc;
+  --color-ink: #08080b;
+  --color-paper: #f2eef9;
+  --color-paper-dim: #f2eef9b8;
+  --color-paper-faint: #f2eef91f;
 
   --color-pink: #f80e5b;
   --color-pink-deep: #d10d4d;
-  --color-pink-dim: #f80e5b26;
+  --color-pink-dim: #f80e5b33;
 
   --color-yellow: #d6f26b;
   --color-yellow-bright: #b7ff00;
-  --color-yellow-dim: #d6f26b40;
+  --color-yellow-dim: #d6f26b33;
 
   --color-lavender: #e8e0ff;
-  --color-lavender-dim: #e8e0ff80;
+  --color-lavender-dim: #e8e0ff26;
 
   --color-babyblue: #d6eeff;
-  --color-babyblue-dim: #d6eeff80;
+  --color-babyblue-dim: #d6eeff26;
 
   --text-hero: clamp(2.75rem, 3.2vw + 2rem, 6.5rem);
   --text-display: clamp(2rem, 2vw + 1.4rem, 3.75rem);
 }
 
 html {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
-  background: var(--color-cloud);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-paper);
 }
 
 ::selection {
-  background: var(--color-ink);
-  color: var(--color-cloud);
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .font-display {
   font-family: var(--font-display);
 }
 
+/* Frosted glass panel: subtle fill + edge highlight, no hard border read */
+.glass {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
 /* Article body typography */
 .prose-odassity {
   font-family: var(--font-body);
-  color: var(--color-ink-dim);
+  color: var(--color-paper-dim);
   font-size: 1.125rem;
   line-height: 1.75;
 }
@@ -78,23 +100,23 @@ body {
   font-style: italic;
   font-size: 1.6em;
   line-height: 1.4;
-  color: var(--color-ink);
+  color: var(--color-paper);
   border-left: 2px solid var(--color-pink);
   padding-left: 0.9em;
   margin: 1.4em 0;
 }
 
 .prose-odassity a {
-  color: var(--color-ink);
+  color: var(--color-paper);
   text-decoration: underline;
   text-underline-offset: 3px;
-  text-decoration-color: var(--color-ink-faint);
+  text-decoration-color: var(--color-paper-faint);
 }
 
 .prose-odassity h2 {
   font-family: var(--font-display);
   font-size: 1.6em;
-  color: var(--color-ink);
+  color: var(--color-paper);
   margin-top: 1.6em;
   margin-bottom: 0.6em;
 }
@@ -103,13 +125,13 @@ body {
 .prose-odassity h4 {
   font-family: var(--font-display);
   font-size: 1.15em;
-  color: var(--color-ink);
+  color: var(--color-paper);
   margin-top: 1.4em;
   margin-bottom: 0.5em;
 }
 
 .prose-odassity strong {
-  color: var(--color-ink);
+  color: var(--color-paper);
 }
 
 .prose-odassity img {
@@ -130,7 +152,7 @@ body {
   animation: marquee 24s linear infinite;
 }
 
-/* Filmic grain, layered over the whole site for a lit-from-within, not-flat texture */
+/* Filmic grain — subtle texture so flat dark fills never feel flat */
 body::before {
   content: "";
   position: fixed;

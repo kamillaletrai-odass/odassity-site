@@ -29,43 +29,43 @@ const FRAGMENT_SRC = `
 
   void main() {
     vec2 offset = vec2(0.0);
+    float highlight = 0.0;
 
     for (int i = 0; i < ${MAX_RIPPLES}; i++) {
       float t = uTime - uRippleStarts[i];
       if (t > 0.0 && t < ${RIPPLE_LIFETIME.toFixed(1)}) {
         vec2 uvDelta = vUv - uRippleCenters[i];
         float dist = length(uvDelta * uResolution) / uResolution.y;
-        float decay = exp(-t * 1.6) * (1.0 - t / ${RIPPLE_LIFETIME.toFixed(1)});
-        float wave = sin(dist * 46.0 - t * 12.0) * 0.7
-          + sin(dist * 26.0 - t * 7.5) * 0.3;
-        float falloff = smoothstep(0.65, 0.0, dist);
+        float decay = exp(-t * 1.8) * (1.0 - t / ${RIPPLE_LIFETIME.toFixed(1)});
+        float wave = sin(dist * 40.0 - t * 10.0);
+        float falloff = smoothstep(0.6, 0.0, dist);
         vec2 dir = dist > 0.0001 ? normalize(uvDelta) : vec2(0.0);
-        offset += dir * wave * decay * falloff * 0.03;
+        offset += dir * wave * decay * falloff * 0.012;
+        highlight += abs(wave) * decay * falloff * 0.16;
       }
     }
 
     float aspect = uResolution.x / uResolution.y;
     vec2 p = vUv + offset;
     p.x *= aspect;
-    float t = uTime * 0.06;
+    float t = uTime * 0.035;
 
-    vec2 c1 = vec2(0.32 * aspect, 0.4) + 0.07 * vec2(sin(t * 2.3), cos(t * 1.8));
-    vec2 c2 = vec2(0.72 * aspect, 0.62) + 0.08 * vec2(cos(t * 1.6), sin(t * 2.1));
-    vec2 c3 = vec2(0.52 * aspect, 0.78) + 0.06 * vec2(sin(t * 1.9 + 2.0), cos(t * 1.4 + 1.0));
-    vec2 c4 = vec2(0.22 * aspect, 0.7) + 0.06 * vec2(cos(t * 2.0 + 1.5), sin(t * 1.7 + 0.5));
-    vec2 c5 = vec2(0.6 * aspect, 0.28) + 0.07 * vec2(sin(t * 1.5 + 0.8), cos(t * 2.2 + 2.5));
+    vec2 c1 = vec2(0.28 * aspect, 0.35) + 0.05 * vec2(sin(t * 1.3), cos(t * 1.1));
+    vec2 c2 = vec2(0.75 * aspect, 0.55) + 0.06 * vec2(cos(t * 1.0), sin(t * 1.4));
+    vec2 c3 = vec2(0.5 * aspect, 0.82) + 0.05 * vec2(sin(t * 1.2 + 2.0), cos(t * 0.9 + 1.0));
+    vec2 c4 = vec2(0.2 * aspect, 0.72) + 0.04 * vec2(cos(t * 1.3 + 1.5), sin(t * 1.1 + 0.5));
 
     vec3 pink = vec3(0.973, 0.055, 0.357);
     vec3 lavender = vec3(0.910, 0.878, 1.0);
     vec3 babyblue = vec3(0.839, 0.933, 1.0);
     vec3 lime = vec3(0.839, 0.949, 0.42);
 
-    vec3 col = vec3(0.984, 0.969, 0.996);
-    col = mix(col, lavender, blob(p, c2, 0.5) * 0.85);
-    col = mix(col, babyblue, blob(p, c3, 0.48) * 0.8);
-    col = mix(col, lime, blob(p, c4, 0.32) * 0.5);
-    col = mix(col, pink, blob(p, c1, 0.36) * 0.5);
-    col = mix(col, lavender, blob(p, c5, 0.3) * 0.4);
+    vec3 col = vec3(0.02, 0.02, 0.028);
+    col += lavender * blob(p, c1, 0.42) * 0.10;
+    col += babyblue * blob(p, c2, 0.44) * 0.09;
+    col += pink * blob(p, c3, 0.34) * 0.11;
+    col += lime * blob(p, c4, 0.28) * 0.06;
+    col += vec3(1.0) * highlight;
 
     gl_FragColor = vec4(col, 1.0);
   }
