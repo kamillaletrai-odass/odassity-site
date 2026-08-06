@@ -48,17 +48,13 @@ export default function StoryCard({
         >
           {article.title}
         </h3>
-        {size === "lg" && (
-          <p className="mt-3 max-w-lg text-base text-paper-dim">
-            {article.dek}
-          </p>
-        )}
-        <p className="mt-3 text-xs text-paper-dim">
-          {new Date(article.date).toLocaleDateString("en-US", {
-            month: "short",
-            day: "numeric",
-            year: "numeric",
-          })}
+        <p
+          className={clsx(
+            "text-paper-dim",
+            size === "lg" ? "mt-3 max-w-lg text-base" : "mt-2 text-sm",
+          )}
+        >
+          {article.dek}
         </p>
       </div>
     </Link>
