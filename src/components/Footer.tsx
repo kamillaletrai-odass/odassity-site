@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="px-6 pb-6 sm:px-10">
+    <footer className="px-6 pt-8 pb-8 sm:px-10 sm:pt-12 sm:pb-10">
       <div className="glass flex flex-col gap-10 rounded-3xl px-6 py-12 sm:flex-row sm:items-start sm:justify-between sm:px-10">
         <div className="flex items-center gap-3">
           <Image src="/logo-mark.png" alt="Odassity" width={28} height={28} />
