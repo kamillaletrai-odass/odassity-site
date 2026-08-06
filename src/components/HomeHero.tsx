@@ -1,12 +1,18 @@
 "use client";
 
 import { useRef } from "react";
+import { Barlow_Semi_Condensed } from "next/font/google";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { LENSES } from "@/lib/lenses";
 import type { ArticleMeta } from "@/lib/articles";
 import LiquidHeroImage from "./LiquidHeroImage";
+
+const barlow = Barlow_Semi_Condensed({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
 
 const MotionLink = motion.create(Link);
 
@@ -34,20 +40,22 @@ export default function HomeHero({
   return (
     <section ref={sectionRef} className="relative isolate min-h-[100svh] overflow-hidden">
       <motion.div style={imageStyle} className="absolute inset-0">
-        <LiquidHeroImage src="/hero/sky.jpg" />
+        <LiquidHeroImage src="/hero/dragonfly.jpg" />
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/25" />
 
       <motion.div
         style={contentStyle}
         className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 sm:flex-row sm:items-end sm:justify-between sm:p-10"
       >
-        <h1 className="font-display text-[clamp(3.5rem,15vw,10rem)] leading-[0.85] tracking-tight text-ink uppercase">
+        <h1
+          className={`${barlow.className} text-[clamp(3.5rem,15vw,10rem)] leading-[0.85] tracking-[0.03em] text-paper`}
+        >
           Odassity
         </h1>
 
         <div className="max-w-xs sm:pb-2">
-          <p className="text-sm text-ink/70">
+          <p className="text-sm text-paper-dim">
             Psychology, social dynamics, and the art of being seen online —
             essays for people who want their feed to occasionally push
             back.
@@ -57,10 +65,10 @@ export default function HomeHero({
             whileHover={reduceMotion ? undefined : { scale: 1.04, y: -2 }}
             whileTap={reduceMotion ? undefined : { scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-ink py-1.5 pr-1.5 pl-4 text-sm font-medium text-paper"
+            className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink"
           >
             Start reading
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
               →
             </span>
           </MotionLink>

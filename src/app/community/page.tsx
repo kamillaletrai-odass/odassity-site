@@ -12,7 +12,7 @@ export default function CommunityPage() {
   const articles = getAllArticleMeta();
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
+    <div className="mx-auto max-w-4xl px-6 pt-32 pb-16">
       <span className="text-xs font-semibold uppercase tracking-[0.18em] text-pink">
         The community
       </span>

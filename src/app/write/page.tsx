@@ -38,7 +38,7 @@ export default function WritePage() {
 
   if (status === "sent") {
     return (
-      <div className="mx-auto max-w-xl px-6 py-24 text-center">
+      <div className="mx-auto max-w-xl px-6 pt-40 pb-24 text-center">
         <h1 className="font-display text-display text-paper">
           Got it.
         </h1>
@@ -51,7 +51,7 @@ export default function WritePage() {
   }
 
   return (
-    <div className="mx-auto max-w-xl px-6 py-16">
+    <div className="mx-auto max-w-xl px-6 pt-32 pb-16">
       <h1 className="font-display text-display text-paper">
         Become a writer
       </h1>

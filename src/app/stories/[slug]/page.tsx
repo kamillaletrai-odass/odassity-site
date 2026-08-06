@@ -52,7 +52,7 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-2xl px-6">
         <Link
           href="/stories"
-          className={`inline-block text-sm text-paper-dim hover:text-paper ${article.cover ? "-mt-10 relative" : "mt-16"}`}
+          className={`inline-block text-sm text-paper-dim hover:text-paper ${article.cover ? "-mt-10 relative" : "mt-32"}`}
         >
           ← All stories
         </Link>

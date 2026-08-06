@@ -19,7 +19,7 @@ export default async function StoriesPage({
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-6 py-16">
+    <div className="mx-auto max-w-6xl px-6 pt-32 pb-16">
       <h1 className="font-display text-display text-paper">All stories</h1>
       <p className="mt-3 max-w-lg text-paper-dim">
         Every essay, sorted by the lens it looks through.
