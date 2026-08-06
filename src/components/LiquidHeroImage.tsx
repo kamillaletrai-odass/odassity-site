@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const MAX_RIPPLES = 8;
 const RIPPLE_LIFETIME = 2.4;
@@ -17,15 +18,12 @@ const VERTEX_SRC = `
 const FRAGMENT_SRC = `
   precision mediump float;
   varying vec2 vUv;
+  uniform sampler2D uTexture;
   uniform float uTime;
   uniform vec2 uResolution;
+  uniform vec2 uCoverScale;
   uniform vec2 uRippleCenters[${MAX_RIPPLES}];
   uniform float uRippleStarts[${MAX_RIPPLES}];
-
-  float blob(vec2 p, vec2 center, float radius) {
-    float d = length(p - center);
-    return smoothstep(radius, 0.0, d);
-  }
 
   void main() {
     vec2 offset = vec2(0.0);
@@ -36,38 +34,18 @@ const FRAGMENT_SRC = `
       if (t > 0.0 && t < ${RIPPLE_LIFETIME.toFixed(1)}) {
         vec2 uvDelta = vUv - uRippleCenters[i];
         float dist = length(uvDelta * uResolution) / uResolution.y;
-        float decay = exp(-t * 1.8) * (1.0 - t / ${RIPPLE_LIFETIME.toFixed(1)});
-        float wave = sin(dist * 40.0 - t * 10.0);
-        float falloff = smoothstep(0.6, 0.0, dist);
+        float decay = exp(-t * 1.7) * (1.0 - t / ${RIPPLE_LIFETIME.toFixed(1)});
+        float wave = sin(dist * 42.0 - t * 11.0);
+        float falloff = smoothstep(0.62, 0.0, dist);
         vec2 dir = dist > 0.0001 ? normalize(uvDelta) : vec2(0.0);
-        offset += dir * wave * decay * falloff * 0.012;
-        highlight += abs(wave) * decay * falloff * 0.16;
+        offset += dir * wave * decay * falloff * 0.016;
+        highlight += abs(wave) * decay * falloff * 0.12;
       }
     }
 
-    float aspect = uResolution.x / uResolution.y;
-    vec2 p = vUv + offset;
-    p.x *= aspect;
-    float t = uTime * 0.035;
-
-    vec2 c1 = vec2(0.28 * aspect, 0.35) + 0.05 * vec2(sin(t * 1.3), cos(t * 1.1));
-    vec2 c2 = vec2(0.75 * aspect, 0.55) + 0.06 * vec2(cos(t * 1.0), sin(t * 1.4));
-    vec2 c3 = vec2(0.5 * aspect, 0.82) + 0.05 * vec2(sin(t * 1.2 + 2.0), cos(t * 0.9 + 1.0));
-    vec2 c4 = vec2(0.2 * aspect, 0.72) + 0.04 * vec2(cos(t * 1.3 + 1.5), sin(t * 1.1 + 0.5));
-
-    vec3 pink = vec3(0.973, 0.055, 0.357);
-    vec3 lavender = vec3(0.910, 0.878, 1.0);
-    vec3 babyblue = vec3(0.839, 0.933, 1.0);
-    vec3 lime = vec3(0.839, 0.949, 0.42);
-
-    vec3 col = vec3(0.02, 0.02, 0.028);
-    col += lavender * blob(p, c1, 0.42) * 0.10;
-    col += babyblue * blob(p, c2, 0.44) * 0.09;
-    col += pink * blob(p, c3, 0.34) * 0.11;
-    col += lime * blob(p, c4, 0.28) * 0.06;
-    col += vec3(1.0) * highlight;
-
-    gl_FragColor = vec4(col, 1.0);
+    vec2 texUv = (vUv + offset - 0.5) * uCoverScale + 0.5;
+    vec4 tex = texture2D(uTexture, texUv);
+    gl_FragColor = vec4(tex.rgb + highlight, tex.a);
   }
 `;
 
@@ -84,7 +62,13 @@ function compileShader(gl: WebGLRenderingContext, type: number, source: string) 
   return shader;
 }
 
-export default function LiquidAura() {
+export default function LiquidHeroImage({
+  src,
+  alt = "",
+}: {
+  src: string;
+  alt?: string;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -124,8 +108,29 @@ export default function LiquidAura() {
 
     const uTime = gl.getUniformLocation(program, "uTime");
     const uResolution = gl.getUniformLocation(program, "uResolution");
+    const uCoverScale = gl.getUniformLocation(program, "uCoverScale");
     const uRippleCenters = gl.getUniformLocation(program, "uRippleCenters[0]");
     const uRippleStarts = gl.getUniformLocation(program, "uRippleStarts[0]");
+
+    const texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
+
+    let imageReady = false;
+    let imgAspect = 1;
+    const image = new window.Image();
+    image.src = src;
+    image.onload = () => {
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
+      imgAspect = image.naturalWidth / image.naturalHeight;
+      imageReady = true;
+      updateCoverScale();
+    };
 
     const ripples = {
       centers: new Float32Array(MAX_RIPPLES * 2),
@@ -147,6 +152,19 @@ export default function LiquidAura() {
     }
     canvas.addEventListener("pointerdown", handlePointerDown);
 
+    function updateCoverScale() {
+      if (!imageReady) return;
+      const canvasAspect = canvas!.clientWidth / canvas!.clientHeight;
+      let scaleX = 1;
+      let scaleY = 1;
+      if (imgAspect > canvasAspect) {
+        scaleX = canvasAspect / imgAspect;
+      } else {
+        scaleY = imgAspect / canvasAspect;
+      }
+      gl!.uniform2f(uCoverScale, scaleX, scaleY);
+    }
+
     function resize() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const width = container!.clientWidth;
@@ -155,6 +173,7 @@ export default function LiquidAura() {
       canvas!.height = height * dpr;
       gl!.viewport(0, 0, canvas!.width, canvas!.height);
       gl!.uniform2f(uResolution, canvas!.width, canvas!.height);
+      updateCoverScale();
     }
 
     const resizeObserver = new ResizeObserver(resize);
@@ -179,10 +198,18 @@ export default function LiquidAura() {
       resizeObserver.disconnect();
       canvas.removeEventListener("pointerdown", handlePointerDown);
     };
-  }, []);
+  }, [src]);
 
   return (
     <div ref={containerRef} className="absolute inset-0">
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full cursor-crosshair" />
     </div>
   );

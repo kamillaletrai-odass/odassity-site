@@ -62,10 +62,10 @@ body {
   font-family: var(--font-display);
 }
 
-/* Frosted glass panel: subtle fill + edge highlight, no hard border read */
+/* Frosted dark glass: reads consistently over dark sections and bright imagery alike */
 .glass {
-  background: rgba(255, 255, 255, 0.045);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 8, 11, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   box-shadow:
