@@ -1,13 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import clsx from "clsx";
 
 export default function NewsletterForm({
   compact = false,
   ctaLabel = "Subscribe",
+  glass = false,
 }: {
   compact?: boolean;
   ctaLabel?: string;
+  glass?: boolean;
 }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -42,7 +45,10 @@ export default function NewsletterForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-full max-w-md flex-col gap-3 sm:flex-row"
+      className={clsx(
+        "flex w-full max-w-md flex-col gap-3 sm:flex-row",
+        glass && "glass rounded-full p-1.5 sm:items-center",
+      )}
     >
       <input
         type="email"
@@ -50,12 +56,20 @@ export default function NewsletterForm({
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="you@email.com"
-        className="w-full rounded-full border border-paper-faint/30 bg-transparent px-4 py-2.5 text-sm text-paper placeholder:text-paper-faint focus:border-paper/60 focus:outline-none"
+        className={clsx(
+          "w-full rounded-full bg-transparent px-4 py-2.5 text-sm text-paper placeholder:text-paper-faint focus:outline-none",
+          glass
+            ? "sm:pl-5"
+            : "border border-paper-faint/30 focus:border-paper/60",
+        )}
       />
       <button
         type="submit"
         disabled={status === "sending"}
-        className="whitespace-nowrap rounded-full bg-pink px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+        className={clsx(
+          "whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-60",
+          glass ? "bg-paper text-ink" : "bg-pink text-white",
+        )}
       >
         {status === "sending" ? "Sending…" : ctaLabel}
       </button>

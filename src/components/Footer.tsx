@@ -1,64 +1,92 @@
 import Link from "next/link";
 import Image from "next/image";
+import ScrollReveal from "./ScrollReveal";
+import NewsletterForm from "./NewsletterForm";
+
+const LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/stories", label: "Stories" },
+  { href: "/community", label: "Community" },
+  { href: "/about", label: "About" },
+  { href: "/write", label: "Become a writer" },
+];
+
+const SOCIALS = [
+  { label: "Instagram", href: "https://instagram.com/odassity" },
+  { label: "TikTok", href: "https://tiktok.com/@odassity" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/odassity" },
+];
 
 export default function Footer() {
   return (
-    <footer className="px-6 pt-12 pb-8 sm:px-10 sm:pt-16 sm:pb-10">
-      <div className="glass flex flex-col gap-10 rounded-3xl px-6 py-12 sm:flex-row sm:items-start sm:justify-between sm:px-10">
-        <div className="flex items-center gap-3">
-          <Image src="/logo-mark.png" alt="Odassity" width={28} height={28} />
-          <span className="font-display text-lg text-paper">Odassity</span>
+    <footer className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/footer/light-field.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/55 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent sm:h-96" />
+      </div>
+
+      <div className="relative px-6 pt-40 pb-16 text-center sm:px-10 sm:pt-56">
+        <ScrollReveal>
+          <h2 className="font-display text-5xl text-paper sm:text-7xl">
+            Come along
+          </h2>
+          <p className="mx-auto mt-4 max-w-sm text-paper-dim">
+            Get more of our world. Every once in a while, let us feed your
+            mind.
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delay={0.15} className="mt-10 flex justify-center">
+          <NewsletterForm glass ctaLabel="Sign up" />
+        </ScrollReveal>
+      </div>
+
+      <div className="relative grid grid-cols-1 gap-10 px-6 pt-16 pb-8 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24">
+        <div>
+          <Image src="/logo-mark.png" alt="Odassity" width={26} height={26} />
+          <div className="mt-4 flex flex-col gap-2 text-paper-dim">
+            {LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-paper"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-wrap gap-16 text-sm text-paper-dim">
-          <div className="flex flex-col gap-2">
-            <span className="mb-1 text-xs uppercase tracking-[0.18em] text-paper-faint">
-              Site
-            </span>
-            <Link href="/" className="transition-colors hover:text-paper">
-              Home
-            </Link>
-            <Link
-              href="/stories"
-              className="transition-colors hover:text-paper"
-            >
-              Stories
-            </Link>
-            <Link
-              href="/community"
-              className="transition-colors hover:text-paper"
-            >
-              Community
-            </Link>
-            <Link
-              href="/about"
-              className="transition-colors hover:text-paper"
-            >
-              About
-            </Link>
-            <Link
-              href="/write"
-              className="transition-colors hover:text-paper"
-            >
-              Become a writer
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2">
-            <span className="mb-1 text-xs uppercase tracking-[0.18em] text-paper-faint">
-              Contact
-            </span>
-            <a
-              href="mailto:kamilla@odassity.com"
-              className="transition-colors hover:text-paper"
-            >
-              kamilla@odassity.com
-            </a>
+        <p className="text-xs text-paper-dim sm:justify-self-center sm:self-end">
+          Odassity&trade; &copy; {new Date().getFullYear()}
+        </p>
+
+        <div className="sm:justify-self-end sm:text-right">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-paper-dim">
+            Follow us on
+          </span>
+          <div className="mt-3 flex gap-4 sm:justify-end">
+            {SOCIALS.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-paper-dim transition-colors hover:text-paper"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
-      <p className="mt-6 text-xs text-paper-faint">
-        © {new Date().getFullYear()} Odassity. All rights reserved.
-      </p>
     </footer>
   );
 }
