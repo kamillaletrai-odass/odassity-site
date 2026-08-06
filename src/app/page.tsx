@@ -3,6 +3,7 @@ import { getAllArticleMeta } from "@/lib/articles";
 import { AUTHORS } from "@/lib/authors";
 import { LENS_ORDER, LENSES } from "@/lib/lenses";
 import StoryCard from "@/components/StoryCard";
+import FeaturedStoryRow from "@/components/FeaturedStoryRow";
 import AuthorAvatar from "@/components/AuthorAvatar";
 import NewsletterForm from "@/components/NewsletterForm";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -11,8 +12,10 @@ import HomeHero from "@/components/HomeHero";
 export default function HomePage() {
   const articles = getAllArticleMeta();
   const featured = articles.find((a) => a.featured) ?? articles[0];
-  const rest = articles.filter((a) => a.slug !== featured?.slug).slice(0, 6);
-  const [teaser1, teaser2] = rest;
+  const others = articles.filter((a) => a.slug !== featured?.slug);
+  const featuredSmall = others.slice(0, 3);
+  const [teaser1, teaser2] = others.slice(3, 5);
+  const latestGrid = others.slice(5, 11);
   const authors = Object.values(AUTHORS);
 
   return (
@@ -20,9 +23,28 @@ export default function HomePage() {
       <HomeHero teaser1={teaser1} teaser2={teaser2} />
 
       {featured && (
-        <ScrollReveal className="mx-auto max-w-6xl px-6 py-16">
-          <StoryCard article={featured} size="lg" />
-        </ScrollReveal>
+        <section className="mx-auto max-w-6xl px-6 py-16">
+          <ScrollReveal className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <h2 className="font-display text-display text-pink">
+              Featured Stories
+            </h2>
+            <p className="text-paper-dim italic">
+              lullabies to feed your mind
+            </p>
+          </ScrollReveal>
+          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+            <ScrollReveal className="lg:col-span-2">
+              <StoryCard article={featured} size="lg" />
+            </ScrollReveal>
+            <div className="flex flex-col gap-2">
+              {featuredSmall.map((article, i) => (
+                <ScrollReveal key={article.slug} delay={0.1 + i * 0.08}>
+                  <FeaturedStoryRow article={article} />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
       <section className="mx-auto max-w-6xl px-6 py-16">
@@ -38,7 +60,7 @@ export default function HomePage() {
           </Link>
         </ScrollReveal>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((article, i) => (
+          {latestGrid.map((article, i) => (
             <ScrollReveal key={article.slug} delay={Math.min(i * 0.08, 0.4)}>
               <StoryCard article={article} size="md" />
             </ScrollReveal>

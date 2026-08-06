@@ -29,12 +29,12 @@ export default function HomeHero({
     offset: ["start start", "end start"],
   });
 
+  // Only the background gets a scroll-linked transform (a subtle, harmless
+  // zoom). The text scrolls with the page like normal content — no synced
+  // fade/translate on it, since that was clipping the wordmark's descender
+  // and flickering as scrollYProgress recalculated mid-scroll.
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   const imageStyle = reduceMotion ? undefined : { scale: imageScale };
-  const contentStyle = reduceMotion ? undefined : { y: contentY, opacity: contentOpacity };
 
   return (
     <section ref={sectionRef} className="relative isolate min-h-[100svh] overflow-hidden">
@@ -49,22 +49,20 @@ export default function HomeHero({
         />
       </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-ink/20" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45svh] bg-gradient-to-b from-transparent to-ink" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55svh] bg-gradient-to-b from-transparent to-ink" />
 
-      <motion.div
-        style={contentStyle}
-        className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 sm:flex-row sm:items-end sm:justify-between sm:p-10"
-      >
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 pb-10 sm:flex-row sm:items-end sm:justify-between sm:p-10">
         <h1
-          className={`${barlow.className} text-[clamp(4rem,20vw,16rem)] leading-[0.85] tracking-[0.03em] text-paper`}
+          className={`${barlow.className} text-[clamp(4rem,19vw,15rem)] leading-[1.05] tracking-[0.03em] text-paper`}
         >
           Odassity
         </h1>
 
         <div className="max-w-xs sm:pb-2">
           <p className="text-sm text-paper-dim">
-            In pursuit of human optimization. Come along in our world, where
-            time goes by intentionally and you hear yourself loud and clear.
+            In pursuit of the art of being. Come along in a world where time
+            is intentional, thoughts are clear, and every story leads
+            further inward.
           </p>
           <MotionLink
             href="/stories"
@@ -79,7 +77,7 @@ export default function HomeHero({
             </span>
           </MotionLink>
         </div>
-      </motion.div>
+      </div>
 
       {teaser1 && (
         <Link

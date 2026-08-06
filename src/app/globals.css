@@ -4,10 +4,10 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 
-  --color-ink: #08080b;
-  --color-paper: #f2eef9;
-  --color-paper-dim: #f2eef9b8;
-  --color-paper-faint: #f2eef91f;
+  --color-ink: #100a07;
+  --color-paper: #faeeea;
+  --color-paper-dim: #faeeeab8;
+  --color-paper-faint: #faeeea1f;
 
   --color-pink: #f80e5b;
   --color-pink-deep: #d10d4d;
