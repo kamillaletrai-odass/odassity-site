@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { LENS_ORDER, LENSES } from "@/lib/lenses";
+import Partnerships from "@/components/Partnerships";
 
 export const metadata: Metadata = { title: "About" };
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-2xl px-6 pt-32 pb-16">
-      <h1 className="font-display text-display text-paper">About</h1>
+    <>
+      <div className="mx-auto max-w-2xl px-6 pt-32 pb-16">
+        <h1 className="font-display text-display text-paper">About</h1>
 
       <div className="prose-odassity mt-10">
         <p>
@@ -78,6 +80,8 @@ export default function AboutPage() {
           <Link href="/community">Community page</Link>.
         </p>
       </div>
-    </div>
+      </div>
+      <Partnerships />
+    </>
   );
 }
