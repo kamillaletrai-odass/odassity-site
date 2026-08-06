@@ -40,7 +40,7 @@ export default function HomeHero({
     <section ref={sectionRef} className="relative isolate min-h-[100svh] overflow-hidden">
       <motion.div style={imageStyle} className="absolute inset-0">
         <Image
-          src="/hero/dragonfly-dark.jpg"
+          src="/hero/dragonfly.jpg"
           alt=""
           fill
           priority
@@ -48,7 +48,8 @@ export default function HomeHero({
           className="object-cover"
         />
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-ink/25" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-ink/20" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[45svh] bg-gradient-to-b from-transparent to-ink" />
 
       <motion.div
         style={contentStyle}
@@ -63,8 +64,7 @@ export default function HomeHero({
         <div className="max-w-xs sm:pb-2">
           <p className="text-sm text-paper-dim">
             In pursuit of human optimization. Come along in our world, where
-            time goes by intentionally, where thoughts are loud and clear,
-            where everything evolves around you.
+            time goes by intentionally and you hear yourself loud and clear.
           </p>
           <MotionLink
             href="/stories"
@@ -84,7 +84,7 @@ export default function HomeHero({
       {teaser1 && (
         <Link
           href={`/stories/${teaser1.slug}`}
-          className="glass absolute top-24 right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform hover:-translate-y-1 sm:block"
+          className="glass group absolute top-24 right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform duration-300 hover:scale-[1.04] sm:block"
         >
           {teaser1.cover && (
             <div className="relative h-24 w-full overflow-hidden rounded-lg">
@@ -93,7 +93,7 @@ export default function HomeHero({
                 alt=""
                 fill
                 sizes="192px"
-                className="object-cover"
+                className="warm-grayscale object-cover"
               />
             </div>
           )}
@@ -109,7 +109,7 @@ export default function HomeHero({
       {teaser2 && (
         <Link
           href={`/stories/${teaser2.slug}`}
-          className="glass absolute top-[21rem] right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform hover:-translate-y-1 lg:block"
+          className="glass group absolute top-[21rem] right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform duration-300 hover:scale-[1.04] lg:block"
         >
           {teaser2.cover && (
             <div className="relative h-24 w-full overflow-hidden rounded-lg">
@@ -118,7 +118,7 @@ export default function HomeHero({
                 alt=""
                 fill
                 sizes="192px"
-                className="object-cover"
+                className="warm-grayscale object-cover"
               />
             </div>
           )}

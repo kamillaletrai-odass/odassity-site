@@ -19,7 +19,7 @@ export default function StoryCard({
     <Link
       href={`/stories/${article.slug}`}
       className={clsx(
-        "glass group relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1",
+        "glass group relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:scale-[1.02]",
         size === "lg" && "min-h-[28rem] p-8 sm:p-10",
         size === "md" && "min-h-[22rem]",
         size === "sm" && "min-h-[16rem]",
@@ -31,7 +31,7 @@ export default function StoryCard({
           alt=""
           fill
           sizes={size === "lg" ? "100vw" : "(min-width: 1024px) 33vw, 100vw"}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="warm-grayscale object-cover"
           priority={size === "lg"}
         />
       )}

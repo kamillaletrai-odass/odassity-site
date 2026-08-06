@@ -67,6 +67,16 @@ body {
   font-family: var(--font-display);
 }
 
+/* Warm-toned grayscale that blooms into full color on hover (via an ancestor .group) */
+.warm-grayscale {
+  filter: grayscale(0.85) sepia(0.25) saturate(1.15) brightness(0.95);
+  transition: filter 0.5s ease;
+}
+
+.group:hover .warm-grayscale {
+  filter: grayscale(0) sepia(0) saturate(1) brightness(1);
+}
+
 /* Frosted dark glass: reads consistently over dark sections and bright imagery alike */
 .glass {
   background: rgba(8, 8, 11, 0.4);
