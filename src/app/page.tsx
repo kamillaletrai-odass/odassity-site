@@ -18,11 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <HomeHero
-        articlesCount={articles.length}
-        teaser1={teaser1}
-        teaser2={teaser2}
-      />
+      <HomeHero teaser1={teaser1} teaser2={teaser2} />
 
       <Marquee />
 
