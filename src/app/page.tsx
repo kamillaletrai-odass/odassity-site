@@ -3,6 +3,7 @@ import { getAllArticleMeta } from "@/lib/articles";
 import StoryCard from "@/components/StoryCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import HomeHero from "@/components/HomeHero";
+import Obsessions from "@/components/Obsessions";
 import WhatWeExplore from "@/components/WhatWeExplore";
 import Manifesto from "@/components/Manifesto";
 import Thinkerbells from "@/components/Thinkerbells";
@@ -19,6 +20,8 @@ export default function HomePage() {
   return (
     <>
       <HomeHero teaser1={teaser1} teaser2={teaser2} />
+
+      <Obsessions />
 
       {featured && (
         <section className="px-6 py-20 sm:px-10 sm:py-28">
