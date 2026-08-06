@@ -12,7 +12,7 @@ export default function LensTag({
   return (
     <span
       className={clsx(
-        "inline-flex items-center rounded-full bg-yellow font-semibold uppercase tracking-[0.18em] text-ink",
+        "glass inline-flex items-center rounded-full font-semibold uppercase tracking-[0.18em] text-paper",
         size === "sm" ? "px-2.5 py-1 text-[0.65rem]" : "px-3 py-1.5 text-xs",
       )}
     >

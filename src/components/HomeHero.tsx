@@ -29,15 +29,20 @@ export default function HomeHero({
     offset: ["start start", "end start"],
   });
 
-  // Only the background gets a scroll-linked transform (a subtle, harmless
-  // zoom). The text scrolls with the page like normal content — no synced
-  // fade/translate on it, since that was clipping the wordmark's descender
-  // and flickering as scrollYProgress recalculated mid-scroll.
+  // Background keeps a subtle scroll-linked zoom. The whole section fades
+  // out uniformly (not individual pieces) so nothing goes out of sync —
+  // that mismatch is what caused the old "clips then reappears" glitch.
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   const imageStyle = reduceMotion ? undefined : { scale: imageScale };
+  const sectionOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const sectionStyle = reduceMotion ? undefined : { opacity: sectionOpacity };
 
   return (
-    <section ref={sectionRef} className="relative isolate min-h-[100svh] overflow-hidden">
+    <motion.section
+      ref={sectionRef}
+      style={sectionStyle}
+      className="relative isolate min-h-[100svh] overflow-hidden"
+    >
       <motion.div style={imageStyle} className="absolute inset-0">
         <Image
           src="/hero/dragonfly.jpg"
@@ -128,6 +133,6 @@ export default function HomeHero({
           </p>
         </Link>
       )}
-    </section>
+    </motion.section>
   );
 }

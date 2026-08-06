@@ -1,40 +1,45 @@
 import Link from "next/link";
-import NewsletterForm from "./NewsletterForm";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-paper-faint/10 bg-ink text-paper">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-16 sm:flex-row sm:items-start sm:justify-between">
-        <div className="max-w-sm">
-          <h2 className="font-display text-2xl text-paper">
-            Read the next one first.
-          </h2>
-          <p className="mt-2 text-sm text-paper-dim">
-            Subscribe to the newsletter — be the first to know when a new
-            story drops.
-          </p>
-          <div className="mt-5">
-            <NewsletterForm />
-          </div>
+    <footer className="px-6 pb-6 sm:px-10">
+      <div className="glass flex flex-col gap-10 rounded-3xl px-6 py-12 sm:flex-row sm:items-start sm:justify-between sm:px-10">
+        <div className="flex items-center gap-3">
+          <Image src="/logo-mark.png" alt="Odassity" width={28} height={28} />
+          <span className="font-display text-lg text-paper">Odassity</span>
         </div>
-        <div className="flex gap-16 text-sm text-paper-dim">
+
+        <div className="flex flex-wrap gap-16 text-sm text-paper-dim">
           <div className="flex flex-col gap-2">
             <span className="mb-1 text-xs uppercase tracking-[0.18em] text-paper-faint">
               Site
             </span>
-            <Link href="/" className="hover:text-paper">
+            <Link href="/" className="transition-colors hover:text-paper">
               Home
             </Link>
-            <Link href="/stories" className="hover:text-paper">
+            <Link
+              href="/stories"
+              className="transition-colors hover:text-paper"
+            >
               Stories
             </Link>
-            <Link href="/community" className="hover:text-paper">
+            <Link
+              href="/community"
+              className="transition-colors hover:text-paper"
+            >
               Community
             </Link>
-            <Link href="/about" className="hover:text-paper">
+            <Link
+              href="/about"
+              className="transition-colors hover:text-paper"
+            >
               About
             </Link>
-            <Link href="/write" className="hover:text-paper">
+            <Link
+              href="/write"
+              className="transition-colors hover:text-paper"
+            >
               Become a writer
             </Link>
           </div>
@@ -42,15 +47,18 @@ export default function Footer() {
             <span className="mb-1 text-xs uppercase tracking-[0.18em] text-paper-faint">
               Contact
             </span>
-            <a href="mailto:kamilla@odassity.com" className="hover:text-paper">
+            <a
+              href="mailto:kamilla@odassity.com"
+              className="transition-colors hover:text-paper"
+            >
               kamilla@odassity.com
             </a>
           </div>
         </div>
       </div>
-      <div className="mx-auto max-w-6xl px-6 pb-10 text-xs text-paper-faint">
+      <p className="mt-6 text-xs text-paper-faint">
         © {new Date().getFullYear()} Odassity. All rights reserved.
-      </div>
+      </p>
     </footer>
   );
 }
