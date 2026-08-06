@@ -19,8 +19,8 @@ export default function StoryCard({
     <Link
       href={`/stories/${article.slug}`}
       className={clsx(
-        "glass group relative flex flex-col justify-end overflow-hidden rounded-2xl p-6 transition-transform duration-300 hover:scale-[1.02]",
-        size === "lg" && "min-h-[28rem] p-8 sm:p-10",
+        "group relative flex flex-col justify-end overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.02]",
+        size === "lg" && "min-h-[28rem]",
         size === "md" && "min-h-[22rem]",
         size === "sm" && "min-h-[16rem]",
       )}
@@ -35,33 +35,45 @@ export default function StoryCard({
           priority={size === "lg"}
         />
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/10" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
 
-      <div className="relative mb-4">
+      <div
+        className={clsx(
+          "glass relative m-4 rounded-xl pr-16 sm:m-5",
+          size === "lg" ? "p-6 sm:p-7" : "p-4 sm:p-5",
+        )}
+      >
         <LensTag lens={article.lens} size={size === "lg" ? "md" : "sm"} />
+        <h3
+          className={clsx(
+            "mt-3 font-display leading-tight text-paper transition-colors group-hover:text-paper/90",
+            size === "lg" ? "text-2xl sm:text-3xl" : "text-lg sm:text-xl",
+          )}
+        >
+          {article.title}
+        </h3>
+        {size === "lg" && (
+          <p className="mt-3 max-w-lg text-base text-paper-dim">
+            {article.dek}
+          </p>
+        )}
+        {author && (
+          <div className="mt-4 flex items-center gap-2">
+            <AuthorAvatar author={author} size="sm" />
+            <span className="text-xs text-paper-dim">
+              {author.name} &middot;{" "}
+              {new Date(article.date).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+              })}
+            </span>
+          </div>
+        )}
+
+        <span className="absolute right-4 bottom-4 flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:right-5 sm:bottom-5">
+          →
+        </span>
       </div>
-      <h3
-        className={clsx(
-          "relative font-display leading-tight text-paper transition-colors group-hover:text-paper/90",
-          size === "lg" ? "text-3xl sm:text-4xl" : "text-xl sm:text-2xl",
-        )}
-      >
-        {article.title}
-      </h3>
-      <p
-        className={clsx(
-          "relative mt-3 text-paper-dim",
-          size === "lg" ? "max-w-lg text-base" : "text-sm",
-        )}
-      >
-        {article.dek}
-      </p>
-      {author && (
-        <div className="relative mt-5 flex items-center gap-2">
-          <AuthorAvatar author={author} size="sm" />
-          <span className="text-xs text-paper-dim">{author.name}</span>
-        </div>
-      )}
     </Link>
   );
 }

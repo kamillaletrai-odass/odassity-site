@@ -5,11 +5,12 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HomeHero from "@/components/HomeHero";
 
 export default function HomePage() {
-  const articles = getAllArticleMeta();
+  const articles = getAllArticleMeta().filter((a) => a.author === "kamilla");
   const featured = articles.find((a) => a.featured) ?? articles[0];
   const others = articles.filter((a) => a.slug !== featured?.slug);
-  const featuredSmall = others.slice(0, 3);
-  const [teaser1, teaser2] = others.slice(3, 5);
+  const featuredCompact = others.slice(0, 2);
+  const featuredMd = others.slice(2, 4);
+  const [teaser1, teaser2] = others.slice(4, 6);
 
   return (
     <>
@@ -17,20 +18,12 @@ export default function HomePage() {
 
       {featured && (
         <section className="px-6 py-16 sm:px-10">
-          <ScrollReveal className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <h2 className="font-display text-display text-paper">
-              Featured Stories
-            </h2>
-            <p className="text-paper-dim italic">
-              lullabies to feed your mind
-            </p>
-          </ScrollReveal>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-4 lg:grid-cols-3">
             <ScrollReveal className="lg:col-span-2">
               <StoryCard article={featured} size="lg" />
             </ScrollReveal>
-            <div className="flex flex-col gap-2">
-              {featuredSmall.map((article, i) => (
+            <div className="flex flex-col gap-4">
+              {featuredCompact.map((article, i) => (
                 <ScrollReveal
                   key={article.slug}
                   delay={0.1 + i * 0.08}
@@ -40,6 +33,13 @@ export default function HomePage() {
                 </ScrollReveal>
               ))}
             </div>
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {featuredMd.map((article, i) => (
+              <ScrollReveal key={article.slug} delay={0.2 + i * 0.08}>
+                <StoryCard article={article} size="md" />
+              </ScrollReveal>
+            ))}
           </div>
         </section>
       )}
