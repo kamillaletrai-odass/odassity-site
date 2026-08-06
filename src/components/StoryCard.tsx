@@ -2,9 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import type { ArticleMeta } from "@/lib/articles";
-import { AUTHORS } from "@/lib/authors";
 import LensTag from "./LensTag";
-import AuthorAvatar from "./AuthorAvatar";
 
 export default function StoryCard({
   article,
@@ -13,8 +11,6 @@ export default function StoryCard({
   article: ArticleMeta;
   size?: "lg" | "md" | "sm";
 }) {
-  const author = AUTHORS[article.author];
-
   return (
     <Link
       href={`/stories/${article.slug}`}
@@ -39,7 +35,7 @@ export default function StoryCard({
 
       <div
         className={clsx(
-          "glass relative m-4 rounded-xl pr-16 sm:m-5",
+          "glass relative m-4 rounded-xl sm:m-5",
           size === "lg" ? "p-6 sm:p-7" : "p-4 sm:p-5",
         )}
       >
@@ -57,22 +53,13 @@ export default function StoryCard({
             {article.dek}
           </p>
         )}
-        {author && (
-          <div className="mt-4 flex items-center gap-2">
-            <AuthorAvatar author={author} size="sm" />
-            <span className="text-xs text-paper-dim">
-              {author.name} &middot;{" "}
-              {new Date(article.date).toLocaleDateString("en-US", {
-                month: "short",
-                day: "numeric",
-              })}
-            </span>
-          </div>
-        )}
-
-        <span className="absolute right-4 bottom-4 flex h-9 w-9 items-center justify-center rounded-full bg-paper text-ink transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:right-5 sm:bottom-5">
-          →
-        </span>
+        <p className="mt-3 text-xs text-paper-dim">
+          {new Date(article.date).toLocaleDateString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </p>
       </div>
     </Link>
   );
