@@ -3,6 +3,11 @@ import { getAllArticleMeta } from "@/lib/articles";
 import StoryCard from "@/components/StoryCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import HomeHero from "@/components/HomeHero";
+import WhatWeExplore from "@/components/WhatWeExplore";
+import Manifesto from "@/components/Manifesto";
+import Thinkerbells from "@/components/Thinkerbells";
+import NewsletterSection from "@/components/NewsletterSection";
+import Partnerships from "@/components/Partnerships";
 
 export default function HomePage() {
   const articles = getAllArticleMeta().filter((a) => a.author === "kamilla");
@@ -40,6 +45,12 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      <WhatWeExplore />
+      <Manifesto />
+      <Thinkerbells />
+      <NewsletterSection />
+      <Partnerships />
     </>
   );
 }

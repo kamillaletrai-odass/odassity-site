@@ -2,7 +2,13 @@
 
 import { useState } from "react";
 
-export default function NewsletterForm({ compact = false }: { compact?: boolean }) {
+export default function NewsletterForm({
+  compact = false,
+  ctaLabel = "Subscribe",
+}: {
+  compact?: boolean;
+  ctaLabel?: string;
+}) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
@@ -51,7 +57,7 @@ export default function NewsletterForm({ compact = false }: { compact?: boolean 
         disabled={status === "sending"}
         className="whitespace-nowrap rounded-full bg-pink px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
       >
-        {status === "sending" ? "Sending…" : "Subscribe"}
+        {status === "sending" ? "Sending…" : ctaLabel}
       </button>
       {status === "error" && (
         <p className="text-xs text-pink sm:hidden">

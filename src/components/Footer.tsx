@@ -1,9 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Footer() {
   return (
-    <footer className="px-6 pt-8 pb-8 sm:px-10 sm:pt-12 sm:pb-10">
+    <footer className="px-6 pt-12 pb-8 sm:px-10 sm:pt-16 sm:pb-10">
+      <ScrollReveal className="mx-auto max-w-2xl pb-16 text-center sm:pb-20">
+        <p className="font-display text-2xl text-paper sm:text-3xl">
+          Stay curious. Stay human.
+        </p>
+        <p className="mt-4 text-paper-dim">
+          Embrace Odassity in a world becoming increasingly synthetic.
+        </p>
+        <p className="mt-2 text-paper-dim">
+          Come in. Take a seat. There is always something worth thinking
+          about.
+        </p>
+      </ScrollReveal>
+
       <div className="glass flex flex-col gap-10 rounded-3xl px-6 py-12 sm:flex-row sm:items-start sm:justify-between sm:px-10">
         <div className="flex items-center gap-3">
           <Image src="/logo-mark.png" alt="Odassity" width={28} height={28} />
