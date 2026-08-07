@@ -15,6 +15,9 @@ const barlow = Barlow_Semi_Condensed({
 
 const MotionLink = motion.create(Link);
 
+// Update each season — shows as a small magazine-style issue label above the wordmark.
+const EDITION = "No. 01 — Summer Edition";
+
 export default function HomeHero({
   teaser1,
   teaser2,
@@ -57,11 +60,16 @@ export default function HomeHero({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55svh] bg-gradient-to-b from-transparent to-ink" />
 
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 pb-10 sm:flex-row sm:items-end sm:justify-between sm:p-10">
-        <h1
-          className={`${barlow.className} text-[clamp(4rem,19vw,15rem)] leading-[1.05] tracking-[0.03em] text-paper`}
-        >
-          Odassity
-        </h1>
+        <div>
+          <span className="block text-xs font-semibold tracking-[0.3em] text-paper-dim uppercase sm:text-sm">
+            {EDITION}
+          </span>
+          <h1
+            className={`${barlow.className} text-[clamp(4rem,19vw,15rem)] leading-[1.05] tracking-[0.03em] text-paper`}
+          >
+            Odassity
+          </h1>
+        </div>
 
         <div className="max-w-xs sm:pb-2">
           <p className="text-sm text-paper-dim">
@@ -89,6 +97,17 @@ export default function HomeHero({
           href={`/stories/${teaser1.slug}`}
           className="glass group absolute top-24 right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform duration-300 hover:scale-[1.04] sm:block"
         >
+          <motion.span
+            animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+            transition={
+              reduceMotion
+                ? undefined
+                : { duration: 2.8, repeat: Infinity, ease: "easeInOut" }
+            }
+            className="absolute -top-3 -left-3 z-20 rounded-full bg-paper px-3 py-1.5 text-[0.6rem] font-semibold tracking-[0.12em] text-ink uppercase shadow-lg"
+          >
+            Most viewed
+          </motion.span>
           {teaser1.cover && (
             <div className="relative h-24 w-full overflow-hidden rounded-lg">
               <Image
@@ -114,6 +133,22 @@ export default function HomeHero({
           href={`/stories/${teaser2.slug}`}
           className="glass group absolute top-[21rem] right-6 z-10 hidden w-48 rounded-xl p-3 transition-transform duration-300 hover:scale-[1.04] lg:block"
         >
+          <motion.span
+            animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
+            transition={
+              reduceMotion
+                ? undefined
+                : {
+                    duration: 2.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.6,
+                  }
+            }
+            className="absolute -top-3 -left-3 z-20 rounded-full bg-paper px-3 py-1.5 text-[0.6rem] font-semibold tracking-[0.12em] text-ink uppercase shadow-lg"
+          >
+            Most recent
+          </motion.span>
           {teaser2.cover && (
             <div className="relative h-24 w-full overflow-hidden rounded-lg">
               <Image
