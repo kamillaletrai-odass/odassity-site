@@ -6,7 +6,7 @@ const TOPICS = [
     description:
       "Identity as a performative act. On conformity, belonging, and thinking for yourself before it's cool to.",
     gradient:
-      "radial-gradient(circle at 35% 25%, var(--color-pink) 0%, var(--color-pink-deep) 45%, #170a10 100%)",
+      "linear-gradient(90deg, transparent 70%, #f9f3b866 100%), radial-gradient(circle at 35% 25%, #ffd0de 0%, #ffabc6 42%, #2b131c 100%)",
     Icon: DoorIcon,
   },
   {
@@ -14,7 +14,7 @@ const TOPICS = [
     description:
       "The self, alone with itself. Get to know who you are before the world hands you an answer.",
     gradient:
-      "radial-gradient(circle at 40% 30%, var(--color-yellow-bright) 0%, var(--color-yellow) 45%, #14150a 100%)",
+      "linear-gradient(90deg, transparent 70%, #ece4ff66 100%), radial-gradient(circle at 40% 30%, #f9f3b8 0%, #f0e888 42%, #201f10 100%)",
     Icon: KeyIcon,
   },
   {
@@ -22,7 +22,7 @@ const TOPICS = [
     description:
       "Trends, cut open. A live wrestling with ideologies, modern or ancient.",
     gradient:
-      "radial-gradient(circle at 45% 30%, var(--color-lavender) 0%, #4a3f66 45%, #0d0710 100%)",
+      "linear-gradient(90deg, transparent 70%, #d9f0ff66 100%), radial-gradient(circle at 45% 30%, #ece4ff 0%, #c9b6f2 42%, #140f22 100%)",
     Icon: KnifeIcon,
   },
   {
@@ -30,7 +30,7 @@ const TOPICS = [
     description:
       "AI, internet culture, the chronically online. Never anti-machine — always anti-autopilot.",
     gradient:
-      "radial-gradient(circle at 40% 30%, var(--color-babyblue) 0%, #1c3a4d 45%, #05080a 100%)",
+      "linear-gradient(90deg, transparent 70%, #ffd0de66 100%), radial-gradient(circle at 40% 30%, #d9f0ff 0%, #a8dcf5 42%, #0a1620 100%)",
     Icon: CursorIcon,
   },
   {
@@ -38,7 +38,7 @@ const TOPICS = [
     description:
       "Beauty as the consequence of the thinking behind it. Rooted in neuroaesthetics.",
     gradient:
-      "conic-gradient(from 180deg at 50% 50%, var(--color-pink), var(--color-yellow-bright), var(--color-babyblue), var(--color-lavender), var(--color-pink))",
+      "conic-gradient(from 180deg at 50% 50%, #ffd0de, #f9f3b8, #d9f0ff, #ece4ff, #ffd0de)",
     Icon: PaletteIcon,
   },
 ];
