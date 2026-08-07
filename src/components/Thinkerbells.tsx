@@ -61,7 +61,7 @@ export default function Thinkerbells() {
           className="glass mt-8 inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-5 text-sm font-medium text-paper transition-opacity hover:opacity-90"
         >
           Join us
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-pink text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-paper text-ink">
             →
           </span>
         </Link>

@@ -66,7 +66,10 @@ export default function NewsletterForm({
       <button
         type="submit"
         disabled={status === "sending"}
-        className="whitespace-nowrap rounded-full bg-pink px-5 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
+        className={clsx(
+          "whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-60",
+          glass ? "bg-paper text-ink" : "bg-pink text-white",
+        )}
       >
         {status === "sending" ? "Sending…" : ctaLabel}
       </button>

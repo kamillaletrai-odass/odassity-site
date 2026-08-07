@@ -85,7 +85,7 @@ export default function HomeHero({
             className="glass mt-4 inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-4 text-sm font-medium text-paper"
           >
             Explore
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-pink text-white">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink">
               →
             </span>
           </MotionLink>

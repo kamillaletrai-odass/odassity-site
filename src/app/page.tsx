@@ -43,7 +43,7 @@ export default function HomePage() {
               className="glass inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-4 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
               All stories
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-pink text-white">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-paper text-ink">
                 →
               </span>
             </Link>

@@ -38,11 +38,11 @@ export default function Nav() {
 
         <Link
           href="/write"
-          className="col-start-3 flex items-center gap-2 justify-self-end rounded-full bg-pink py-1.5 pr-1.5 pl-4 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          className="col-start-3 flex items-center gap-2 justify-self-end rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
         >
           <span className="hidden sm:inline">Become a writer</span>
           <span className="sm:hidden">Write</span>
-          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-white">
+          <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
             →
           </span>
         </Link>
