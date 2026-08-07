@@ -35,11 +35,11 @@ export default function Footer() {
       <div className="relative px-6 pt-40 pb-16 text-center sm:px-10 sm:pt-56">
         <ScrollReveal>
           <h2 className="font-display text-5xl text-paper sm:text-7xl">
-            Come along
+            Stay a little longer.
           </h2>
           <p className="mx-auto mt-4 max-w-sm text-paper-dim">
-            Get more of our world. Every once in a while, let us feed your
-            mind.
+            We send a little thinking piece every now and then. Enough to
+            disrupt a pattern, never enough to become one.
           </p>
         </ScrollReveal>
 

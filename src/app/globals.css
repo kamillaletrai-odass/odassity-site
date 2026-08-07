@@ -154,6 +154,32 @@ body {
   filter: grayscale(0) sepia(0) saturate(1) brightness(1);
 }
 
+/* Mirror shimmer sweeping across text only (e.g. the Motif "Reveal" hint) */
+.text-shine {
+  background: linear-gradient(
+    90deg,
+    var(--color-paper-faint) 0%,
+    var(--color-paper-faint) 38%,
+    rgba(255, 255, 255, 0.95) 50%,
+    var(--color-paper-faint) 62%,
+    var(--color-paper-faint) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shine-sweep 3.2s ease-in-out infinite;
+}
+
+@keyframes text-shine-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* Frosted dark glass: reads consistently over dark sections and bright imagery alike */
 .glass {
   background: rgba(8, 8, 11, 0.4);
