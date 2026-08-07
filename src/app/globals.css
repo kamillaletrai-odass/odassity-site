@@ -32,6 +32,83 @@ html {
   scrollbar-width: none;
 }
 
+/* Light mood: swaps the ink/paper poles. Everything referencing these
+   tokens (backgrounds, text, gradient fades) adapts automatically —
+   .glass panels and the brand accent colors stay constant across moods. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-ink: #faeeea;
+  --color-paper: #100a07;
+  --color-paper-dim: #100a07b8;
+  --color-paper-faint: #100a071f;
+}
+
+/* Tailwind v4 bakes theme colors into literal values on generated utility
+   classes rather than emitting var() references, so the custom-property
+   swap above doesn't reach them on its own. These overrides re-target the
+   actual compiled class names for the paper/ink utilities used across the
+   site, so core text/background/image-overlay legibility inverts correctly
+   under the light mood. Decorative low-opacity borders and focus rings are
+   intentionally left as-is (lightweight-scope trade-off). !important is
+   needed on the opacity-suffixed ones to beat Tailwind's own wide-gamut
+   lab() fallback rule, which matches at equal specificity. */
+:root[data-theme="light"] {
+  & .bg-ink {
+    background-color: #faeeea;
+  }
+  & .bg-paper {
+    background-color: #100a07;
+  }
+  & .text-ink {
+    color: #faeeea;
+  }
+  & .text-paper {
+    color: #100a07;
+  }
+  & .text-paper-dim {
+    color: #100a07b8;
+  }
+  & .text-paper-faint {
+    color: #100a071f;
+  }
+  & .hover\:text-paper:hover {
+    color: #100a07;
+  }
+  & .from-ink {
+    --tw-gradient-from: #faeeea !important;
+  }
+  & .from-ink\/40 {
+    --tw-gradient-from: #faeeea66 !important;
+  }
+  & .from-ink\/70 {
+    --tw-gradient-from: #faeeeab3 !important;
+  }
+  & .from-ink\/90 {
+    --tw-gradient-from: #faeeeae6 !important;
+  }
+  & .from-ink\/95 {
+    --tw-gradient-from: #faeeeaf2 !important;
+  }
+  & .via-ink\/10 {
+    --tw-gradient-via: #faeeea1a !important;
+  }
+  & .via-ink\/25 {
+    --tw-gradient-via: #faeeea40 !important;
+  }
+  & .via-ink\/40 {
+    --tw-gradient-via: #faeeea66 !important;
+  }
+  & .via-ink\/55 {
+    --tw-gradient-via: #faeeea8c !important;
+  }
+  & .to-ink {
+    --tw-gradient-to: #faeeea !important;
+  }
+  & .to-ink\/20 {
+    --tw-gradient-to: #faeeea33 !important;
+  }
+}
+
 html::-webkit-scrollbar {
   display: none;
 }
@@ -86,6 +163,16 @@ body {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Light mood needs a light glass, otherwise dark text on the dark tint
+   above is unreadable. */
+:root[data-theme="light"] .glass {
+  background: rgba(250, 238, 234, 0.55);
+  border: 1px solid rgba(16, 10, 7, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(16, 10, 7, 0.06),
+    0 8px 30px rgba(16, 10, 7, 0.12);
 }
 
 /* Article body typography */
