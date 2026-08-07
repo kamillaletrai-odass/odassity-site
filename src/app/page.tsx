@@ -40,10 +40,10 @@ export default function HomePage() {
           <div className="mt-14 flex justify-center sm:mt-16">
             <Link
               href="/stories"
-              className="inline-flex items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+              className="glass inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-4 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
               All stories
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-pink text-white">
                 →
               </span>
             </Link>

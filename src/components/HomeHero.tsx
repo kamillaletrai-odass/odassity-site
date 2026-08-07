@@ -82,10 +82,10 @@ export default function HomeHero({
             whileHover={reduceMotion ? undefined : { scale: 1.04, y: -2 }}
             whileTap={reduceMotion ? undefined : { scale: 0.97 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="mt-4 inline-flex items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink"
+            className="glass mt-4 inline-flex items-center gap-2 rounded-full py-1.5 pr-1.5 pl-4 text-sm font-medium text-paper"
           >
             Explore
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-pink text-white">
               →
             </span>
           </MotionLink>
