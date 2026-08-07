@@ -7,24 +7,24 @@ const caveat = Caveat({
 });
 
 const FACTS = [
-  { label: "Marketer", arrow: "↘", position: "top-2 -left-2 sm:top-6 sm:-left-24" },
-  { label: "Writer", arrow: "↙", position: "top-16 -right-2 sm:top-16 sm:-right-28" },
-  { label: "Wanderer", arrow: "→", position: "top-1/2 -left-4 sm:-left-32" },
+  { label: "Marketer", arrow: "↘", position: "top-[8%] left-[4%] sm:left-[10%]" },
+  { label: "Writer", arrow: "↙", position: "top-[20%] right-[2%] sm:right-[8%]" },
+  { label: "Wanderer", arrow: "→", position: "top-[46%] left-[1%] sm:left-[4%]" },
   {
     label: "Philosophy nerd",
     arrow: "↖",
-    position: "bottom-24 -right-2 sm:bottom-28 sm:-right-32",
+    position: "top-[68%] right-[1%] sm:right-[4%]",
   },
   {
     label: "Perfectionist",
     arrow: "↗",
-    position: "bottom-2 -left-2 sm:bottom-8 sm:-left-28",
+    position: "top-[88%] left-[4%] sm:left-[12%]",
   },
 ];
 
 export default function AboutHero() {
   return (
-    <section className="relative overflow-hidden px-6 pt-32 pb-20 sm:px-10 sm:pt-40 sm:pb-28">
+    <section className="relative overflow-hidden px-6 pt-32 sm:px-10 sm:pt-40">
       <div className="mx-auto max-w-2xl text-center">
         <span className="font-mono text-xs tracking-[0.2em] text-paper-faint uppercase">
           [ About ]
@@ -36,19 +36,17 @@ export default function AboutHero() {
         </h1>
       </div>
 
-      <div className="relative mx-auto mt-20 w-full max-w-[15rem] sm:mt-24 sm:max-w-xs">
-        <div className="glass relative aspect-[3/4] -rotate-1 overflow-hidden rounded-2xl p-2">
-          <div className="relative h-full w-full overflow-hidden rounded-xl">
-            <Image
-              src="/about/kamilla.jpg"
-              alt="Kamilla"
-              fill
-              sizes="320px"
-              priority
-              className="object-cover grayscale"
-            />
-          </div>
-        </div>
+      <div className="relative mx-auto mt-4 h-[70svh] max-w-3xl sm:h-[88svh]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_60%,var(--color-pink-dim),transparent_65%)] opacity-70" />
+
+        <Image
+          src="/about/kamilla-cutout.png"
+          alt="Kamilla"
+          fill
+          sizes="(min-width: 640px) 768px, 100vw"
+          priority
+          className="object-contain object-bottom"
+        />
 
         {FACTS.map((fact) => (
           <span
@@ -62,7 +60,7 @@ export default function AboutHero() {
       </div>
 
       <div
-        className={`${caveat.className} mx-auto mt-10 flex max-w-sm flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-lg text-paper sm:hidden`}
+        className={`${caveat.className} mx-auto -mt-6 flex max-w-sm flex-wrap items-center justify-center gap-x-4 gap-y-2 pb-8 text-center text-lg text-paper sm:hidden`}
       >
         {FACTS.map((fact) => (
           <span key={fact.label} className="inline-flex items-center gap-1">
