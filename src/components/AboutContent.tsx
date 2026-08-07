@@ -9,29 +9,17 @@ const caveat = Caveat({
   weight: ["500", "600", "700"],
 });
 
-const ROTATIONS = ["-rotate-1", "rotate-1", "-rotate-1", "rotate-1"];
-
-function SlideCard({
-  children,
-  rotate,
-}: {
-  children: React.ReactNode;
-  rotate: string;
-}) {
+function Title({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={`${rotate} max-w-xl rounded-2xl border border-dashed border-paper-faint/30 bg-paper/[0.03] p-8 backdrop-blur-sm sm:p-10`}
-    >
+    <h2 className={`${caveat.className} text-5xl text-paper sm:text-7xl`}>
       {children}
-    </div>
+    </h2>
   );
 }
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
+function Slide({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-mono text-xs tracking-[0.2em] text-paper-faint uppercase">
-      [ {children} ]
-    </span>
+    <div className="max-w-xl px-2 text-center">{children}</div>
   );
 }
 
@@ -50,8 +38,8 @@ export default function AboutContent() {
   const opacities = [opacity0, opacity1, opacity2, opacity3];
 
   const slideElements: React.ReactNode[] = [
-    <SlideCard key="about" rotate={ROTATIONS[0]}>
-      <Eyebrow>About</Eyebrow>
+    <Slide key="about">
+      <Title>About</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
         I market for a living, write because I have to, and spend most of my
         free hours somewhere in between. Mostly here. I grew up between
@@ -60,10 +48,10 @@ export default function AboutContent() {
         the person who reads philosophy for fun and still can&rsquo;t stop
         rearranging a room until the light hits it right.
       </p>
-    </SlideCard>,
+    </Slide>,
 
-    <SlideCard key="why" rotate={ROTATIONS[1]}>
-      <Eyebrow>Why Odassity</Eyebrow>
+    <Slide key="why">
+      <Title>Why Odassity</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
         There&rsquo;s a breath everyone takes right before they do something
         bold, right before they say the true thing instead of the easy
@@ -83,10 +71,10 @@ export default function AboutContent() {
         Odassity is a world I wanted to live inside, so I made it. And
         I&rsquo;d rather not live in it alone.
       </p>
-    </SlideCard>,
+    </Slide>,
 
-    <SlideCard key="find" rotate={ROTATIONS[2]}>
-      <Eyebrow>What You&rsquo;ll Find Here</Eyebrow>
+    <Slide key="find">
+      <Title>What You&rsquo;ll Find Here</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
         New every season, never fast. Ideas you sit with, not scroll past.
         Writing meant to feed the mind in a way a five-second video never
@@ -112,16 +100,11 @@ export default function AboutContent() {
       >
         Xo, Kamilla
       </p>
-    </SlideCard>,
+    </Slide>,
 
-    <SlideCard key="partner" rotate={ROTATIONS[3]}>
-      <Eyebrow>Let&rsquo;s work together</Eyebrow>
-      <p
-        className={`${caveat.className} mt-5 text-3xl text-paper sm:text-4xl`}
-      >
-        Create something meaningful with us.
-      </p>
-      <p className="mt-4 text-base leading-relaxed text-paper-dim sm:text-lg">
+    <Slide key="partner">
+      <Title>Create something meaningful with us.</Title>
+      <p className="mt-5 text-base leading-relaxed text-paper-dim sm:text-lg">
         We collaborate with brands, creators, and thinkers who share our
         belief that the things we create should have a story behind them.
       </p>
@@ -134,12 +117,12 @@ export default function AboutContent() {
           →
         </span>
       </a>
-    </SlideCard>,
+    </Slide>,
   ];
 
   if (reduceMotion) {
     return (
-      <section className="flex flex-col items-center gap-10 px-6 py-20 sm:px-10 sm:py-28">
+      <section className="flex flex-col items-center gap-20 px-6 py-20 sm:px-10 sm:py-28">
         {slideElements}
       </section>
     );

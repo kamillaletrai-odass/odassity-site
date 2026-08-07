@@ -46,6 +46,12 @@ export default function AboutHero() {
           sizes="(min-width: 640px) 768px, 100vw"
           priority
           className="object-contain object-bottom"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, black 72%, transparent 97%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, black 72%, transparent 97%)",
+          }}
         />
 
         {FACTS.map((fact) => (
