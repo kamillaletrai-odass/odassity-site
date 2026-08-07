@@ -38,8 +38,8 @@ export default function Footer() {
             Stay a little longer.
           </h2>
           <p className="mx-auto mt-4 max-w-sm text-paper-dim">
-            We send a little thinking piece every now and then. Enough to
-            disrupt a pattern, never enough to become one.
+            Get a little thinking piece every now and then. Enough to
+            disrupt a pattern.
           </p>
         </ScrollReveal>
 

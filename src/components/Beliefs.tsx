@@ -1,7 +1,13 @@
 "use client";
 
 import { useRef } from "react";
+import { Barlow_Semi_Condensed } from "next/font/google";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+
+const barlow = Barlow_Semi_Condensed({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+});
 
 const STATEMENTS = [
   "There is a breath before every bold thing.",
@@ -29,7 +35,7 @@ export default function Beliefs() {
           {STATEMENTS.map((line, i) => (
             <p
               key={i}
-              className="font-display text-3xl leading-snug text-paper sm:text-5xl"
+              className={`${barlow.className} text-3xl leading-snug text-paper sm:text-5xl`}
             >
               {line}
             </p>
@@ -47,11 +53,28 @@ export default function Beliefs() {
           <motion.p
             key={i}
             style={{ opacity: opacities[i] }}
-            className="absolute max-w-3xl text-center font-display text-3xl leading-snug text-paper sm:text-5xl"
+            className={`${barlow.className} absolute max-w-3xl text-center text-3xl leading-snug text-paper sm:text-5xl`}
           >
             {line}
           </motion.p>
         ))}
+
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-paper-faint sm:bottom-14"
+        >
+          <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
+            <path
+              d="M6 9l6 6 6-6"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.div>
       </div>
     </section>
   );
