@@ -33,7 +33,7 @@ html {
 }
 
 /* Light mood: swaps the ink/paper poles. Everything referencing these
-   tokens (backgrounds, text, gradient fades) adapts automatically —
+   tokens (backgrounds, text, gradient fades) adapts automatically;
    .glass panels and the brand accent colors stay constant across moods. */
 :root[data-theme="light"] {
   color-scheme: light;
@@ -144,6 +144,29 @@ body {
   font-family: var(--font-display);
 }
 
+/* About hero portrait: separate photos per mood */
+.kamilla-photo-dark {
+  display: block;
+}
+.kamilla-photo-light {
+  display: none;
+}
+:root[data-theme="light"] .kamilla-photo-dark {
+  display: none;
+}
+:root[data-theme="light"] .kamilla-photo-light {
+  display: block;
+}
+
+/* White fairy mark: stays white in dark mode, flips to black in light mode */
+.logo-mark {
+  transition: filter 0.2s ease;
+}
+
+:root[data-theme="light"] .logo-mark {
+  filter: invert(1);
+}
+
 /* Warm-toned grayscale that blooms into full color on hover (via an ancestor .group) */
 .warm-grayscale {
   filter: grayscale(0.85) sepia(0.25) saturate(1.15) brightness(0.95);
@@ -214,20 +237,21 @@ body {
 }
 
 .prose-odassity p:first-of-type::first-letter {
-  font-family: var(--font-display);
-  font-size: 4.2em;
-  line-height: 0.85;
+  font-family: var(--font-handwritten);
+  font-weight: 700;
+  font-size: 5.2em;
+  line-height: 0.75;
   float: left;
-  padding-right: 0.1em;
-  padding-top: 0.05em;
-  color: var(--color-pink);
+  padding-right: 0.08em;
+  padding-top: 0.1em;
+  color: var(--color-paper);
 }
 
 .prose-odassity blockquote {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1.6em;
-  line-height: 1.4;
+  font-size: 1.05em;
+  line-height: 1.5;
   color: var(--color-paper);
   border-left: 2px solid var(--color-pink);
   padding-left: 0.9em;
@@ -267,7 +291,7 @@ body {
   margin: 1.8em 0;
 }
 
-/* Filmic grain — subtle texture so flat dark fills never feel flat */
+/* Filmic grain: subtle texture so flat dark fills never feel flat */
 body::before {
   content: "";
   position: fixed;

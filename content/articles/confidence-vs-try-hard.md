@@ -1,7 +1,7 @@
 ---
 title: "The Fine Line Between Confidence and Try-Hard"
 dek: "Confidence is attractive. Try-hard is its shadow. The distance between them is smaller than you think."
-lens: fitting-room
+lens: all
 date: "2026-03-07"
 cover: "/covers/confidence-vs-try-hard.png"
 author: kamilla

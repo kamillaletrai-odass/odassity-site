@@ -38,8 +38,8 @@ export default function Footer() {
             Stay a little longer.
           </h2>
           <p className="mx-auto mt-4 max-w-sm text-paper-dim">
-            Get a little thinking piece every now and then. Enough to
-            disrupt a pattern.
+            Join our mailing list. Get a little something to spark up your
+            mind every now and then.
           </p>
         </ScrollReveal>
 
@@ -48,9 +48,15 @@ export default function Footer() {
         </ScrollReveal>
       </div>
 
-      <div className="relative grid grid-cols-1 gap-10 px-6 pt-16 pb-8 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24">
+      <div className="relative grid grid-cols-1 gap-10 px-6 pt-16 pb-24 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24 sm:pb-28">
         <div>
-          <Image src="/logo-mark.png" alt="Odassity" width={26} height={26} />
+          <Image
+            src="/logo-mark.png"
+            alt="Odassity"
+            width={26}
+            height={26}
+            className="logo-mark"
+          />
           <div className="mt-4 flex flex-col gap-2 text-paper-dim">
             {LINKS.map((link) => (
               <Link

@@ -1,7 +1,7 @@
 ---
 title: "Your Words Don’t Mean What You Think They Mean"
 dek: "Intent is private. Interpretation is public. Guess which one matters more."
-lens: fitting-room
+lens: all
 date: "2026-02-22"
 cover: "/covers/your-words-dont-mean-what-you-think-they-mean.png"
 author: kamilla

@@ -1,31 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
 const FACES = [
-  { offset: "translate-y-6 sm:translate-y-16" },
-  { offset: "-translate-y-2 sm:-translate-y-6" },
-  { offset: "-translate-y-6 sm:-translate-y-20" },
-  { offset: "-translate-y-1 sm:-translate-y-5" },
-  { offset: "translate-y-5 sm:translate-y-14" },
+  { src: "/community/thinkerbells-1b.png", offset: "translate-y-6 sm:translate-y-16" },
+  { src: "/community/thinkerbells-2b.png", offset: "-translate-y-2 sm:-translate-y-6" },
+  { src: "/community/thinkerbells-3b.png", offset: "-translate-y-6 sm:-translate-y-20" },
+  { src: "/community/thinkerbells-4.png", offset: "-translate-y-1 sm:-translate-y-5" },
+  { src: "/community/thinkerbells-5b.png", offset: "translate-y-5 sm:translate-y-14" },
+  { src: "/community/thinkerbells-6b.png", offset: "-translate-y-3 sm:-translate-y-9" },
 ];
-
-function PlaceholderFace() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className="h-6 w-6 text-paper-faint sm:h-12 sm:w-12"
-    >
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
 
 export default function Thinkerbells() {
   return (
@@ -34,9 +18,15 @@ export default function Thinkerbells() {
         {FACES.map((face, i) => (
           <ScrollReveal key={i} delay={i * 0.08}>
             <div
-              className={`glass flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl sm:h-36 sm:w-36 sm:rounded-2xl ${face.offset}`}
+              className={`group glass relative h-14 w-14 overflow-hidden rounded-xl sm:h-36 sm:w-36 sm:rounded-2xl ${face.offset}`}
             >
-              <PlaceholderFace />
+              <Image
+                src={face.src}
+                alt=""
+                fill
+                sizes="(min-width: 640px) 144px, 56px"
+                className="warm-grayscale object-cover"
+              />
             </div>
           </ScrollReveal>
         ))}

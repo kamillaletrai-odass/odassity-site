@@ -1,7 +1,7 @@
 ---
 title: "The Post-Button Anxiety: A Career Blocker in 2026"
 dek: "You know you should be posting. You know what it costs you not to. You still can't make yourself press the button. This is why."
-lens: mirror
+lens: all
 date: "2026-04-25"
 cover: "/covers/post-button-anxiety-career-blocker-2026.png"
 author: kamilla

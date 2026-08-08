@@ -63,7 +63,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.warn(
-      "[api/contact] RESEND_API_KEY not set — skipping email send.\n" +
+      "[api/contact] RESEND_API_KEY not set, skipping email send.\n" +
         `Would have sent: ${subject}\n${text}`,
     );
     return NextResponse.json({ ok: true, delivered: false });

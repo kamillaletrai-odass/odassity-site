@@ -1,7 +1,7 @@
 ---
 title: "Marketing Was Always GTM: It Just Wasn't Cool Until Men Claimed It"
 dek: "Distribution was always the real game. It just didn't have a LinkedIn hashtag when predominantly women were doing it."
-lens: mirror
+lens: all
 date: "2026-05-03"
 cover: "/covers/marketing-was-always-gtm-it-just-wasnt-cool-until-men-claimed-it.png"
 author: kamilla

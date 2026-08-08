@@ -31,22 +31,26 @@ export default function AboutContent() {
     offset: ["start start", "end end"],
   });
 
-  const opacity0 = useTransform(scrollYProgress, [0, 0.04, 0.19, 0.24], [0, 1, 1, 0]);
-  const opacity1 = useTransform(scrollYProgress, [0.19, 0.24, 0.44, 0.49], [0, 1, 1, 0]);
-  const opacity2 = useTransform(scrollYProgress, [0.44, 0.49, 0.79, 0.84], [0, 1, 1, 0]);
-  const opacity3 = useTransform(scrollYProgress, [0.79, 0.84, 0.96, 1], [0, 1, 1, 0]);
-  const opacities = [opacity0, opacity1, opacity2, opacity3];
+  const opacity0 = useTransform(scrollYProgress, [0, 0.05, 0.19, 0.24], [0, 1, 1, 0]);
+  const opacity1 = useTransform(scrollYProgress, [0.19, 0.24, 0.38, 0.43], [0, 1, 1, 0]);
+  const opacity2 = useTransform(scrollYProgress, [0.38, 0.43, 0.57, 0.62], [0, 1, 1, 0]);
+  const opacity3 = useTransform(scrollYProgress, [0.57, 0.62, 0.76, 0.81], [0, 1, 1, 0]);
+  const opacity4 = useTransform(scrollYProgress, [0.76, 0.81, 0.95, 1], [0, 1, 1, 0]);
+  const opacities = [opacity0, opacity1, opacity2, opacity3, opacity4];
 
   const slideElements: React.ReactNode[] = [
     <Slide key="about">
       <Title>About</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
-        I market for a living, write because I have to, and spend most of my
-        free hours somewhere in between. Mostly here. I grew up between
-        languages and countries, which maybe explains why I&rsquo;ve never
-        fully trusted the easy, agreed-upon version of anything. I&rsquo;m
-        the person who reads philosophy for fun and still can&rsquo;t stop
-        rearranging a room until the light hits it right.
+        I&rsquo;ve rewritten this sentence four times already and I&rsquo;m
+        still not happy with it, which is probably the most honest way to
+        introduce myself. Writing and designing aren&rsquo;t things I do for
+        work, they&rsquo;re how I find my way back to myself. I grew up
+        between languages and countries, which maybe explains why
+        I&rsquo;ve never fully trusted the easy, agreed-upon version of
+        anything. I read philosophy for fun, rearrange a room until the
+        light finally sits right, and still think a good disagreement is
+        one of the more intimate things two people can have.
       </p>
     </Slide>,
 
@@ -76,11 +80,12 @@ export default function AboutContent() {
     <Slide key="find">
       <Title>What You&rsquo;ll Find Here</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
-        New every season, never fast. Ideas you sit with, not scroll past.
-        Writing meant to feed the mind in a way a five-second video never
-        will. Recurring series designed to make you come back on purpose,
-        not out of habit. Every piece ends the same way, a small, strange
-        fable, never explained, yours to finish however you like.
+        A quiet retreat on the internet with slow content, refreshed every
+        season. Ideas you sit with, not scroll past. Writing meant to feed
+        the mind in a way a five-second video never will. Recurring series
+        designed to make you come back on purpose, not out of habit. Every
+        piece ends the same way, a small, strange fable, never explained,
+        yours to finish however you like.
       </p>
       <p className="mt-4 text-lg leading-relaxed text-paper-dim sm:text-xl">
         This is a place to have a conversation with yourself. To wrestle
@@ -89,14 +94,17 @@ export default function AboutContent() {
         A little whimsy dropped into an adult life that doesn&rsquo;t leave
         much room for it.
       </p>
-      <p className="mt-6 font-display text-xl text-paper italic sm:text-2xl">
-        Read today. Understand tomorrow.
-      </p>
-      <p className="mt-2 text-sm text-paper-dim">
-        That&rsquo;s what I work towards. A feed that feeds your brain.
+    </Slide>,
+
+    <Slide key="signoff">
+      <p
+        className={`${caveat.className} text-4xl leading-snug text-paper sm:text-6xl`}
+      >
+        The breath before the bold thing. For the &ldquo;odassity&rdquo; you
+        keep almost having.
       </p>
       <p
-        className={`${caveat.className} mt-6 text-3xl text-paper sm:text-4xl`}
+        className={`${caveat.className} mt-8 text-3xl text-paper sm:text-4xl`}
       >
         Xo, Kamilla
       </p>
@@ -129,7 +137,7 @@ export default function AboutContent() {
   }
 
   return (
-    <section ref={sectionRef} className="relative" style={{ height: "500vh" }}>
+    <section ref={sectionRef} className="relative" style={{ height: "625vh" }}>
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6 sm:px-10">
         {slideElements.map((slide, i) => (
           <motion.div

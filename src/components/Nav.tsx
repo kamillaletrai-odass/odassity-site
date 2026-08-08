@@ -33,6 +33,7 @@ export default function Nav() {
             width={30}
             height={30}
             priority
+            className="logo-mark"
           />
         </Link>
 

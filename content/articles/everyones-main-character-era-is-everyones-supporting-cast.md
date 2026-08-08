@@ -1,7 +1,7 @@
 ---
 title: "Everyone's Main Character Era Is Actually Everyone's Supporting Cast"
 dek: "Everyone decided to be the main character at the same time. Now nobody is."
-lens: autopsy
+lens: all
 date: "2026-03-15"
 cover: "/covers/everyones-main-character-era-is-everyones-supporting-cast.png"
 author: kamilla

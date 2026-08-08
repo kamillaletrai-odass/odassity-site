@@ -47,7 +47,7 @@ export default function NewsletterForm({
       onSubmit={handleSubmit}
       className={clsx(
         "flex w-full max-w-md flex-col gap-3 sm:flex-row",
-        glass && "glass rounded-full p-1.5 sm:items-center",
+        glass && "glass rounded-3xl p-2 sm:items-center sm:rounded-full sm:p-1.5",
       )}
     >
       <input
@@ -68,14 +68,14 @@ export default function NewsletterForm({
         disabled={status === "sending"}
         className={clsx(
           "whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition-opacity hover:opacity-90 disabled:opacity-60",
-          glass ? "bg-paper text-ink" : "bg-pink text-white",
+          "bg-paper text-ink",
         )}
       >
         {status === "sending" ? "Sending…" : ctaLabel}
       </button>
       {status === "error" && (
         <p className="text-xs text-pink sm:hidden">
-          Something went wrong — try again in a moment.
+          Something went wrong. Try again in a moment.
         </p>
       )}
     </form>

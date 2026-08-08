@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Open_Sans, Figtree } from "next/font/google";
+import { Open_Sans, Figtree, Caveat } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -33,13 +33,19 @@ const figtree = Figtree({
   weight: ["400", "500", "600"],
 });
 
+const caveat = Caveat({
+  variable: "--font-handwritten",
+  subsets: ["latin"],
+  weight: ["600", "700"],
+});
+
 export const metadata: Metadata = {
   title: {
-    default: "Odassity — A magazine between dimensions",
-    template: "%s — Odassity",
+    default: "Odassity: A magazine between dimensions",
+    template: "%s | Odassity",
   },
   description:
-    "Personality, identity, and self-expression for a coven of thinkerbells — a digital publication about who we are and how we show up.",
+    "Personality, identity, and self-expression for a coven of thinkerbells, a digital publication about who we are and how we show up.",
 };
 
 export default function RootLayout({
@@ -51,7 +57,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${openSans.variable} ${figtree.variable} h-full antialiased`}
+      className={`${openSans.variable} ${figtree.variable} ${caveat.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />

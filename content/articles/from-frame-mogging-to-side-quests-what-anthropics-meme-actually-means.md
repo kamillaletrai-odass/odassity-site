@@ -1,7 +1,7 @@
 ---
 title: "From \"Frame Mogging\" to \"Side Quests\": What Anthropic's Meme Actually Means"
 dek: "Anthropic's frame mogging meme was a joke. What it says about modern careers is not."
-lens: autopsy
+lens: all
 date: "2025-08-07"
 cover: "/covers/from-frame-mogging-to-side-quests-what-anthropics-meme-actually-means.png"
 author: kamilla
@@ -61,7 +61,7 @@ The people who will be most legible in the next decade of hiring aren't necessar
 
 The frame mogging meme didn't start this shift. It just named it in the most unexpected vocabulary possible. Which is, honestly, exactly how the most important cultural truths tend to surface.
 
-—
+---
 
 ### *This Sunday's micro-fable:*
 

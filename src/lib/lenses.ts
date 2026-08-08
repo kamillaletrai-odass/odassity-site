@@ -1,4 +1,10 @@
-export type Lens = "mirror" | "wardrobe" | "autopsy" | "fitting-room";
+export type Lens =
+  | "all"
+  | "outwards"
+  | "inwards"
+  | "autopsy"
+  | "digicore"
+  | "aesthetics";
 
 export const LENSES: Record<
   Lens,
@@ -8,30 +14,44 @@ export const LENSES: Record<
     description: string;
   }
 > = {
-  mirror: {
-    label: "Mirror",
-    tagline: "Seeing yourself through other people's eyes.",
-    description:
-      "Hidden blind spots, sharp reflections, and practical nudges toward showing up with more confidence in the image you project.",
+  all: {
+    label: "All",
+    tagline: "The full archive.",
+    description: "Everything we've published, not yet sorted into a motif.",
   },
-  wardrobe: {
-    label: "Wardrobe",
-    tagline: "The identities we try on and take off.",
+  outwards: {
+    label: "Outwards",
+    tagline: "Identity as a performative act.",
     description:
-      "Personal style, self-presentation, and the quiet decisions behind how we choose to be seen — one outfit, one persona at a time.",
+      "On conformity, belonging, and thinking for yourself before it's cool to.",
+  },
+  inwards: {
+    label: "Inwards",
+    tagline: "The self, alone with itself.",
+    description:
+      "Get to know who you are before the world hands you an answer.",
   },
   autopsy: {
     label: "Autopsy",
-    tagline: "Dissecting the art of influence.",
-    description:
-      "Breakdowns of brands, posts, and trends — a CSI for communication, decoding what works, what flops, and why.",
+    tagline: "Trends, cut open.",
+    description: "A live wrestling with ideologies, modern or ancient.",
   },
-  "fitting-room": {
-    label: "Fitting Room",
-    tagline: "Unfiltered thoughts from someone figuring it out.",
-    description:
-      "Essays, rants, and reflections from learning the ropes of being seen online — personal, messy, honest, still being tried on for size.",
+  digicore: {
+    label: "Digicore",
+    tagline: "AI, internet culture, the chronically online.",
+    description: "Never anti-machine, always anti-autopilot.",
+  },
+  aesthetics: {
+    label: "Aesthetics",
+    tagline: "Beauty as the consequence of the thinking behind it.",
+    description: "Rooted in neuroaesthetics.",
   },
 };
 
-export const LENS_ORDER: Lens[] = ["mirror", "wardrobe", "autopsy", "fitting-room"];
+export const LENS_ORDER: Lens[] = [
+  "outwards",
+  "inwards",
+  "autopsy",
+  "digicore",
+  "aesthetics",
+];

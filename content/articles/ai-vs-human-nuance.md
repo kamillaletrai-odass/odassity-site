@@ -1,7 +1,7 @@
 ---
 title: "AI Can’t Fake Nuance, But Humans Can"
 dek: "AI sounds generic. Humans sound strategic. Sometimes that’s worse."
-lens: fitting-room
+lens: all
 date: "2026-03-08"
 cover: "/covers/ai-vs-human-nuance.png"
 author: kamilla

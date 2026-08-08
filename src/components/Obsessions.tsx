@@ -28,7 +28,7 @@ const TOPICS = [
   {
     word: "Digicore",
     description:
-      "AI, internet culture, the chronically online. Never anti-machine — always anti-autopilot.",
+      "AI, internet culture, the chronically online. Never anti-machine, always anti-autopilot.",
     gradient:
       "linear-gradient(90deg, transparent 70%, #ffd0de66 100%), radial-gradient(circle at 40% 30%, #d9f0ff 0%, #a8dcf5 42%, #0a1620 100%)",
     Icon: CursorIcon,

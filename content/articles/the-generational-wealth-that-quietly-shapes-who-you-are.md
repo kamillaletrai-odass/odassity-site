@@ -1,7 +1,7 @@
 ---
 title: "The Generational \"Wealth\" That Quietly Shapes Who You Are"
 dek: "Some families pass down money. Others pass down patterns. Most pass down both without knowing."
-lens: fitting-room
+lens: all
 date: "2026-04-04"
 cover: "/covers/the-generational-wealth-that-quietly-shapes-who-you-are.png"
 author: kamilla

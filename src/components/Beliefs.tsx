@@ -1,18 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { Barlow_Semi_Condensed } from "next/font/google";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-
-const barlow = Barlow_Semi_Condensed({
-  subsets: ["latin"],
-  weight: ["500", "600"],
-});
 
 const STATEMENTS = [
   "There is a breath before every bold thing.",
   "This is that breath.",
-  "Welcome to the world of Odassity.",
+  "For the “odassity” you keep almost having.",
 ];
 
 export default function Beliefs() {
@@ -31,11 +25,11 @@ export default function Beliefs() {
   if (reduceMotion) {
     return (
       <section className="relative px-6 py-24 sm:px-10 sm:py-32">
-        <div className="mx-auto flex max-w-3xl flex-col gap-14 text-center">
+        <div className="mx-auto flex max-w-4xl flex-col gap-14 text-center">
           {STATEMENTS.map((line, i) => (
             <p
               key={i}
-              className={`${barlow.className} text-3xl leading-snug text-paper sm:text-5xl`}
+              className="font-display text-5xl leading-[1.05] text-paper sm:text-7xl"
             >
               {line}
             </p>
@@ -47,13 +41,26 @@ export default function Beliefs() {
 
   return (
     <section ref={sectionRef} className="relative" style={{ height: "300vh" }}>
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-pink-dim),transparent_60%)] opacity-50" />
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6 sm:px-10">
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 55% 40% at 50% 50%, rgba(250,238,225,0.55), rgba(250,238,225,0.18) 45%, transparent 72%)",
+          }}
+          animate={
+            reduceMotion
+              ? undefined
+              : { opacity: [0.6, 0.9, 0.6], scale: [1, 1.06, 1] }
+          }
+          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        />
         {STATEMENTS.map((line, i) => (
           <motion.p
             key={i}
             style={{ opacity: opacities[i] }}
-            className={`${barlow.className} absolute max-w-3xl text-center text-3xl leading-snug text-paper sm:text-5xl`}
+            className="absolute max-w-4xl text-center font-display text-5xl leading-[1.05] text-paper sm:text-7xl"
           >
             {line}
           </motion.p>

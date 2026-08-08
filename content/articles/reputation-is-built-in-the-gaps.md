@@ -1,7 +1,7 @@
 ---
 title: "Reputation Is Built in the Gaps"
 dek: "Not in what you say. In what you repeat. In what you don’t correct."
-lens: autopsy
+lens: all
 date: "2026-06-28"
 cover: "/covers/reputation-is-built-in-the-gaps.png"
 author: kamilla

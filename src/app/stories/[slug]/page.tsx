@@ -6,6 +6,7 @@ import { getArticle, getAllArticleMeta } from "@/lib/articles";
 import { AUTHORS } from "@/lib/authors";
 import LensTag from "@/components/LensTag";
 import AuthorAvatar from "@/components/AuthorAvatar";
+import StoryCard from "@/components/StoryCard";
 
 export function generateStaticParams() {
   return getAllArticleMeta().map((a) => ({ slug: a.slug }));
@@ -33,10 +34,17 @@ export default async function ArticlePage({
 
   const author = AUTHORS[article.author];
 
+  const others = getAllArticleMeta().filter((a) => a.slug !== article.slug);
+  const sameLens = others.filter(
+    (a) => article.lens !== "all" && a.lens === article.lens,
+  );
+  const rest = others.filter((a) => !sameLens.includes(a));
+  const recommended = [...sameLens, ...rest].slice(0, 3);
+
   return (
     <article className="pb-16">
       {article.cover && (
-        <div className="relative h-[42vh] min-h-[280px] w-full sm:h-[56vh]">
+        <div className="relative h-[52vh] min-h-[320px] w-full overflow-hidden bg-ink sm:h-[66vh]">
           <Image
             src={article.cover}
             alt=""
@@ -44,46 +52,43 @@ export default async function ArticlePage({
             sizes="100vw"
             priority
             className="object-cover"
+            style={{
+              maskImage:
+                "linear-gradient(to bottom, black 55%, transparent 92%)",
+              WebkitMaskImage:
+                "linear-gradient(to bottom, black 55%, transparent 92%)",
+            }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
         </div>
       )}
 
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-3xl px-6">
         <Link
           href="/stories"
-          className={`inline-block text-sm text-paper-dim hover:text-paper ${article.cover ? "-mt-10 relative" : "mt-32"}`}
+          className={`inline-block text-sm text-paper-dim hover:text-paper ${article.cover ? "-mt-24 relative" : "mt-32"}`}
         >
           ← All stories
         </Link>
 
-        <div className="mt-6">
-          <LensTag lens={article.lens} size="md" />
-        </div>
+        {article.lens !== "all" && (
+          <div className="mt-6">
+            <LensTag lens={article.lens} size="md" />
+          </div>
+        )}
 
-        <h1 className="mt-6 font-display text-display leading-[1.05] text-paper">
+        <h1 className="mt-6 font-display text-hero leading-[1.05] text-paper">
           {article.title}
         </h1>
         <p className="mt-4 text-lg text-paper-dim">{article.dek}</p>
 
-        <div className="mt-6 flex items-center gap-3">
-          {author && (
-            <>
-              <AuthorAvatar author={author} size="sm" />
-              <div className="text-sm">
-                <span className="text-paper">{author.name}</span>
-                <span className="mx-2 text-paper-faint">·</span>
-                <time dateTime={article.date} className="text-paper-dim">
-                  {new Date(article.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-              </div>
-            </>
-          )}
-        </div>
+        <time dateTime={article.date} className="mt-6 block text-sm text-paper-dim">
+          {new Date(article.date).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </time>
 
         <div
           className="prose-odassity mt-12"
@@ -105,6 +110,19 @@ export default async function ArticlePage({
           </div>
         )}
       </div>
+
+      {recommended.length > 0 && (
+        <div className="mt-20 px-6 sm:px-10">
+          <p className="mx-auto max-w-6xl text-xs font-semibold uppercase tracking-[0.18em] text-paper-dim">
+            Continue reading
+          </p>
+          <div className="mx-auto mt-6 grid max-w-6xl gap-6 sm:grid-cols-3">
+            {recommended.map((piece) => (
+              <StoryCard key={piece.slug} article={piece} size="sm" />
+            ))}
+          </div>
+        </div>
+      )}
     </article>
   );
 }

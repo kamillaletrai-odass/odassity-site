@@ -38,12 +38,12 @@ export default function WritePage() {
 
   if (status === "sent") {
     return (
-      <div className="mx-auto max-w-xl px-6 pt-40 pb-24 text-center">
+      <div className="px-6 pt-40 pb-24 text-center sm:px-10">
         <h1 className="font-display text-display text-paper">
           Got it.
         </h1>
-        <p className="mt-4 text-paper-dim">
-          Thanks for reaching out — we read every submission and will get
+        <p className="mx-auto mt-4 max-w-xl text-paper-dim">
+          Thanks for reaching out. We read every submission and will get
           back to you soon.
         </p>
       </div>
@@ -51,48 +51,53 @@ export default function WritePage() {
   }
 
   return (
-    <div className="mx-auto max-w-xl px-6 pt-32 pb-16">
-      <h1 className="font-display text-display text-paper">
-        Become a writer
-      </h1>
-      <p className="mt-3 text-paper-dim">
-        Join the coven of thinkerbells. Fill out this form to write for
-        Odassity.
-      </p>
+    <div className="px-6 pt-32 pb-16 sm:px-10">
+      <div className="mx-auto max-w-xl">
+        <h1 className="font-display text-display text-paper">
+          Become a writer
+        </h1>
+        <p className="mt-3 text-paper-dim">
+          Join the coven of thinkerbells. Fill out this form to write for
+          Odassity.
+        </p>
 
-      <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6">
-        <Field label="Name" name="name" required />
-        <Field label="Email" name="email" type="email" required />
-        <Field
-          label="Why do you want to write for Odassity?"
-          name="why"
-          textarea
-          required
-        />
-        <Field
-          label="Previous writing experience"
-          name="experience"
-          textarea
-          optional
-        />
-        <Field label="Substack" name="substack" optional />
-        <Field label="LinkedIn" name="linkedin" optional />
+        <form onSubmit={handleSubmit} className="mt-10 flex flex-col gap-6">
+          <Field label="Name" name="name" required />
+          <Field label="Email" name="email" type="email" required />
+          <Field
+            label="Why do you want to write for Odassity?"
+            name="why"
+            textarea
+            required
+          />
+          <Field
+            label="Previous writing experience"
+            name="experience"
+            textarea
+            optional
+          />
+          <Field label="Substack" name="substack" optional />
+          <Field label="LinkedIn" name="linkedin" optional />
 
-        <button
-          type="submit"
-          disabled={status === "sending"}
-          className="mt-2 w-fit rounded-full bg-pink px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-        >
-          {status === "sending" ? "Sending…" : "Submit"}
-        </button>
+          <button
+            type="submit"
+            disabled={status === "sending"}
+            className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:opacity-60"
+          >
+            {status === "sending" ? "Sending…" : "Submit"}
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
+              →
+            </span>
+          </button>
 
-        {status === "error" && (
-          <p className="text-sm text-pink">
-            Something went wrong sending that — email kamilla@odassity.com
-            directly instead.
-          </p>
-        )}
-      </form>
+          {status === "error" && (
+            <p className="text-sm text-pink">
+              Something went wrong sending that. Email kamilla@odassity.com
+              directly instead.
+            </p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }

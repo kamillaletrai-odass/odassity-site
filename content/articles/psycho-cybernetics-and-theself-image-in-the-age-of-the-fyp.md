@@ -1,7 +1,7 @@
 ---
 title: "Psycho-Cybernetics & Self-Image in the Age of the FYP"
 dek: "M. Maltz spent his career fixing faces. He found the problem was never the face."
-lens: autopsy
+lens: all
 date: "2026-06-07"
 cover: "/covers/psycho-cybernetics-and-theself-image-in-the-age-of-the-fyp.png"
 author: kamilla

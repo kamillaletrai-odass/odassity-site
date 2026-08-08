@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllArticleMeta } from "@/lib/articles";
 import { AUTHORS } from "@/lib/authors";
-import { LENSES } from "@/lib/lenses";
-import AuthorAvatar from "@/components/AuthorAvatar";
+import AuthorCard from "@/components/AuthorCard";
 
 export const metadata: Metadata = { title: "Community" };
 
@@ -12,87 +11,50 @@ export default function CommunityPage() {
   const articles = getAllArticleMeta();
 
   return (
-    <div className="mx-auto max-w-4xl px-6 pt-32 pb-16">
-      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-pink">
-        The community
-      </span>
-      <h1 className="mt-3 font-display text-hero leading-[0.98] text-paper">
-        A coven of thinkerbells.
+    <div className="px-6 pt-32 pb-16 sm:px-10">
+      <h1 className="font-display text-display text-paper">
+        The Thinkerbells
       </h1>
-      <p className="mt-6 max-w-xl text-lg text-paper-dim">
-        Thinkers who are also a little magical, a little mischievous — not
-        taking themselves too seriously, while taking the ideas completely
-        seriously. This isn&rsquo;t one person&rsquo;s blog. It&rsquo;s a
-        collective.
+      <p className="mt-4 max-w-xl text-lg text-paper-dim">
+        The community of people who make Odassity a whole.
       </p>
+      <div className="mt-6 flex max-w-xl flex-col gap-4 text-paper-dim">
+        <p>
+          We write, we debate, we create, out loud and unfinished, because a
+          thought never gets tested against anything real until someone else
+          pushes back on it. Mostly this happens online. Sometimes it
+          happens in a room in Amsterdam, over prosecco gone slightly too
+          warm.
+        </p>
+        <p>
+          What we&rsquo;re working toward is a corner of the internet
+          that&rsquo;s ours, the Thinkerbells&rsquo;. Where you hear your
+          own thoughts clearly, where things get a little more intentional,
+          a little more curious, a little less like everywhere else, one
+          contributor at a time.
+        </p>
+        <p>
+          Bring your own whimsy. Odassity gets a little bigger, and a
+          little better, every time someone does.
+        </p>
+      </div>
       <Link
         href="/write"
-        className="mt-8 inline-block rounded-full bg-pink px-6 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        className="mt-8 inline-flex items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
       >
         Join the community
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
+          →
+        </span>
       </Link>
 
-      <div className="mt-16 flex flex-col gap-10">
+      <div className="mx-auto mt-16 flex max-w-6xl flex-col gap-10">
         {authors.map((author) => {
           const pieces = articles.filter((a) => a.author === author.id);
           return (
-            <div key={author.id} className="glass rounded-3xl p-8 sm:p-10">
-              <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
-                <AuthorAvatar author={author} size="lg" />
-                <div>
-                  <p className="font-display text-2xl text-paper">
-                    {author.name}
-                  </p>
-                  <p className="text-xs uppercase tracking-[0.14em] text-pink">
-                    {author.role}
-                  </p>
-                  <p className="mt-3 max-w-lg text-paper-dim">{author.bio}</p>
-                </div>
-              </div>
-
-              {pieces.length > 0 && (
-                <div className="mt-8">
-                  <p className="text-xs uppercase tracking-[0.16em] text-paper-dim">
-                    Published pieces
-                  </p>
-                  <ul className="mt-3 flex flex-col gap-2">
-                    {pieces.map((piece) => (
-                      <li key={piece.slug}>
-                        <Link
-                          href={`/stories/${piece.slug}`}
-                          className="group flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 transition-colors hover:bg-white/10"
-                        >
-                          <span className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-pink">
-                            {LENSES[piece.lens].label}
-                          </span>
-                          <span className="font-display text-paper group-hover:underline">
-                            {piece.title}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+            <AuthorCard key={author.id} author={author} pieces={pieces} />
           );
         })}
-
-        <Link
-          href="/write"
-          className="flex flex-col items-start gap-2 rounded-3xl border border-dashed border-paper-faint/20 p-8 transition-colors hover:border-pink/60 sm:p-10"
-        >
-          <p className="font-display text-2xl text-paper">
-            Want to be part of the coven?
-          </p>
-          <p className="max-w-lg text-paper-dim">
-            We&rsquo;re always reading writer submissions — bring your
-            thoughts on identity, perception, and being a person online.
-          </p>
-          <span className="mt-2 text-sm text-pink">
-            Become a writer →
-          </span>
-        </Link>
       </div>
     </div>
   );

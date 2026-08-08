@@ -1,7 +1,7 @@
 ---
 title: "The Extinction of Trying: When Everyone's a Natural"
 dek: "The internet didn't just make effort invisible. It made it embarrassing."
-lens: mirror
+lens: all
 date: "2026-04-12"
 cover: "/covers/the-extinction-of-trying-when-everyone-is-a-natural.png"
 author: kamilla

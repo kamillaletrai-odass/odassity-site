@@ -8,6 +8,8 @@ export default function LensTag({
   lens: Lens;
   size?: "sm" | "md";
 }) {
+  if (lens === "all") return null;
+
   const meta = LENSES[lens];
   return (
     <span

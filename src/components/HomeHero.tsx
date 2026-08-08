@@ -15,8 +15,8 @@ const barlow = Barlow_Semi_Condensed({
 
 const MotionLink = motion.create(Link);
 
-// Update each season — shows as a small magazine-style issue label above the wordmark.
-const EDITION = "No. 01 — Summer Edition";
+// Update each season: shows as a small magazine-style issue label above the wordmark.
+const EDITION = "No. 01 · Summer Edition";
 
 export default function HomeHero({
   teaser1,
@@ -33,7 +33,7 @@ export default function HomeHero({
   });
 
   // Background keeps a subtle scroll-linked zoom. The whole section fades
-  // out uniformly (not individual pieces) so nothing goes out of sync —
+  // out uniformly (not individual pieces) so nothing goes out of sync;
   // that mismatch is what caused the old "clips then reappears" glitch.
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
   const imageStyle = reduceMotion ? undefined : { scale: imageScale };
@@ -119,9 +119,11 @@ export default function HomeHero({
               />
             </div>
           )}
-          <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-pink">
-            {LENSES[teaser1.lens].label}
-          </p>
+          {teaser1.lens !== "all" && (
+            <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-pink">
+              {LENSES[teaser1.lens].label}
+            </p>
+          )}
           <p className="mt-1 font-display text-sm leading-snug text-paper">
             {teaser1.title}
           </p>
@@ -160,9 +162,11 @@ export default function HomeHero({
               />
             </div>
           )}
-          <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-pink">
-            {LENSES[teaser2.lens].label}
-          </p>
+          {teaser2.lens !== "all" && (
+            <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-pink">
+              {LENSES[teaser2.lens].label}
+            </p>
+          )}
           <p className="mt-1 font-display text-sm leading-snug text-paper">
             {teaser2.title}
           </p>

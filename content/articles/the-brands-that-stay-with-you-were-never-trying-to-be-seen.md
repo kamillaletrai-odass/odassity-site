@@ -1,7 +1,7 @@
 ---
 title: "The Brands That Stay With Me Are The Ones I Keep Running Into In Real Life"
 dek: "Visibility and familiarity are not the same thing. The brands that stick aren't the ones you see most."
-lens: autopsy
+lens: all
 date: "2026-05-24"
 cover: "/covers/the-brands-that-stay-with-you-were-never-trying-to-be-seen.jpeg"
 author: andra

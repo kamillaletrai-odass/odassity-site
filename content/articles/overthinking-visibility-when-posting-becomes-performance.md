@@ -1,7 +1,7 @@
 ---
 title: "Overthinking Visibility: When Posting Becomes Performance"
 dek: "The moment you imagine an audience, your voice changes. Sometimes that’s the problem."
-lens: mirror
+lens: all
 date: "2026-03-07"
 cover: "/covers/overthinking-visibility-when-posting-becomes-performance.png"
 author: kamilla

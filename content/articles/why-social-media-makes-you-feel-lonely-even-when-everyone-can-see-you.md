@@ -1,7 +1,7 @@
 ---
 title: "Why Social Media Makes You Feel Lonely Even When Everyone Can See You"
 dek: "You have an audience. You still feel alone. And that's not a coincidence."
-lens: mirror
+lens: all
 date: "2026-04-22"
 cover: "/covers/why-social-media-makes-you-feel-lonely-even-when-everyone-can-see-you.png"
 author: kamilla
