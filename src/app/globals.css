@@ -269,6 +269,7 @@ body {
 .prose-odassity h2 {
   font-family: var(--font-display);
   font-size: 1.6em;
+  line-height: 1.25;
   color: var(--color-paper);
   margin-top: 1.6em;
   margin-bottom: 0.6em;
@@ -277,10 +278,17 @@ body {
 .prose-odassity h3,
 .prose-odassity h4 {
   font-family: var(--font-display);
-  font-size: 1.15em;
+  font-size: 1.35em;
+  line-height: 1.25;
   color: var(--color-paper);
   margin-top: 1.4em;
   margin-bottom: 0.5em;
+}
+
+@media (max-width: 639px) {
+  .prose-odassity {
+    line-height: 1.6;
+  }
 }
 
 .prose-odassity strong {

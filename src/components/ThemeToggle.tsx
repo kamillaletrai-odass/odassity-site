@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { useTheme } from "./ThemeProvider";
+import { useCookieConsent } from "./CookieConsentProvider";
 
 function SystemIcon() {
   return (
@@ -60,12 +61,17 @@ const OPTIONS = [
 
 export default function ThemeToggle() {
   const { mode, setMode } = useTheme();
+  const { consent, hydrated } = useCookieConsent();
+  const bannerVisible = hydrated && consent === "unset";
 
   return (
     <div
       role="group"
       aria-label="Light or dark mood"
-      className="glass fixed right-4 bottom-4 z-50 flex items-center gap-1 rounded-full p-1.5 sm:right-6 sm:bottom-6"
+      className={clsx(
+        "glass fixed right-4 z-50 flex items-center gap-1 rounded-full p-1.5 transition-[bottom] duration-300 sm:right-6",
+        bannerVisible ? "bottom-24 sm:bottom-20" : "bottom-4 sm:bottom-6",
+      )}
     >
       {OPTIONS.map(({ key, label, Icon }) => {
         const active = mode === key;

@@ -82,7 +82,7 @@ export default async function ArticlePage({
         </h1>
         <p className="mt-4 text-lg text-paper-dim">{article.dek}</p>
 
-        <time dateTime={article.date} className="mt-6 block text-sm text-paper-dim">
+        <time dateTime={article.date} className="mt-6 block text-sm text-pink">
           {new Date(article.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",

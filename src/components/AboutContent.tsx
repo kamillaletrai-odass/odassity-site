@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Caveat } from "next/font/google";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
@@ -20,13 +20,24 @@ function Title({ children }: { children: React.ReactNode }) {
 
 function Slide({ children }: { children: React.ReactNode }) {
   return (
-    <div className="max-w-xl px-2 text-center">{children}</div>
+    <div className="max-w-xl px-4 py-6 text-center sm:px-2 sm:py-0">
+      {children}
+    </div>
   );
 }
 
 export default function AboutContent() {
   const sectionRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    setIsDesktop(mq.matches);
+    const handler = () => setIsDesktop(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end end"],
@@ -131,9 +142,9 @@ export default function AboutContent() {
     </Slide>,
   ];
 
-  if (reduceMotion) {
+  if (reduceMotion || !isDesktop) {
     return (
-      <section className="flex flex-col items-center gap-20 px-6 py-20 sm:px-10 sm:py-28">
+      <section className="flex flex-col items-center gap-16 px-6 py-20 sm:gap-20 sm:px-10 sm:py-28">
         {slideElements}
       </section>
     );

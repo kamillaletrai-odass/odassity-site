@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
 import PageTransition from "@/components/PageTransition";
 import CookieConsent from "@/components/CookieConsent";
+import { CookieConsentProvider } from "@/components/CookieConsentProvider";
 import "./globals.css";
 
 const THEME_INIT_SCRIPT = `
@@ -88,15 +89,17 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-ink text-paper font-body">
-        <CookieConsent />
-        <ThemeProvider>
-          <Nav />
-          <main className="flex-1">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <ThemeToggle />
-        </ThemeProvider>
+        <CookieConsentProvider>
+          <CookieConsent />
+          <ThemeProvider>
+            <Nav />
+            <main className="flex-1">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+            <ThemeToggle />
+          </ThemeProvider>
+        </CookieConsentProvider>
       </body>
     </html>
   );
