@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
 import PageTransition from "@/components/PageTransition";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import "./globals.css";
 
 const THEME_INIT_SCRIPT = `
@@ -81,6 +82,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-ink text-paper font-body">
+        <GoogleAnalytics />
         <ThemeProvider>
           <Nav />
           <main className="flex-1">

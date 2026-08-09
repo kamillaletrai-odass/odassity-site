@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllArticleMeta } from "@/lib/articles";
+import { getMostViewedSlug } from "@/lib/ga4";
 import StoryCard from "@/components/StoryCard";
 import ScrollReveal from "@/components/ScrollReveal";
 import HomeHero from "@/components/HomeHero";
@@ -7,13 +8,16 @@ import Obsessions from "@/components/Obsessions";
 import Thinkerbells from "@/components/Thinkerbells";
 import Beliefs from "@/components/Beliefs";
 
-export default function HomePage() {
+export default async function HomePage() {
   const articles = getAllArticleMeta().filter((a) => a.author === "kamilla");
   const featured = articles.find((a) => a.featured) ?? articles[0];
   const others = articles.filter((a) => a.slug !== featured?.slug);
   const featuredGrid = others.slice(0, 4);
   const mostRecent = articles[0];
-  const mostViewed = others.slice(4, 6)[0];
+
+  const mostViewedSlug = await getMostViewedSlug();
+  const mostViewed =
+    articles.find((a) => a.slug === mostViewedSlug) ?? others.slice(4, 6)[0];
 
   return (
     <>
