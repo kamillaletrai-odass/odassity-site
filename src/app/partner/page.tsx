@@ -53,7 +53,7 @@ export default function PartnerPage() {
           Partner with us
         </h1>
         <p className="mt-3 text-paper-dim">
-          Brands and organizations who want to work with Odassity, tell us
+          Brands and creators who want to work with Odassity, tell us
           about it below.
         </p>
 
