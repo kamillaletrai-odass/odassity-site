@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getAllArticleMeta } from "@/lib/articles";
 import { AUTHORS } from "@/lib/authors";
 import AuthorCard from "@/components/AuthorCard";
-import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = { title: "Community" };
 
@@ -51,14 +50,14 @@ export default function CommunityPage() {
         </Link>
       </div>
 
-      <ScrollReveal className="mx-auto mt-16 flex max-w-6xl flex-col gap-10">
+      <div className="mx-auto mt-16 flex max-w-6xl flex-col gap-10">
         {authors.map((author) => {
           const pieces = articles.filter((a) => a.author === author.id);
           return (
             <AuthorCard key={author.id} author={author} pieces={pieces} />
           );
         })}
-      </ScrollReveal>
+      </div>
     </div>
   );
 }

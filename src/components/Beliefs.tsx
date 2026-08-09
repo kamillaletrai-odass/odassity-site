@@ -22,7 +22,8 @@ export default function Beliefs() {
   function goTo(i: number) {
     const el = scrollerRef.current;
     if (!el) return;
-    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+    const clamped = Math.max(0, Math.min(STATEMENTS.length - 1, i));
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
   }
 
   return (
@@ -34,14 +35,24 @@ export default function Beliefs() {
       </ScrollReveal>
 
       <ScrollReveal delay={0.1} className="relative mt-10 sm:mt-14">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(ellipse 55% 45% at 50% 50%, rgba(250,238,225,0.22), transparent 70%)",
-          }}
-        />
+        <button
+          type="button"
+          aria-label="Previous statement"
+          onClick={() => goTo(active - 1)}
+          disabled={active === 0}
+          className="text-shine absolute top-1/2 left-1 z-10 -translate-y-1/2 text-3xl font-semibold disabled:opacity-0 sm:left-6 sm:text-4xl"
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          aria-label="Next statement"
+          onClick={() => goTo(active + 1)}
+          disabled={active === STATEMENTS.length - 1}
+          className="text-shine absolute top-1/2 right-1 z-10 -translate-y-1/2 text-3xl font-semibold disabled:opacity-0 sm:right-6 sm:text-4xl"
+        >
+          →
+        </button>
 
         <div
           ref={scrollerRef}
@@ -51,7 +62,7 @@ export default function Beliefs() {
           {STATEMENTS.map((line, i) => (
             <div
               key={i}
-              className="flex w-full shrink-0 snap-center items-center justify-center px-6 py-16 text-center sm:py-24"
+              className="flex w-full shrink-0 snap-center items-center justify-center px-12 py-16 text-center sm:px-16 sm:py-24"
             >
               <p className="max-w-3xl font-display text-4xl leading-[1.15] text-paper sm:text-6xl">
                 {line}

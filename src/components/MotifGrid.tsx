@@ -47,7 +47,6 @@ export default function MotifGrid({ topics }: { topics: Topic[] }) {
       requestAnimationFrame(computeActive);
     }
 
-    computeActive();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
     return () => {

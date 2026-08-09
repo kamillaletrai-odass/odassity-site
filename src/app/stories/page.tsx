@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getAllArticleMeta } from "@/lib/articles";
 import StoryCard from "@/components/StoryCard";
-import ScrollReveal from "@/components/ScrollReveal";
 import { LENS_ORDER, LENSES, type Lens } from "@/lib/lenses";
 import Link from "next/link";
 import clsx from "clsx";
@@ -24,7 +23,7 @@ export default async function StoriesPage({
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <h1 className="font-display text-display text-paper">Our stories</h1>
         <p className="mt-3 max-w-xl text-lg text-pink">
-          Browse through our stories, pick the lens that speaks to you.
+          Minutes to read. Stays with you far longer. Take a break with us.
         </p>
         <div className="mt-4 flex flex-col gap-4 text-paper-dim">
           <p>
@@ -44,7 +43,6 @@ export default async function StoriesPage({
             None of them end cleanly. That&rsquo;s the magic, it leaves you
             mid thought, so it&rsquo;s yours to finish.
           </p>
-          <p>Minutes to read. Stays with you far longer. Take a break with us.</p>
         </div>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -76,14 +74,14 @@ export default async function StoriesPage({
         </div>
       </div>
 
-      <ScrollReveal className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
           <StoryCard key={article.slug} article={article} size="md" />
         ))}
         {articles.length === 0 && (
           <p className="text-paper-dim">We are working on it…</p>
         )}
-      </ScrollReveal>
+      </div>
     </div>
   );
 }
