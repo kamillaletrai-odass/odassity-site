@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const TO_EMAIL = "kamilla@odassity.com";
-const FROM_EMAIL = "Odassity <onboarding@resend.dev>";
+const FROM_EMAIL = "Odassity <kamilla@odassity.com>";
+const NEWSLETTER_AUDIENCE_ID = "befe9fe2-5872-4362-a544-06d12b5ee227";
 
 type NewsletterPayload = { type: "newsletter"; email: string };
 type WriterPayload = {
@@ -96,17 +97,42 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, delivered: false });
   }
 
+  const resend = new Resend(apiKey);
+
   try {
-    const resend = new Resend(apiKey);
     await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
       subject,
       text,
     });
-    return NextResponse.json({ ok: true, delivered: true });
   } catch (err) {
     console.error("[api/contact] Resend send failed", err);
     return NextResponse.json({ error: "Send failed" }, { status: 502 });
   }
+
+  if (isNewsletter(body)) {
+    try {
+      await resend.contacts.create({
+        email: body.email,
+        audienceId: NEWSLETTER_AUDIENCE_ID,
+        unsubscribed: false,
+      });
+    } catch (err) {
+      console.error("[api/contact] Failed to add contact to audience", err);
+    }
+
+    try {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: body.email,
+        subject: "Welcome to Odassity",
+        text: "You're on the list. We'll send you a little something to spark up your mind every now and then.\n\n— Odassity",
+      });
+    } catch (err) {
+      console.error("[api/contact] Failed to send confirmation email", err);
+    }
+  }
+
+  return NextResponse.json({ ok: true, delivered: true });
 }
