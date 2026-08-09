@@ -1,5 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
-import MotifCard from "./MotifCard";
+import MotifGrid from "./MotifGrid";
 
 const TOPICS = [
   {
@@ -125,21 +125,16 @@ export default function Obsessions() {
         </span>
       </ScrollReveal>
 
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
-        {TOPICS.map((topic, i) => (
-          <ScrollReveal key={topic.word} delay={Math.min(i * 0.06, 0.3)}>
-            <MotifCard
-              index={i}
-              word={topic.word}
-              description={topic.description}
-              gradient={topic.gradient}
-              icon={
-                <topic.Icon className="h-16 w-16 text-paper-faint [filter:drop-shadow(1px_1px_1px_rgba(0,0,0,0.45))_drop-shadow(-1px_-1px_1px_rgba(255,255,255,0.12))]" />
-              }
-            />
-          </ScrollReveal>
-        ))}
-      </div>
+      <MotifGrid
+        topics={TOPICS.map((topic) => ({
+          word: topic.word,
+          description: topic.description,
+          gradient: topic.gradient,
+          icon: (
+            <topic.Icon className="h-16 w-16 text-paper-faint [filter:drop-shadow(1px_1px_1px_rgba(0,0,0,0.45))_drop-shadow(-1px_-1px_1px_rgba(255,255,255,0.12))]" />
+          ),
+        }))}
+      />
     </section>
   );
 }

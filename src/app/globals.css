@@ -30,6 +30,7 @@
 html {
   color-scheme: dark;
   scrollbar-width: none;
+  background: var(--color-ink);
 }
 
 /* Light mood: swaps the ink/paper poles. Everything referencing these

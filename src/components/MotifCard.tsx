@@ -1,35 +1,17 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
+import { forwardRef } from "react";
 import type { ReactNode } from "react";
 
-export default function MotifCard({
-  index,
-  word,
-  description,
-  gradient,
-  icon,
-}: {
-  index: number;
-  word: string;
-  description: string;
-  gradient: string;
-  icon: ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [centered, setCentered] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => setCentered(entry.isIntersecting),
-      { rootMargin: "-42% 0px -42% 0px", threshold: 0 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
+const MotifCard = forwardRef<
+  HTMLDivElement,
+  {
+    index: number;
+    word: string;
+    description: string;
+    gradient: string;
+    icon: ReactNode;
+    active: boolean;
+  }
+>(function MotifCard({ index, word, description, gradient, icon, active }, ref) {
   return (
     <div
       ref={ref}
@@ -43,14 +25,14 @@ export default function MotifCard({
       {/* Abstract gradient: colored when centered in view on mobile, hover on desktop */}
       <div
         className={`pointer-events-none absolute inset-0 transition-opacity duration-500 sm:opacity-0 sm:group-hover:opacity-100 ${
-          centered ? "opacity-100" : "opacity-0"
+          active ? "opacity-100" : "opacity-0"
         }`}
         style={{ background: gradient }}
       />
       {/* Light mist */}
       <div
         className={`pointer-events-none absolute inset-0 blur-2xl transition-opacity duration-500 sm:group-hover:opacity-100 ${
-          centered ? "opacity-100" : "opacity-0"
+          active ? "opacity-100" : "opacity-0"
         }`}
         style={{
           background:
@@ -87,4 +69,6 @@ export default function MotifCard({
       </div>
     </div>
   );
-}
+});
+
+export default MotifCard;

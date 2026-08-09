@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import GoogleAnalytics from "./GoogleAnalytics";
 
 type Consent = "unset" | "accepted" | "declined";
@@ -28,22 +29,26 @@ export default function CookieConsent() {
       {consent === "accepted" && <GoogleAnalytics />}
 
       {hydrated && consent === "unset" && (
-        <div className="glass fixed right-3 bottom-3 z-[100] flex w-52 flex-col gap-2.5 rounded-2xl p-3.5 text-paper sm:right-6 sm:bottom-6 sm:w-64">
-          <p className="text-xs leading-snug text-paper-dim">
-            We use cookies to see how people read Odassity.
+        <div className="glass fixed inset-x-0 bottom-0 z-[100] flex flex-col gap-3 p-4 text-paper sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8 sm:py-4">
+          <p className="text-xs leading-snug text-paper-dim sm:text-sm">
+            We use cookies to see how people read Odassity.{" "}
+            <Link href="/privacy" className="text-paper underline underline-offset-2">
+              Learn more
+            </Link>
+            .
           </p>
-          <div className="flex gap-1.5">
+          <div className="flex shrink-0 gap-2">
             <button
               type="button"
               onClick={() => choose("declined")}
-              className="flex-1 rounded-full px-3 py-1.5 text-xs font-medium text-paper-dim transition-opacity hover:opacity-80"
+              className="rounded-full px-4 py-2 text-xs font-medium text-paper-dim transition-opacity hover:opacity-80 sm:text-sm"
             >
               Decline
             </button>
             <button
               type="button"
               onClick={() => choose("accepted")}
-              className="flex-1 rounded-full bg-paper px-3 py-1.5 text-xs font-medium text-ink transition-opacity hover:opacity-90"
+              className="rounded-full bg-paper px-4 py-2 text-xs font-medium text-ink transition-opacity hover:opacity-90 sm:text-sm"
             >
               Accept
             </button>
