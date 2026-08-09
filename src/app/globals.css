@@ -182,16 +182,16 @@ body {
   background: linear-gradient(
     90deg,
     var(--color-paper-faint) 0%,
-    var(--color-paper-faint) 38%,
+    var(--color-paper-faint) 32%,
     rgba(255, 255, 255, 0.95) 50%,
-    var(--color-paper-faint) 62%,
+    var(--color-paper-faint) 68%,
     var(--color-paper-faint) 100%
   );
   background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: text-shine-sweep 3.2s ease-in-out infinite;
+  animation: text-shine-sweep 8s ease-in-out infinite;
 }
 
 @keyframes text-shine-sweep {

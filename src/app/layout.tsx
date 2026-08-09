@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
+import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 
 const THEME_INIT_SCRIPT = `
@@ -42,15 +43,15 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL("https://odassity.com"),
   title: {
-    default: "Odassity — Essays on Identity & Internet Culture",
+    default: "Odassity | Stories on Identity & Internet Culture",
     template: "%s | Odassity",
   },
   description:
-    "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+    "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
   openGraph: {
-    title: "Odassity — Essays on Identity & Internet Culture",
+    title: "Odassity | Stories on Identity & Internet Culture",
     description:
-      "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+      "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
     url: "https://odassity.com",
     siteName: "Odassity",
     images: ["/hero/dragonfly.jpg"],
@@ -58,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Odassity — Essays on Identity & Internet Culture",
+    title: "Odassity | Stories on Identity & Internet Culture",
     description:
-      "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+      "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
     images: ["/hero/dragonfly.jpg"],
   },
 };
@@ -82,7 +83,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-ink text-paper font-body">
         <ThemeProvider>
           <Nav />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
           <ThemeToggle />
         </ThemeProvider>

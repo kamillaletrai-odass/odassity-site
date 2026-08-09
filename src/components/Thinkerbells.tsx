@@ -11,30 +11,51 @@ const FACES = [
   { src: "/community/thinkerbells-6b.png", offset: "-translate-y-3 sm:-translate-y-9" },
 ];
 
+// Mobile-only arc offsets: top row bows up at the center, bottom row bows
+// down at the center, so the two rows loosely frame the text like a circle.
+const TOP_OFFSETS = ["translate-y-3", "-translate-y-4", "translate-y-3"];
+const BOTTOM_OFFSETS = ["-translate-y-3", "translate-y-4", "-translate-y-3"];
+
+function Face({ src, offset }: { src: string; offset: string }) {
+  return (
+    <div
+      className={`glass relative h-14 w-14 overflow-hidden rounded-xl transition-transform duration-500 ease-out hover:scale-110 sm:h-36 sm:w-36 sm:rounded-2xl ${offset}`}
+    >
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes="(min-width: 640px) 144px, 56px"
+        className="object-cover"
+      />
+    </div>
+  );
+}
+
 export default function Thinkerbells() {
   return (
     <section className="relative overflow-hidden px-6 py-24 sm:px-10 sm:py-32">
-      <div className="flex justify-between gap-2 sm:gap-3">
+      {/* Desktop: single row of six */}
+      <div className="hidden justify-between gap-2 sm:flex sm:gap-3">
         {FACES.map((face, i) => (
           <ScrollReveal key={i} delay={i * 0.08}>
-            <div
-              className={`group glass relative h-14 w-14 overflow-hidden rounded-xl sm:h-36 sm:w-36 sm:rounded-2xl ${face.offset}`}
-            >
-              <Image
-                src={face.src}
-                alt=""
-                fill
-                sizes="(min-width: 640px) 144px, 56px"
-                className="warm-grayscale object-cover"
-              />
-            </div>
+            <Face src={face.src} offset={face.offset} />
+          </ScrollReveal>
+        ))}
+      </div>
+
+      {/* Mobile: three above the text */}
+      <div className="flex justify-center gap-4 sm:hidden">
+        {FACES.slice(0, 3).map((face, i) => (
+          <ScrollReveal key={i} delay={i * 0.08}>
+            <Face src={face.src} offset={TOP_OFFSETS[i]} />
           </ScrollReveal>
         ))}
       </div>
 
       <ScrollReveal
         delay={0.3}
-        className="relative mx-auto mt-16 max-w-3xl text-center sm:mt-24"
+        className="relative mx-auto mt-10 max-w-3xl text-center sm:mt-24"
       >
         <span className="glass inline-flex items-center rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-paper">
           Community
@@ -56,6 +77,15 @@ export default function Thinkerbells() {
           </span>
         </Link>
       </ScrollReveal>
+
+      {/* Mobile: three below the text */}
+      <div className="mt-10 flex justify-center gap-4 sm:hidden">
+        {FACES.slice(3, 6).map((face, i) => (
+          <ScrollReveal key={i} delay={i * 0.08}>
+            <Face src={face.src} offset={BOTTOM_OFFSETS[i]} />
+          </ScrollReveal>
+        ))}
+      </div>
     </section>
   );
 }
