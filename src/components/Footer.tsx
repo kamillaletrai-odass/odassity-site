@@ -14,7 +14,7 @@ const LINKS = [
 
 const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com/odassity" },
-  { label: "TikTok", href: "https://tiktok.com/@odassity" },
+  { label: "TikTok", href: "https://www.tiktok.com/@odassity.com" },
   { label: "LinkedIn", href: "https://linkedin.com/company/odassity" },
 ];
 
