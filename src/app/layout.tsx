@@ -20,6 +20,12 @@ const THEME_INIT_SCRIPT = `
         : "dark";
     }
     document.documentElement.setAttribute("data-theme", resolved);
+    var link = document.createElement("link");
+    link.rel = "icon";
+    link.type = "image/png";
+    link.setAttribute("data-managed-favicon", "true");
+    link.href = resolved === "dark" ? "/icon-dark-mode.png" : "/icon-light-mode.png";
+    document.head.appendChild(link);
   } catch (e) {}
 })();
 `;
@@ -51,27 +57,13 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://odassity.com"),
   title: {
-    default: "Odassity | Stories on Identity & Internet Culture",
+    default: "Odassity | A digital hangout",
     template: "%s | Odassity",
-  },
-  icons: {
-    icon: [
-      {
-        url: "/icon-light-mode.png",
-        media: "(prefers-color-scheme: light)",
-        type: "image/png",
-      },
-      {
-        url: "/icon-dark-mode.png",
-        media: "(prefers-color-scheme: dark)",
-        type: "image/png",
-      },
-    ],
   },
   description:
     "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
   openGraph: {
-    title: "Odassity | Stories on Identity & Internet Culture",
+    title: "Odassity | A digital hangout",
     description:
       "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
     url: "https://odassity.com",
@@ -81,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Odassity | Stories on Identity & Internet Culture",
+    title: "Odassity | A digital hangout",
     description:
       "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
     images: ["/hero/dragonfly.jpg"],

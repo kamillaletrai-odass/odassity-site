@@ -1,8 +1,13 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import clsx from "clsx";
 import type { ArticleMeta } from "@/lib/articles";
 import LensTag from "./LensTag";
+
+const THRESHOLDS = Array.from({ length: 21 }, (_, i) => i / 20);
 
 export default function StoryCard({
   article,
@@ -11,8 +16,27 @@ export default function StoryCard({
   article: ArticleMeta;
   size?: "lg" | "md" | "sm";
 }) {
+  const ref = useRef<HTMLAnchorElement>(null);
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    // Desktop already reveals color on hover — only track scroll position
+    // on mobile, where there's no real hover to rely on.
+    if (window.matchMedia("(min-width: 640px)").matches) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setActive(entry.intersectionRatio > 0.55),
+      { threshold: THRESHOLDS, rootMargin: "-20% 0px -20% 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Link
+      ref={ref}
       href={`/stories/${article.slug}`}
       className={clsx(
         "group relative flex flex-col justify-end overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-[1.02]",
@@ -27,7 +51,10 @@ export default function StoryCard({
           alt=""
           fill
           sizes={size === "lg" ? "100vw" : "(min-width: 1024px) 33vw, 100vw"}
-          className="warm-grayscale object-cover"
+          className={clsx(
+            "object-cover transition-[filter] duration-500",
+            !active && "warm-grayscale",
+          )}
           priority={size === "lg"}
         />
       )}

@@ -42,6 +42,21 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [resolved]);
 
   useEffect(() => {
+    const href = resolved === "dark" ? "/icon-dark-mode.png" : "/icon-light-mode.png";
+    let link = document.querySelector<HTMLLinkElement>(
+      'link[data-managed-favicon="true"]',
+    );
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      link.setAttribute("data-managed-favicon", "true");
+      document.head.appendChild(link);
+    }
+    link.href = href;
+  }, [resolved]);
+
+  useEffect(() => {
     if (mode !== "system") return;
     const mql = window.matchMedia("(prefers-color-scheme: light)");
     const handler = () => setResolved(resolveTheme("system"));
