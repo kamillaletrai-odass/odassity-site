@@ -14,6 +14,13 @@ type WriterPayload = {
   substack?: string;
   linkedin?: string;
 };
+type PartnershipPayload = {
+  type: "partnership";
+  company: string;
+  name: string;
+  email: string;
+  message: string;
+};
 
 function isNewsletter(body: unknown): body is NewsletterPayload {
   return (
@@ -35,6 +42,18 @@ function isWriter(body: unknown): body is WriterPayload {
   );
 }
 
+function isPartnership(body: unknown): body is PartnershipPayload {
+  return (
+    !!body &&
+    typeof body === "object" &&
+    (body as { type?: unknown }).type === "partnership" &&
+    typeof (body as { company?: unknown }).company === "string" &&
+    typeof (body as { name?: unknown }).name === "string" &&
+    typeof (body as { email?: unknown }).email === "string" &&
+    typeof (body as { message?: unknown }).message === "string"
+  );
+}
+
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
 
@@ -42,10 +61,10 @@ export async function POST(request: Request) {
   let text: string;
 
   if (isNewsletter(body)) {
-    subject = "New newsletter signup";
+    subject = "New subscriber to Odassity";
     text = `New subscriber: ${body.email}`;
   } else if (isWriter(body)) {
-    subject = `New writer submission: ${body.name}`;
+    subject = `New writer application from ${body.name}`;
     text = [
       `Name: ${body.name}`,
       `Email: ${body.email}`,
@@ -56,6 +75,14 @@ export async function POST(request: Request) {
     ]
       .filter(Boolean)
       .join("\n");
+  } else if (isPartnership(body)) {
+    subject = `New partnership inquiry from ${body.company}`;
+    text = [
+      `Company: ${body.company}`,
+      `Name: ${body.name}`,
+      `Email: ${body.email}`,
+      `Message: ${body.message}`,
+    ].join("\n");
   } else {
     return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
   }

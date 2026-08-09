@@ -9,6 +9,7 @@ const LINKS = [
   { href: "/community", label: "Community" },
   { href: "/about", label: "About" },
   { href: "/write", label: "Become a writer" },
+  { href: "/partner", label: "Partner with us" },
 ];
 
 const SOCIALS = [
