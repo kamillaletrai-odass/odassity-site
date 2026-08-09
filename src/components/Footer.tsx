@@ -27,6 +27,7 @@ export default function Footer() {
           alt=""
           fill
           sizes="100vw"
+          priority
           className="object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/10 to-transparent" />
