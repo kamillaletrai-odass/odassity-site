@@ -53,13 +53,13 @@ export default function HomeHero({
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[30%_center] sm:object-center"
         />
       </motion.div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-ink/20" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[55svh] bg-gradient-to-b from-transparent to-ink" />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 pb-10 sm:flex-row sm:items-end sm:justify-between sm:p-10">
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end gap-8 p-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] sm:flex-row sm:items-end sm:justify-between sm:p-10">
         <div>
           <span className="block text-xs font-semibold tracking-[0.3em] text-paper-dim uppercase sm:text-sm">
             {EDITION}

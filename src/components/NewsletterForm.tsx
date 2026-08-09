@@ -55,9 +55,9 @@ export default function NewsletterForm({
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Fill in email address"
+        placeholder="Type your e-mail address"
         className={clsx(
-          "w-full rounded-full bg-transparent px-4 py-2.5 text-sm text-paper placeholder:text-paper-faint focus:outline-none",
+          "w-full rounded-full bg-transparent px-4 py-2.5 text-base text-paper placeholder:text-paper-faint focus:outline-none",
           glass
             ? "sm:pl-5"
             : "border border-paper-faint/30 focus:border-paper/60",

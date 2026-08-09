@@ -155,7 +155,7 @@ export default function AboutContent() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-paper-faint sm:bottom-14"
+          className="absolute inset-x-0 bottom-10 hidden flex-col items-center gap-2 text-paper-faint sm:bottom-14 sm:flex"
         >
           <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
           <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">

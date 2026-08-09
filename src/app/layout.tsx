@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Open_Sans, Figtree, Caveat } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
 import PageTransition from "@/components/PageTransition";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CookieConsent from "@/components/CookieConsent";
 import "./globals.css";
 
 const THEME_INIT_SCRIPT = `
@@ -40,6 +40,12 @@ const caveat = Caveat({
   subsets: ["latin"],
   weight: ["600", "700"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://odassity.com"),
@@ -82,7 +88,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-ink text-paper font-body">
-        <GoogleAnalytics />
+        <CookieConsent />
         <ThemeProvider>
           <Nav />
           <main className="flex-1">

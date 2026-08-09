@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import MotifCard from "./MotifCard";
 
 const TOPICS = [
   {
@@ -127,58 +128,15 @@ export default function Obsessions() {
       <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
         {TOPICS.map((topic, i) => (
           <ScrollReveal key={topic.word} delay={Math.min(i * 0.06, 0.3)}>
-            <div className="group glass relative cursor-default overflow-hidden rounded-2xl p-4 transition-transform duration-500 ease-out sm:aspect-[3/4] sm:hover:z-10 sm:hover:scale-[1.08] sm:p-5">
-              {/* Embossed icon, standby only, desktop only */}
-              <div className="pointer-events-none absolute inset-0 hidden items-center justify-center opacity-100 transition-opacity duration-500 group-hover:opacity-0 sm:flex">
+            <MotifCard
+              index={i}
+              word={topic.word}
+              description={topic.description}
+              gradient={topic.gradient}
+              icon={
                 <topic.Icon className="h-16 w-16 text-paper-faint [filter:drop-shadow(1px_1px_1px_rgba(0,0,0,0.45))_drop-shadow(-1px_-1px_1px_rgba(255,255,255,0.12))]" />
-              </div>
-
-              {/* Abstract gradient, hover-only on desktop */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-100 transition-opacity duration-500 sm:opacity-0 sm:group-hover:opacity-100"
-                style={{ background: topic.gradient }}
-              />
-              {/* Light mist */}
-              <div
-                className="pointer-events-none absolute inset-0 opacity-0 blur-2xl transition-opacity duration-500 sm:group-hover:opacity-100"
-                style={{
-                  background:
-                    "radial-gradient(circle at 50% 35%, rgba(255,255,255,0.4), transparent 65%)",
-                }}
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
-
-              <div className="relative flex flex-col justify-between sm:h-full">
-                <span className="glass inline-flex w-fit items-center rounded-full px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-paper">
-                  Motif {i + 1}
-                </span>
-
-                {/* Mobile: always-visible title + description (no hover on touch) */}
-                <div className="mt-4 sm:hidden">
-                  <h3 className="font-display text-2xl text-paper">
-                    {topic.word}
-                  </h3>
-                  <p className="mt-2 text-sm leading-snug text-paper-dim">
-                    {topic.description}
-                  </p>
-                </div>
-
-                {/* Desktop: standby hint (shimmer text), replaced by title + description on hover */}
-                <div className="relative hidden sm:block">
-                  <p className="text-shine text-xs font-semibold tracking-[0.2em] uppercase transition-opacity duration-300 group-hover:opacity-0">
-                    Reveal
-                  </p>
-                  <div className="absolute inset-x-0 bottom-0 opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100">
-                    <p className="text-sm leading-snug text-paper-dim">
-                      {topic.description}
-                    </p>
-                    <h3 className="mt-2 font-display text-2xl text-paper">
-                      {topic.word}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            </div>
+              }
+            />
           </ScrollReveal>
         ))}
       </div>

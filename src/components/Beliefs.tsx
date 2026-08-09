@@ -60,28 +60,23 @@ export default function Beliefs() {
           <motion.p
             key={i}
             style={{ opacity: opacities[i] }}
-            className="absolute max-w-4xl text-center font-display text-5xl leading-[1.05] text-paper sm:text-7xl"
+            className="absolute inset-x-0 top-1/2 mx-auto max-w-4xl -translate-y-1/2 px-6 text-center font-display text-5xl leading-[1.05] text-paper sm:text-7xl"
           >
             {line}
           </motion.p>
         ))}
 
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-x-0 bottom-10 flex flex-col items-center gap-2 text-paper-faint sm:bottom-14"
-        >
-          <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
-          <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
-            <path
-              d="M6 9l6 6 6-6"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </motion.div>
+        <div className="absolute top-1/2 right-4 flex -translate-y-1/2 flex-col gap-3 sm:right-8">
+          {opacities.map((op, i) => (
+            <div key={i} className="relative h-2 w-2">
+              <span className="absolute inset-0 rounded-full bg-paper-faint" />
+              <motion.span
+                style={{ opacity: op }}
+                className="absolute inset-0 rounded-full bg-paper"
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

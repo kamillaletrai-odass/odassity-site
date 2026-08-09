@@ -20,7 +20,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden pb-[env(safe-area-inset-bottom)] bg-ink">
       <div className="absolute inset-0 -z-10">
         <Image
           src="/footer/light-field.jpg"
