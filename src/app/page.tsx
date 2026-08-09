@@ -12,11 +12,12 @@ export default function HomePage() {
   const featured = articles.find((a) => a.featured) ?? articles[0];
   const others = articles.filter((a) => a.slug !== featured?.slug);
   const featuredGrid = others.slice(0, 4);
-  const [teaser1, teaser2] = others.slice(4, 6);
+  const mostRecent = articles[0];
+  const mostViewed = others.slice(4, 6)[0];
 
   return (
     <>
-      <HomeHero teaser1={teaser1} teaser2={teaser2} />
+      <HomeHero teaser1={mostViewed} teaser2={mostRecent} />
 
       <Obsessions />
 
