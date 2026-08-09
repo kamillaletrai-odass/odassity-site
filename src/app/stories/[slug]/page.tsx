@@ -20,7 +20,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticle(slug);
   if (!article) return {};
-  return { title: article.title, description: article.dek };
+
+  const images = article.cover ? [article.cover] : undefined;
+
+  return {
+    title: article.title,
+    description: article.dek,
+    openGraph: {
+      title: article.title,
+      description: article.dek,
+      url: `https://odassity.com/stories/${slug}`,
+      type: "article",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.dek,
+      images,
+    },
+  };
 }
 
 export default async function ArticlePage({
