@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { Caveat } from "next/font/google";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
@@ -113,18 +114,20 @@ export default function AboutContent() {
     <Slide key="partner">
       <Title>Create something meaningful with us.</Title>
       <p className="mt-5 text-base leading-relaxed text-paper-dim sm:text-lg">
-        We collaborate with brands, creators, and thinkers who share our
-        belief that the things we create should have a story behind them.
+        If you&rsquo;re a brand, a creator, or a thinker who sees the world
+        the way we do, curious, a little audacious, allergic to the
+        obvious, with something real to say and nowhere sharp enough to
+        say it, raise a hand.
       </p>
-      <a
-        href="mailto:kamilla@odassity.com?subject=Partnership%20Inquiry"
+      <Link
+        href="/partner"
         className="mt-6 inline-flex items-center gap-2 rounded-full bg-paper py-1.5 pr-1.5 pl-4 text-sm font-medium text-ink transition-opacity hover:opacity-90"
       >
         Partnership inquiries
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-paper">
           →
         </span>
-      </a>
+      </Link>
     </Slide>,
   ];
 
