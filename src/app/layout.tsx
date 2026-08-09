@@ -40,12 +40,29 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://odassity.com"),
   title: {
-    default: "Odassity: A magazine between dimensions",
+    default: "Odassity — Essays on Identity & Internet Culture",
     template: "%s | Odassity",
   },
   description:
-    "Personality, identity, and self-expression for a coven of thinkerbells, a digital publication about who we are and how we show up.",
+    "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+  openGraph: {
+    title: "Odassity — Essays on Identity & Internet Culture",
+    description:
+      "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+    url: "https://odassity.com",
+    siteName: "Odassity",
+    images: ["/hero/dragonfly.jpg"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Odassity — Essays on Identity & Internet Culture",
+    description:
+      "Odassity is a digital magazine of personal essays on identity, psychology, and online culture — for thinking clearly in a noisy world.",
+    images: ["/hero/dragonfly.jpg"],
+  },
 };
 
 export default function RootLayout({
