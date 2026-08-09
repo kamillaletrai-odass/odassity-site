@@ -54,6 +54,20 @@ export const metadata: Metadata = {
     default: "Odassity | Stories on Identity & Internet Culture",
     template: "%s | Odassity",
   },
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-mode.png",
+        media: "(prefers-color-scheme: light)",
+        type: "image/png",
+      },
+      {
+        url: "/icon-dark-mode.png",
+        media: "(prefers-color-scheme: dark)",
+        type: "image/png",
+      },
+    ],
+  },
   description:
     "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
   openGraph: {

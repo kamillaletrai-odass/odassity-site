@@ -77,7 +77,7 @@ export default async function ArticlePage({
           </div>
         )}
 
-        <h1 className="mt-6 font-display text-hero leading-[1.05] text-paper">
+        <h1 className="mt-6 font-display text-display leading-[1.1] text-paper">
           {article.title}
         </h1>
         <p className="mt-4 text-lg text-paper-dim">{article.dek}</p>
