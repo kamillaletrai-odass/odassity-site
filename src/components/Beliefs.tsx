@@ -78,8 +78,8 @@ export default function Beliefs() {
               type="button"
               aria-label={`Go to statement ${i + 1}`}
               onClick={() => goTo(i)}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                active === i ? "bg-paper" : "bg-paper-faint"
+              className={`h-2.5 w-2.5 rounded-full border border-paper/50 transition-colors ${
+                active === i ? "bg-paper" : "bg-transparent"
               }`}
             />
           ))}

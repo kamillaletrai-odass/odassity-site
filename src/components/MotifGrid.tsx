@@ -12,48 +12,38 @@ type Topic = {
   icon: ReactNode;
 };
 
+const THRESHOLDS = Array.from({ length: 21 }, (_, i) => i / 20);
+const MIN_RATIO_TO_ACTIVATE = 0.35;
+
 export default function MotifGrid({ topics }: { topics: Topic[] }) {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ratios = useRef<number[]>(topics.map(() => 0));
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    let ticking = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const idx = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (idx !== -1) ratios.current[idx] = entry.intersectionRatio;
+        });
 
-    function computeActive() {
-      ticking = false;
-      const viewportCenter = window.innerHeight / 2;
-      const threshold = window.innerHeight * 0.3;
+        let bestIndex: number | null = null;
+        let bestRatio = MIN_RATIO_TO_ACTIVATE;
+        ratios.current.forEach((ratio, i) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestIndex = i;
+          }
+        });
+        setActiveIndex(bestIndex);
+      },
+      { threshold: THRESHOLDS, rootMargin: "-20% 0px -20% 0px" },
+    );
 
-      let closestIndex: number | null = null;
-      let closestDistance = Infinity;
-
-      cardRefs.current.forEach((el, i) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.bottom <= 0 || rect.top >= window.innerHeight) return;
-        const distance = Math.abs(rect.top + rect.height / 2 - viewportCenter);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestIndex = i;
-        }
-      });
-
-      setActiveIndex(closestDistance < threshold ? closestIndex : null);
-    }
-
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(computeActive);
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
+    cardRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, [topics.length]);
 
   return (
     <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-3 sm:gap-6 lg:grid-cols-5">
