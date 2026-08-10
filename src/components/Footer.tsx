@@ -29,8 +29,8 @@ export default function Footer() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/10 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent sm:h-96" />
+      <div className="footer-gradient-top pointer-events-none absolute inset-0" />
+      <div className="footer-gradient-bottom pointer-events-none absolute inset-x-0 bottom-0 h-72 sm:h-96" />
 
       <div className="relative px-6 pt-40 pb-16 text-center sm:px-10 sm:pt-56">
         <ScrollReveal>

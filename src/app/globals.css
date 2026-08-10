@@ -49,10 +49,11 @@ html {
    swap above doesn't reach them on its own. These overrides re-target the
    actual compiled class names for the paper/ink utilities used across the
    site, so core text/background/image-overlay legibility inverts correctly
-   under the light mood. Decorative low-opacity borders and focus rings are
-   intentionally left as-is (lightweight-scope trade-off). !important is
-   needed on the opacity-suffixed ones to beat Tailwind's own wide-gamut
-   lab() fallback rule, which matches at equal specificity. */
+   under the light mood. Every opacity/pseudo-element variant actually used
+   in the codebase needs its own entry here — anything missing silently
+   keeps its dark-mode literal value in light mode. !important is needed on
+   the opacity-suffixed ones to beat Tailwind's own wide-gamut lab()
+   fallback rule, which matches at equal specificity. */
 :root[data-theme="light"] {
   & .bg-ink {
     background-color: #faeeea;
@@ -84,6 +85,9 @@ html {
   & .from-ink\/70 {
     --tw-gradient-from: #faeeeab3 !important;
   }
+  & .from-ink\/60 {
+    --tw-gradient-from: #faeeea99 !important;
+  }
   & .from-ink\/90 {
     --tw-gradient-from: #faeeeae6 !important;
   }
@@ -108,6 +112,54 @@ html {
   & .to-ink\/20 {
     --tw-gradient-to: #faeeea33 !important;
   }
+  & .border-paper-faint\/30 {
+    border-color: #100a0730 !important;
+  }
+  & .focus\:border-paper\/60:focus {
+    border-color: #100a0799 !important;
+  }
+  & .placeholder\:text-paper-faint::placeholder {
+    color: #100a071f !important;
+  }
+}
+
+/* Footer overlay: independent per-mood strength, not just per-mood color.
+   A translucent light tint over this dark photo still reads as muddy gray
+   at low opacity, so light mode needs much heavier coverage than dark mode
+   to actually look "light" rather than a wash over the photo. Uses
+   color-mix() against the live --color-ink custom property directly,
+   sidestepping the baked-literal-value issue entirely. */
+.footer-gradient-top {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 70%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 10%, transparent) 50%,
+    transparent 100%
+  );
+}
+.footer-gradient-bottom {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 90%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 25%, transparent) 50%,
+    transparent 100%
+  );
+}
+:root[data-theme="light"] .footer-gradient-top {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 95%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 78%, transparent) 50%,
+    color-mix(in srgb, var(--color-ink) 55%, transparent) 100%
+  );
+}
+:root[data-theme="light"] .footer-gradient-bottom {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 96%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 80%, transparent) 50%,
+    color-mix(in srgb, var(--color-ink) 60%, transparent) 100%
+  );
 }
 
 html::-webkit-scrollbar {
