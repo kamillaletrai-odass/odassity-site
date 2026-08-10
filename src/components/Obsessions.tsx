@@ -7,7 +7,7 @@ const TOPICS = [
     description:
       "Identity as a performative act. On conformity, belonging, and thinking for yourself before it's cool to.",
     gradient:
-      "linear-gradient(90deg, transparent 70%, #f9f3b866 100%), radial-gradient(circle at 35% 25%, #ffd0de 0%, #ffabc6 42%, #2b131c 100%)",
+      "linear-gradient(90deg, transparent 70%, #f9f3b866 100%), radial-gradient(circle at 35% 60%, #ffd0de 0%, #ffabc6 42%, #2b131c 100%)",
     Icon: DoorIcon,
   },
   {
