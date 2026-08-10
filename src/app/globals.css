@@ -126,11 +126,16 @@ html {
 /* Footer overlay: fades the photo into the section's top/bottom edges.
    Uses color-mix() against the live --color-ink custom property so the
    fade starts at whatever color the page background above the footer
-   actually is in that mood, and eases into the photo with no seam. */
+   actually is in that mood. Starts at a literal 100% match to that
+   background (not a partial tint) so there's no jump at the boundary
+   where the previous section ends and the footer begins - a partial
+   start there is visible as a hard line even against a plain dark
+   background, since there's no texture to hide the step. */
 .footer-gradient-top {
   background: linear-gradient(
     to bottom,
-    color-mix(in srgb, var(--color-ink) 70%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 100%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 55%, transparent) 25%,
     color-mix(in srgb, var(--color-ink) 10%, transparent) 50%,
     transparent 100%
   );
@@ -144,12 +149,10 @@ html {
   );
 }
 
-/* Light mood keeps the same shape as dark, just starting from a literal
-   100% match to the page background instead of dark's 70% - that's what
-   makes the top edge seamless (dark mode's own 70% start isn't a hard
-   line because the busy hero content above it hides the step; the flat
-   panel above the footer here doesn't). It still fades down to near-zero
-   by mid-footer and fully reveals the photo below that, same as dark. */
+/* Light mood keeps the same shape and seamless-start principle as dark,
+   just fading down more gradually before fully revealing the photo,
+   since dark text over the footer's links section needs more coverage
+   to stay legible in this mood (see .footer-links overrides below). */
 :root[data-theme="light"] .footer-gradient-top {
   background: linear-gradient(
     to bottom,
