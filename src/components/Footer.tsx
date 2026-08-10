@@ -21,15 +21,15 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden pb-[env(safe-area-inset-bottom)]">
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/footer/light-field.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          priority
-          className="object-cover object-bottom"
-        />
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          backgroundImage: "url(/footer/light-field.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "bottom center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/55 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent sm:h-96" />
       </div>
