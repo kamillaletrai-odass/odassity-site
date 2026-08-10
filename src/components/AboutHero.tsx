@@ -145,7 +145,7 @@ const FACTS = [
     arrowClass: "h-12 w-20 sm:h-16 sm:w-28",
   },
   {
-    label: "I talk like I edit, I don't.",
+    label: "I am really bad at small talk.",
     Arrow: ArrowDownLeft,
     side: "right" as const,
     position: "top-[19%] right-[0%] sm:right-[3%]",
