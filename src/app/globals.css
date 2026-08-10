@@ -178,17 +178,46 @@ html {
   filter: none;
 }
 
+/* The photo lives on its own ::before layer (behind the gradient overlays
+   and all text content) instead of as an inline background on <footer>,
+   so a mask can be applied to just the image without fading the text
+   that sits on top of it. */
+.footer-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("/footer/light-field.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
 /* Wide viewports: "cover" sizing centered horizontally shows nearly the
    full width of the source photo, so the light beam (which enters from
-   the image's top-right corner) sits fully inside the frame and looks
-   like it switches on abruptly right at the footer's top edge. Anchoring
-   to the right instead pushes the beam's brightest point past the edge,
-   so it reads as continuing in from off-screen at the side rather than
-   appearing out of nowhere. Bottom anchor is unchanged, so the foliage
-   at the image's bottom edge still lines up with the footer's bottom. */
+   the image's top-right corner) sits fully inside the frame. Anchoring
+   to the right pushes the beam further toward the edge, but its brightest
+   point then hits full white right at the corner, which reads as a hard
+   clipped edge rather than something continuing in from off-screen. The
+   mask fades the photo itself to transparent right at that corner, so
+   it dissolves into the page background instead of cutting off sharply -
+   the gradient overlay layered on top still handles blending everywhere
+   else. Bottom anchor is unchanged, so the foliage still lines up with
+   the footer's bottom on all viewports. */
 @media (min-width: 1024px) {
-  .footer-photo {
-    background-position: right bottom !important;
+  .footer-photo::before {
+    background-position: right bottom;
+    mask-image: radial-gradient(
+      ellipse 65% 60% at 100% 0%,
+      transparent 0%,
+      black 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      ellipse 65% 60% at 100% 0%,
+      transparent 0%,
+      black 70%
+    );
   }
 }
 

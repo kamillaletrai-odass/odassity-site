@@ -64,7 +64,7 @@ export default function Thinkerbells() {
           Thinkerbells
         </h2>
         <p className="mx-auto mt-5 max-w-lg text-paper-dim">
-          Our community of writers, contributors, and curious minds who
+          Our community of writers, creators, and curious minds who
           refuse to move through life on autopilot.
         </p>
         <Link

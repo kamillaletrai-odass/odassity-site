@@ -20,15 +20,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer
-      className="footer-photo relative overflow-hidden pb-[env(safe-area-inset-bottom)]"
-      style={{
-        backgroundImage: "url(/footer/light-field.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "bottom center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <footer className="footer-photo relative overflow-hidden pb-[env(safe-area-inset-bottom)]">
       <div className="footer-gradient-top pointer-events-none absolute inset-0" />
       <div className="footer-gradient-bottom pointer-events-none absolute inset-x-0 bottom-0 h-72 sm:h-96" />
 

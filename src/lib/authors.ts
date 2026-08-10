@@ -11,7 +11,7 @@ export const AUTHORS: Record<string, Author> = {
     id: "kamilla",
     name: "Kamilla",
     role: "Founder",
-    bio: "Obsessed with the gap between who we are and how we perform online. Chronically online, unapologetically Gen Z.",
+    bio: "Explores the gap between who we are and how we perform online. Obsessed with the neuroscience of why that gap keeps widening.",
     avatar: "/authors/kamilla.jpg",
   },
   serena: {
