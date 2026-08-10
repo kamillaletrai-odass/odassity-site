@@ -14,25 +14,22 @@ export default function CommunityPage() {
     <div className="px-6 pt-32 pb-16 sm:px-10">
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <h1 className="font-display text-display text-paper">
-          The Thinkerbells
+          Thinkerbells
         </h1>
         <p className="mt-4 max-w-xl text-lg text-pink">
-          The community of people who make Odassity a whole.
+          The people who make Odassity a whole.
         </p>
         <div className="mt-6 flex flex-col gap-4 text-paper-dim">
           <p>
-            We write, we debate, we create, out loud and unfinished, because
-            a thought never gets tested against anything real until someone
-            else pushes back on it. Mostly this happens online. Sometimes it
-            happens in a room in Amsterdam, over prosecco gone slightly too
-            warm.
+            We write, we debate, we create, out loud and unpolished, mostly
+            online, and sometimes in Amsterdam over prosecco gone slightly
+            too flat.
           </p>
           <p>
-            What we&rsquo;re working toward is a corner of the internet
-            that&rsquo;s ours, the Thinkerbells&rsquo;. Where you hear your
-            own thoughts clearly, where things get a little more
-            intentional, a little more curious, a little less like
-            everywhere else, one contributor at a time.
+            What we&rsquo;re creating here is a corner of the internet
+            where you hear your own thoughts clearly, where you get a
+            little more intentional, a little more curious, a little more
+            yourself, one story at a time.
           </p>
           <p>
             Bring your own whimsy. Odassity gets a little bigger, and a

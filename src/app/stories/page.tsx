@@ -23,25 +23,23 @@ export default async function StoriesPage({
       <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
         <h1 className="font-display text-display text-paper">Our stories</h1>
         <p className="mt-3 max-w-xl text-lg text-pink">
-          Minutes to read. Stays with you far longer. Take a break with us.
+          For when your brain needs a good kind of stimulation.
         </p>
         <div className="mt-4 flex flex-col gap-4 text-paper-dim">
           <p>
             A coffee break on a Monday. A flat evening that needs saving.
-            There&rsquo;s always one that fits, the kind you keep thinking
-            about days later, like a good film you can&rsquo;t quite put
-            down.
+            There&rsquo;s always something that fits. Something you keep
+            thinking about days later, like a good film you can&rsquo;t
+            quite put down.
           </p>
           <p>
-            Nothing here started as an idea. It started as something that
-            actually happened, a conversation that went too far, a trend we
-            couldn&rsquo;t stop picking apart, a Tuesday that felt stranger
-            than it should have. Then it got written down until it meant
-            more than it did the first time.
+            Our stories start from real life experiences, a conversation
+            that went too far, a trend we couldn&rsquo;t stop tripping
+            over, a Tuesday that felt stranger than it should have.
           </p>
           <p>
             None of them end cleanly. That&rsquo;s the magic, it leaves you
-            mid thought, so it&rsquo;s yours to finish.
+            mid thought, so the story is yours to finish.
           </p>
         </div>
 

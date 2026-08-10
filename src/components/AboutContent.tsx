@@ -56,13 +56,13 @@ export default function AboutContent() {
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
         I&rsquo;ve rewritten this sentence four times already and I&rsquo;m
         still not happy with it, which is probably the most honest way to
-        introduce myself. Writing and designing are things I do for work,
-        but they&rsquo;re also how I find my way back to myself. I grew up
-        between countries and languages, which maybe explains why
-        I&rsquo;ve never fully trusted the easy, agreed-upon version of
-        anything. I read philosophy for fun, rearrange a room until the
-        light finally sits right, and still think a good disagreement is
-        one of the more intimate things two people can have.
+        introduce myself. Writing and designing are what I do for work,
+        and they&rsquo;re also how I find my way back to myself. I grew up
+        between languages and countries, which maybe explains why
+        I&rsquo;ve always questioned the easy, agreed-upon version of
+        things. I read philosophy for fun, read energies faster than
+        social cues, and still think a good disagreement is one of the
+        more intimate things two people can have.
       </p>
     </Slide>,
 
@@ -72,19 +72,20 @@ export default function AboutContent() {
         There&rsquo;s a breath everyone takes right before they do something
         bold, right before they say the true thing instead of the easy
         thing. Most of modern life is built to make you skip that breath
-        entirely. Odassity is built to make you take it.
+        entirely. Odassity exists to make sure you don&rsquo;t skip it.
       </p>
       <p className="mt-4 text-lg leading-relaxed text-paper-dim sm:text-xl">
-        I wanted a little world of my own, a bit ethereal, a bit utopian,
-        entirely mine, and then I wanted to open the door and let other
-        people in. Not to follow me. To find their own version of that same
-        breath. To become a little more intentional in a life that&rsquo;s
-        mostly designed to keep you reactive instead.
+        I&rsquo;ve built this little world, a bit ethereal, a bit utopian,
+        out of my own journey of learning how to truly &ldquo;be.&rdquo;
+        And I wanted to open the door and let other people in. Not to
+        follow me. To find their own version of that same breath. To
+        become a little more intentional in a life that&rsquo;s mostly
+        designed to keep you reactive instead.
       </p>
       <p
         className={`${caveat.className} mt-6 text-2xl text-paper sm:text-3xl`}
       >
-        Odassity is a world I wanted to live inside, so I made it. And
+        Odassity is a world I want to live inside, so I made it. And
         I&rsquo;d rather not live in it alone.
       </p>
     </Slide>,
@@ -92,19 +93,17 @@ export default function AboutContent() {
     <Slide key="find">
       <Title>What You&rsquo;ll Find Here</Title>
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
-        A quiet retreat on the internet with slow content, refreshed every
-        season. Ideas you sit with, not scroll past. Writing meant to feed
-        the mind in a way a five-second video never will. Recurring series
-        designed to make you come back on purpose, not out of habit. Every
-        piece ends the same way, a small, strange fable, never explained,
-        yours to finish however you like.
+        A quiet retreat on the internet, refreshed every season. Ideas you
+        sit with, not scroll past. Content meant to feed the mind in a way
+        a five-second video never will. Recurring series designed to make
+        you come back on purpose, not out of habit. Mundane thoughts
+        turned into strange fables, yours to interpret however you see
+        fit.
       </p>
       <p className="mt-4 text-lg leading-relaxed text-paper-dim sm:text-xl">
         This is a place to have a conversation with yourself. To wrestle
-        with an idea instead of just agreeing with it. For creators to
-        share what they&rsquo;re actually thinking, not just what performs.
-        A little whimsy dropped into an adult life that doesn&rsquo;t leave
-        much room for it.
+        with an idea instead of just agreeing with it. A moment of whimsy
+        dropped into an adult life designed to erase it.
       </p>
     </Slide>,
 
