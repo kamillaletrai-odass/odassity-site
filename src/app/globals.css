@@ -123,9 +123,10 @@ html {
   }
 }
 
-/* Footer overlay (dark mood only): fades the moody photo into the section's
-   top/bottom edges. Uses color-mix() against the live --color-ink custom
-   property directly, sidestepping the baked-literal-value issue entirely. */
+/* Footer overlay: fades the photo into the section's top/bottom edges.
+   Uses color-mix() against the live --color-ink custom property so the
+   fade starts at whatever color the page background above the footer
+   actually is in that mood, and eases into the photo with no seam. */
 .footer-gradient-top {
   background: linear-gradient(
     to bottom,
@@ -143,16 +144,28 @@ html {
   );
 }
 
-/* Light mood: the photo is dark and moody by nature and never reads as
-   "light" under any overlay strength, so it's dropped entirely. The
-   footer falls back to the plain page background, blending seamlessly
-   into whatever sits above it with no gradient overlay needed. */
-:root[data-theme="light"] .footer-photo {
-  background-image: none !important;
+/* Light mood keeps its own, heavier curve: text over the footer flips to
+   dark in light mode, so the same low-opacity fade dark mode uses (which
+   lets the photo show through almost unmasked) leaves headline/link text
+   sitting on a gray, dark-photo-tinted patch with no contrast. Starting
+   at a full, exact match to the page background (100%) keeps the top
+   edge seamless, then easing only down to a still-strong ~90% plateau
+   keeps text readable everywhere while still letting the photo read as
+   a soft, present texture rather than vanishing outright. */
+:root[data-theme="light"] .footer-gradient-top {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--color-ink) 100%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 92%, transparent) 30%,
+    color-mix(in srgb, var(--color-ink) 90%, transparent) 100%
+  );
 }
-:root[data-theme="light"] .footer-gradient-top,
 :root[data-theme="light"] .footer-gradient-bottom {
-  background: none !important;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 95%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 88%, transparent) 100%
+  );
 }
 
 html::-webkit-scrollbar {
