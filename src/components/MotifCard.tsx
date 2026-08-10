@@ -29,16 +29,18 @@ const MotifCard = forwardRef<
         }`}
         style={{ background: gradient }}
       />
-      {/* Light mist */}
-      <div
-        className={`pointer-events-none absolute inset-0 blur-2xl transition-opacity duration-500 sm:group-hover:opacity-100 ${
-          active ? "opacity-100" : "opacity-0"
-        }`}
-        style={{
-          background:
-            "radial-gradient(circle at 50% 35%, rgba(255,255,255,0.4), transparent 65%)",
-        }}
-      />
+      {/* Light mist (skipped on the first card - the bright top glow read poorly there) */}
+      {index !== 0 && (
+        <div
+          className={`pointer-events-none absolute inset-0 blur-2xl transition-opacity duration-500 sm:group-hover:opacity-100 ${
+            active ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background:
+              "radial-gradient(circle at 50% 35%, rgba(255,255,255,0.4), transparent 65%)",
+          }}
+        />
+      )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
 
       <div className="relative flex flex-col justify-between sm:h-full">
