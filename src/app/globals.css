@@ -144,28 +144,52 @@ html {
   );
 }
 
-/* Light mood keeps its own, heavier curve: text over the footer flips to
-   dark in light mode, so the same low-opacity fade dark mode uses (which
-   lets the photo show through almost unmasked) leaves headline/link text
-   sitting on a gray, dark-photo-tinted patch with no contrast. Starting
-   at a full, exact match to the page background (100%) keeps the top
-   edge seamless, then easing only down to a still-strong ~90% plateau
-   keeps text readable everywhere while still letting the photo read as
-   a soft, present texture rather than vanishing outright. */
+/* Light mood keeps the same shape as dark, just starting from a literal
+   100% match to the page background instead of dark's 70% - that's what
+   makes the top edge seamless (dark mode's own 70% start isn't a hard
+   line because the busy hero content above it hides the step; the flat
+   panel above the footer here doesn't). It still fades down to near-zero
+   by mid-footer and fully reveals the photo below that, same as dark. */
 :root[data-theme="light"] .footer-gradient-top {
   background: linear-gradient(
     to bottom,
     color-mix(in srgb, var(--color-ink) 100%, transparent) 0%,
-    color-mix(in srgb, var(--color-ink) 92%, transparent) 30%,
-    color-mix(in srgb, var(--color-ink) 90%, transparent) 100%
+    color-mix(in srgb, var(--color-ink) 85%, transparent) 25%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 50%,
+    transparent 100%
   );
 }
-:root[data-theme="light"] .footer-gradient-bottom {
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, var(--color-ink) 95%, transparent) 0%,
-    color-mix(in srgb, var(--color-ink) 88%, transparent) 100%
-  );
+
+/* The links/socials block sits low enough that it's now mostly on raw,
+   dark, unmasked photo in both moods - same as dark mode already relies
+   on. But its text follows the site-wide paper token, which flips to
+   dark in light mode for legibility against the light page background
+   elsewhere. Sitting on the dark photo instead, dark text has no
+   contrast, so this block opts out of the flip and stays light-on-photo
+   in both moods, matching how it already behaves in dark mode by default. */
+:root[data-theme="light"] .footer-links .text-paper-dim {
+  color: #faeeeab8 !important;
+}
+:root[data-theme="light"] .footer-links .text-paper,
+:root[data-theme="light"] .footer-links .hover\:text-paper:hover {
+  color: #faeeea !important;
+}
+:root[data-theme="light"] .footer-links .logo-mark {
+  filter: none;
+}
+
+/* Wide viewports: "cover" sizing centered horizontally shows nearly the
+   full width of the source photo, so the light beam (which enters from
+   the image's top-right corner) sits fully inside the frame and looks
+   like it switches on abruptly right at the footer's top edge. Anchoring
+   to the right instead pushes the beam's brightest point past the edge,
+   so it reads as continuing in from off-screen at the side rather than
+   appearing out of nowhere. Bottom anchor is unchanged, so the foliage
+   at the image's bottom edge still lines up with the footer's bottom. */
+@media (min-width: 1024px) {
+  .footer-photo {
+    background-position: right bottom !important;
+  }
 }
 
 html::-webkit-scrollbar {

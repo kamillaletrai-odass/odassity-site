@@ -48,7 +48,7 @@ export default function Footer() {
         </ScrollReveal>
       </div>
 
-      <div className="relative grid grid-cols-1 gap-10 px-6 pt-16 pb-24 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24 sm:pb-28">
+      <div className="footer-links relative grid grid-cols-1 gap-10 px-6 pt-16 pb-24 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24 sm:pb-28">
         <div>
           <Image
             src="/logo-mark.png"
