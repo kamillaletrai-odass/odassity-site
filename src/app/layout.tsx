@@ -12,6 +12,9 @@ import "./globals.css";
 const THEME_INIT_SCRIPT = `
 (function () {
   try {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
     var stored = localStorage.getItem("odassity-theme") || "system";
     var resolved = stored;
     if (stored === "system") {
