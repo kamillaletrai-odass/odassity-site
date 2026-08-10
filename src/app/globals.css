@@ -123,12 +123,9 @@ html {
   }
 }
 
-/* Footer overlay: independent per-mood strength, not just per-mood color.
-   A translucent light tint over this dark photo still reads as muddy gray
-   at low opacity, so light mode needs much heavier coverage than dark mode
-   to actually look "light" rather than a wash over the photo. Uses
-   color-mix() against the live --color-ink custom property directly,
-   sidestepping the baked-literal-value issue entirely. */
+/* Footer overlay (dark mood only): fades the moody photo into the section's
+   top/bottom edges. Uses color-mix() against the live --color-ink custom
+   property directly, sidestepping the baked-literal-value issue entirely. */
 .footer-gradient-top {
   background: linear-gradient(
     to bottom,
@@ -145,20 +142,17 @@ html {
     transparent 100%
   );
 }
-:root[data-theme="light"] .footer-gradient-top {
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--color-ink) 75%, transparent) 0%,
-    color-mix(in srgb, var(--color-ink) 92%, transparent) 35%,
-    color-mix(in srgb, var(--color-ink) 92%, transparent) 100%
-  );
+
+/* Light mood: the photo is dark and moody by nature and never reads as
+   "light" under any overlay strength, so it's dropped entirely. The
+   footer falls back to the plain page background, blending seamlessly
+   into whatever sits above it with no gradient overlay needed. */
+:root[data-theme="light"] .footer-photo {
+  background-image: none !important;
 }
+:root[data-theme="light"] .footer-gradient-top,
 :root[data-theme="light"] .footer-gradient-bottom {
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, var(--color-ink) 96%, transparent) 0%,
-    color-mix(in srgb, var(--color-ink) 90%, transparent) 100%
-  );
+  background: none !important;
 }
 
 html::-webkit-scrollbar {

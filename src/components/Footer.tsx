@@ -21,7 +21,7 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer
-      className="relative overflow-hidden pb-[env(safe-area-inset-bottom)]"
+      className="footer-photo relative overflow-hidden pb-[env(safe-area-inset-bottom)]"
       style={{
         backgroundImage: "url(/footer/light-field.jpg)",
         backgroundSize: "cover",
