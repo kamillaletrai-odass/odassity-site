@@ -30,8 +30,8 @@ export default function Footer() {
           priority
           className="object-cover object-bottom"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent sm:h-96" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/55 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/95 via-ink/40 to-transparent sm:h-96" />
       </div>
 
       <div className="relative px-6 pt-40 pb-16 text-center sm:px-10 sm:pt-56">

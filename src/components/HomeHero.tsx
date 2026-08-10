@@ -74,7 +74,7 @@ export default function HomeHero({
         <div className="max-w-xs sm:pb-2">
           <p className="text-sm text-paper-dim">
             In pursuit of the art of being. Come along in a world where time
-            is intentional, thoughts are clear, and every story leads
+            is intentional, thoughts are heard, and every scroll leads
             further inward.
           </p>
           <MotionLink

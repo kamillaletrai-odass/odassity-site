@@ -56,9 +56,9 @@ export default function AboutContent() {
       <p className="mt-5 text-lg leading-relaxed text-paper-dim sm:text-xl">
         I&rsquo;ve rewritten this sentence four times already and I&rsquo;m
         still not happy with it, which is probably the most honest way to
-        introduce myself. Writing and designing aren&rsquo;t things I do for
-        work, they&rsquo;re how I find my way back to myself. I grew up
-        between languages and countries, which maybe explains why
+        introduce myself. Writing and designing are things I do for work,
+        but they&rsquo;re also how I find my way back to myself. I grew up
+        between countries and languages, which maybe explains why
         I&rsquo;ve never fully trusted the easy, agreed-upon version of
         anything. I read philosophy for fun, rearrange a room until the
         light finally sits right, and still think a good disagreement is

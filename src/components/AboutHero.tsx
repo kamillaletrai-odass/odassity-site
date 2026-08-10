@@ -242,6 +242,19 @@ export default function AboutHero() {
           </span>
         ))}
       </div>
+
+      <div className="flex flex-col items-center gap-2 pb-10 text-paper-faint">
+        <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+        <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4 animate-bounce">
+          <path
+            d="M6 9l6 6 6-6"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
