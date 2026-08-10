@@ -20,19 +20,17 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden pb-[env(safe-area-inset-bottom)]">
-      <div
-        className="absolute inset-0 -z-10"
-        style={{
-          backgroundImage: "url(/footer/light-field.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "bottom center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-transparent to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/70 via-ink/15 to-transparent sm:h-96" />
-      </div>
+    <footer
+      className="relative overflow-hidden pb-[env(safe-area-inset-bottom)]"
+      style={{
+        backgroundImage: "url(/footer/light-field.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "bottom center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/35 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-72 bg-gradient-to-t from-ink/70 via-ink/15 to-transparent sm:h-96" />
 
       <div className="relative px-6 pt-40 pb-16 text-center sm:px-10 sm:pt-56">
         <ScrollReveal>
