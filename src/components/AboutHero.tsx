@@ -145,7 +145,7 @@ const FACTS = [
     arrowClass: "h-12 w-20 sm:h-16 sm:w-28",
   },
   {
-    label: "I am really bad at small talk.",
+    label: "I am quite bad at small talk.",
     Arrow: ArrowDownLeft,
     side: "right" as const,
     position: "top-[19%] right-[0%] sm:right-[3%]",
@@ -159,14 +159,14 @@ const FACTS = [
     arrowClass: "h-8 w-24 sm:h-10 sm:w-32",
   },
   {
-    label: "I read the last page of every book first.",
+    label: "I read the last page of a book first.",
     Arrow: ArrowUpLeft,
     side: "right" as const,
     position: "top-[68%] right-[-2%] sm:right-[0%]",
     arrowClass: "h-12 w-20 sm:h-16 sm:w-28",
   },
   {
-    label: "I read Kafka for fun, unfortunately.",
+    label: "My favourite weather is when it rains.",
     Arrow: ArrowUpRight,
     side: "left" as const,
     position: "top-[87%] left-[2%] sm:left-[6%]",

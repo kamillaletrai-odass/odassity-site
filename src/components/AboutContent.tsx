@@ -61,8 +61,8 @@ export default function AboutContent() {
         between languages and countries, which maybe explains why
         I&rsquo;ve always questioned the easy, agreed-upon version of
         things. I read philosophy for fun, read energies faster than
-        social cues, and still think a good disagreement is one of the
-        more intimate things two people can have.
+        social cues, and I believe a good disagreement is one of the
+        most intimate things two people can have.
       </p>
     </Slide>,
 
@@ -72,15 +72,15 @@ export default function AboutContent() {
         There&rsquo;s a breath everyone takes right before they do something
         bold, right before they say the true thing instead of the easy
         thing. Most of modern life is built to make you skip that breath
-        entirely. Odassity exists to make sure you don&rsquo;t skip it.
+        entirely. Odassity exists to make sure you take it.
       </p>
       <p className="mt-4 text-lg leading-relaxed text-paper-dim sm:text-xl">
         I&rsquo;ve built this little world, a bit ethereal, a bit utopian,
         out of my own journey of learning how to truly &ldquo;be.&rdquo;
         And I wanted to open the door and let other people in. Not to
         follow me. To find their own version of that same breath. To
-        become a little more intentional in a life that&rsquo;s mostly
-        designed to keep you reactive instead.
+        become a little more intentional in a world that wants
+        to keep you reactive instead.
       </p>
       <p
         className={`${caveat.className} mt-6 text-2xl text-paper sm:text-3xl`}
