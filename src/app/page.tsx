@@ -15,14 +15,24 @@ export default async function HomePage() {
   const others = articles.filter((a) => a.slug !== featured?.slug);
   const mostRecent = articles[0];
 
-  // One of the 5 featured slots is deliberately Andra's, not Kamilla's -
-  // the rest stay Kamilla-only, matching how this section has always worked.
-  const pinnedSlug =
-    "maybe-we-re-asking-the-wrong-questions-about-celebrity-activism";
-  const pinned = allArticles.find((a) => a.slug === pinnedSlug);
-  const featuredGrid = pinned
-    ? [pinned, ...others.filter((a) => a.slug !== pinnedSlug).slice(0, 3)]
-    : others.slice(0, 4);
+  // Two of the 5 featured slots are deliberately not Kamilla's - the rest
+  // stay Kamilla-only, matching how this section has always worked.
+  // "Reputation Is Built in the Gaps" is excluded so it doesn't just
+  // reappear in the natural fill once Scrolling Into Hunger takes its spot.
+  const pinnedSlugs = [
+    "maybe-we-re-asking-the-wrong-questions-about-celebrity-activism", // Andra
+    "scrolling-into-hunger-the-performance-of-health-online", // Serena
+  ];
+  const excludedSlugs = ["reputation-is-built-in-the-gaps"];
+  const pinnedArticles = pinnedSlugs
+    .map((slug) => allArticles.find((a) => a.slug === slug))
+    .filter((a): a is (typeof allArticles)[number] => Boolean(a));
+  const naturalFill = others
+    .filter(
+      (a) => !pinnedSlugs.includes(a.slug) && !excludedSlugs.includes(a.slug),
+    )
+    .slice(0, 4 - pinnedArticles.length);
+  const featuredGrid = [...pinnedArticles, ...naturalFill];
 
   // Temporary manual override for the "Most popular" hero slot - remove
   // this line to go back to the live GA4-driven pick.
@@ -48,7 +58,13 @@ export default async function HomePage() {
             </span>
           </ScrollReveal>
           <ScrollReveal delay={0.05} className="mt-8">
-            <StoryCard article={featured} size="lg" />
+            <StoryCard
+              article={featured}
+              size="lg"
+              badge={
+                featured?.slug === mostRecent?.slug ? "Most recent" : undefined
+              }
+            />
           </ScrollReveal>
           <div className="mt-6 grid gap-6 sm:mt-8 sm:grid-cols-2 sm:gap-8">
             {featuredGrid.map((article, i) => (

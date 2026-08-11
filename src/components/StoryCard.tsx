@@ -12,9 +12,11 @@ const THRESHOLDS = Array.from({ length: 21 }, (_, i) => i / 20);
 export default function StoryCard({
   article,
   size = "md",
+  badge,
 }: {
   article: ArticleMeta;
   size?: "lg" | "md" | "sm";
+  badge?: string;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
   const [active, setActive] = useState(false);
@@ -59,6 +61,15 @@ export default function StoryCard({
         />
       )}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+
+      {badge && (
+        // Mirrors the desktop-only "Most recent"/"Most popular" pills on
+        // the hero teasers, which are hidden below lg - this surfaces the
+        // same info on the featured card itself so mobile isn't missing it.
+        <span className="lg:hidden absolute top-4 left-4 z-10 rounded-full bg-paper px-3 py-1.5 text-[0.6rem] font-semibold tracking-[0.12em] text-ink uppercase shadow-lg">
+          {badge}
+        </span>
+      )}
 
       <div
         className={clsx(
