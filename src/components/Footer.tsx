@@ -67,7 +67,7 @@ export default function Footer() {
 
         <div className="sm:justify-self-end sm:text-right">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
-            Follow us on
+            Follow us
           </span>
           <div className="mt-3 flex gap-4 sm:justify-end">
             {SOCIALS.map((social) => (

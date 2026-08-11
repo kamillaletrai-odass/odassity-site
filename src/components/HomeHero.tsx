@@ -106,7 +106,7 @@ export default function HomeHero({
             }
             className="absolute -top-3 -left-3 z-20 rounded-full bg-paper px-3 py-1.5 text-[0.6rem] font-semibold tracking-[0.12em] text-ink uppercase shadow-lg"
           >
-            Most viewed
+            Most popular
           </motion.span>
           {teaser1.cover && (
             <div className="relative h-24 w-full overflow-hidden rounded-lg">
