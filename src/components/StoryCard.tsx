@@ -78,7 +78,7 @@ export default function StoryCard({
         <p
           className={clsx(
             "text-paper-dim",
-            size === "lg" ? "mt-3 max-w-lg text-base" : "mt-2 text-sm",
+            size === "lg" ? "mt-3 max-w-2xl text-base" : "mt-2 text-sm",
           )}
         >
           {article.dek}
