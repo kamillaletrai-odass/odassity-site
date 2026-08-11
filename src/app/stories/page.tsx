@@ -28,9 +28,8 @@ export default async function StoriesPage({
         <div className="mt-4 flex flex-col gap-4 text-paper-dim">
           <p>
             A coffee break on a Monday. A flat evening that needs saving.
-            There&rsquo;s always something that fits. Something you keep
-            thinking about days later, like a good film you can&rsquo;t
-            quite put down.
+            There&rsquo;s always something that fits. Something that leaves
+            a mark for a few days, the way a good film does.
           </p>
           <p>
             Our stories start from real life experiences, a conversation

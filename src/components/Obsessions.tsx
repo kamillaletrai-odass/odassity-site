@@ -5,7 +5,7 @@ const TOPICS = [
   {
     word: "Outwards",
     description:
-      "Identity as a performative act. On fitting in, standing out, and the self we build for whoever's watching.",
+      "Identity as a performative act. On fitting in, standing out, and the self shaped by the viewer.",
     gradient:
       "linear-gradient(90deg, transparent 70%, #f9f3b866 100%), radial-gradient(circle at 35% 60%, #ffd0de 0%, #ffabc6 42%, #2b131c 100%)",
     Icon: DoorIcon,
