@@ -24,7 +24,13 @@ export default async function HomePage() {
     ? [pinned, ...others.filter((a) => a.slug !== pinnedSlug).slice(0, 3)]
     : others.slice(0, 4);
 
-  const mostViewedSlug = await getMostViewedSlug();
+  // Temporary manual override for the "Most popular" hero slot - remove
+  // this line to go back to the live GA4-driven pick.
+  const MOST_POPULAR_OVERRIDE_SLUG =
+    "psycho-cybernetics-and-theself-image-in-the-age-of-the-fyp";
+
+  const mostViewedSlug =
+    MOST_POPULAR_OVERRIDE_SLUG ?? (await getMostViewedSlug());
   const mostViewed =
     articles.find((a) => a.slug === mostViewedSlug) ?? others.slice(4, 6)[0];
 
