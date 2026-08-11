@@ -57,18 +57,20 @@ export const viewport: Viewport = {
   viewportFit: "cover",
 };
 
+const HOME_TITLE = "Odassity | A digital hangout for sparkling minds";
+const HOME_DESCRIPTION =
+  "This season Odassity features stories on trending summer topics like celebrity activism, travel experiences, and sponsorships.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://odassity.com"),
   title: {
-    default: "Odassity | A digital hangout",
+    default: HOME_TITLE,
     template: "%s | Odassity",
   },
-  description:
-    "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
+  description: HOME_DESCRIPTION,
   openGraph: {
-    title: "Odassity | A digital hangout",
-    description:
-      "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     url: "https://odassity.com",
     siteName: "Odassity",
     images: ["/hero/dragonfly.jpg"],
@@ -76,9 +78,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Odassity | A digital hangout",
-    description:
-      "Odassity is a digital magazine of stories on identity, psychology, and online culture, for thinking clearly in a noisy world.",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
     images: ["/hero/dragonfly.jpg"],
   },
 };

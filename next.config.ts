@@ -25,11 +25,8 @@ const nextConfig: NextConfig = {
       { source: "/writers/:path*", destination: "/stories", permanent: true },
       { source: "/old-pages/:path*", destination: "/stories", permanent: true },
       { source: "/old-pages", destination: "/stories", permanent: true },
-      {
-        source: "/maybe-we-re-asking-the-wrong-questions-about-celebrity-activism",
-        destination: "/stories",
-        permanent: true,
-      },
+      // Archived - no longer in content/articles/, so it needs its own
+      // fallback since the dynamic slug loop above no longer covers it.
       {
         source: "/5-habits-that-will-make-you-disgustingly-intelligent",
         destination: "/stories",

@@ -5,6 +5,7 @@ lens: all
 date: "2026-07-05"
 cover: "/covers/travel-destinations-as-identity-statements-the-ego-trip-formerly-known-as-wanderlust.png"
 author: kamilla
+featured: true
 ---
 
 I wanted sun and sea. A Spanish coastal destination felt like a good choice. So I booked it after Claude and TikTok confirmed.
