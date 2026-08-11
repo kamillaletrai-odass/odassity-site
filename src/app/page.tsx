@@ -9,11 +9,20 @@ import Thinkerbells from "@/components/Thinkerbells";
 import Beliefs from "@/components/Beliefs";
 
 export default async function HomePage() {
-  const articles = getAllArticleMeta().filter((a) => a.author === "kamilla");
+  const allArticles = getAllArticleMeta();
+  const articles = allArticles.filter((a) => a.author === "kamilla");
   const featured = articles.find((a) => a.featured) ?? articles[0];
   const others = articles.filter((a) => a.slug !== featured?.slug);
-  const featuredGrid = others.slice(0, 4);
   const mostRecent = articles[0];
+
+  // One of the 5 featured slots is deliberately Andra's, not Kamilla's -
+  // the rest stay Kamilla-only, matching how this section has always worked.
+  const pinnedSlug =
+    "maybe-we-re-asking-the-wrong-questions-about-celebrity-activism";
+  const pinned = allArticles.find((a) => a.slug === pinnedSlug);
+  const featuredGrid = pinned
+    ? [pinned, ...others.filter((a) => a.slug !== pinnedSlug).slice(0, 3)]
+    : others.slice(0, 4);
 
   const mostViewedSlug = await getMostViewedSlug();
   const mostViewed =

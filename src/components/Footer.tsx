@@ -29,7 +29,7 @@ export default function Footer() {
           <h2 className="font-display text-5xl text-paper sm:text-7xl">
             Stay a little longer.
           </h2>
-          <p className="mx-auto mt-4 max-w-sm text-paper-dim">
+          <p className="mx-auto mt-4 max-w-sm text-paper">
             Join our mailing list. Get a little something to spark up your
             mind every now and then.
           </p>
@@ -40,21 +40,20 @@ export default function Footer() {
         </ScrollReveal>
       </div>
 
-      <div className="footer-links relative grid grid-cols-1 gap-10 px-6 pt-16 pb-24 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24 sm:pb-28">
+      <div className="relative grid grid-cols-1 gap-10 px-6 pt-16 pb-24 text-sm sm:grid-cols-3 sm:items-end sm:px-10 sm:pt-24 sm:pb-28">
         <div>
           <Image
             src="/logo-mark.png"
             alt="Odassity"
             width={26}
             height={26}
-            className="logo-mark"
           />
-          <div className="mt-4 flex flex-col gap-2 text-paper-dim">
+          <div className="mt-4 flex flex-col gap-2 text-white">
             {LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-paper"
+                className="transition-opacity hover:opacity-70"
               >
                 {link.label}
               </Link>
@@ -62,12 +61,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="text-xs text-paper-dim sm:justify-self-center sm:self-end">
+        <p className="text-xs text-white sm:justify-self-center sm:self-end">
           Odassity&trade; &copy; {new Date().getFullYear()}
         </p>
 
         <div className="sm:justify-self-end sm:text-right">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-paper-dim">
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-white">
             Follow us on
           </span>
           <div className="mt-3 flex gap-4 sm:justify-end">
@@ -77,7 +76,7 @@ export default function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noreferrer"
-                className="text-paper-dim transition-colors hover:text-paper"
+                className="text-white transition-opacity hover:opacity-70"
               >
                 {social.label}
               </a>

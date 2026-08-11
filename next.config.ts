@@ -2,10 +2,15 @@ import type { NextConfig } from "next";
 import fs from "fs";
 import path from "path";
 
-const ARTICLE_SLUGS = fs
-  .readdirSync(path.join(process.cwd(), "content/articles"))
-  .filter((f) => f.endsWith(".md"))
-  .map((f) => f.replace(/\.md$/, ""));
+function slugsFrom(dir: string) {
+  return fs
+    .readdirSync(path.join(process.cwd(), dir))
+    .filter((f) => f.endsWith(".md"))
+    .map((f) => f.replace(/\.md$/, ""));
+}
+
+const ARTICLE_SLUGS = slugsFrom("content/articles");
+const ARCHIVED_SLUGS = slugsFrom("content/archived-articles");
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -18,6 +23,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
 
+      // Archived articles' old Framer root URLs still get a redirect
+      // (to the stories index, since the article itself no longer
+      // exists) instead of 404ing outright.
+      ...ARCHIVED_SLUGS.map((slug) => ({
+        source: `/${slug}`,
+        destination: "/stories",
+        permanent: true,
+      })),
+
       // Renamed or retired Framer routes with no direct new-site
       // equivalent get sent to the closest sensible landing spot instead
       // of 404ing.
@@ -25,13 +39,6 @@ const nextConfig: NextConfig = {
       { source: "/writers/:path*", destination: "/stories", permanent: true },
       { source: "/old-pages/:path*", destination: "/stories", permanent: true },
       { source: "/old-pages", destination: "/stories", permanent: true },
-      // Archived - no longer in content/articles/, so it needs its own
-      // fallback since the dynamic slug loop above no longer covers it.
-      {
-        source: "/5-habits-that-will-make-you-disgustingly-intelligent",
-        destination: "/stories",
-        permanent: true,
-      },
     ];
   },
 };

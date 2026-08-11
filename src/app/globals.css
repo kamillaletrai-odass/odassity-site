@@ -151,8 +151,11 @@ html {
 
 /* Light mood keeps the same shape and seamless-start principle as dark,
    just fading down more gradually before fully revealing the photo,
-   since dark text over the footer's links section needs more coverage
-   to stay legible in this mood (see .footer-links overrides below). */
+   since the newsletter headline/subtext (text-paper, theme-aware) need
+   more coverage to stay legible against the photo in this mood. The
+   links/socials block further down is styled as literal white directly
+   in Footer.tsx instead - it sits low enough to be mostly on raw,
+   unmasked photo in both moods, so it doesn't need the theme flip. */
 :root[data-theme="light"] .footer-gradient-top {
   background: linear-gradient(
     to bottom,
@@ -161,24 +164,6 @@ html {
     color-mix(in srgb, var(--color-ink) 12%, transparent) 50%,
     transparent 100%
   );
-}
-
-/* The links/socials block sits low enough that it's now mostly on raw,
-   dark, unmasked photo in both moods - same as dark mode already relies
-   on. But its text follows the site-wide paper token, which flips to
-   dark in light mode for legibility against the light page background
-   elsewhere. Sitting on the dark photo instead, dark text has no
-   contrast, so this block opts out of the flip and stays light-on-photo
-   in both moods, matching how it already behaves in dark mode by default. */
-:root[data-theme="light"] .footer-links .text-paper-dim {
-  color: #faeeeab8 !important;
-}
-:root[data-theme="light"] .footer-links .text-paper,
-:root[data-theme="light"] .footer-links .hover\:text-paper:hover {
-  color: #faeeea !important;
-}
-:root[data-theme="light"] .footer-links .logo-mark {
-  filter: none;
 }
 
 /* The photo lives on its own ::before layer (behind the gradient overlays
