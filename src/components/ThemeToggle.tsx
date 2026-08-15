@@ -4,28 +4,6 @@ import clsx from "clsx";
 import { useTheme } from "./ThemeProvider";
 import { useCookieConsent } from "./CookieConsentProvider";
 
-function SystemIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
-      <rect
-        x="3"
-        y="4.5"
-        width="18"
-        height="12"
-        rx="1.5"
-        stroke="currentColor"
-        strokeWidth="1.6"
-      />
-      <path
-        d="M8.5 20h7M12 16.5V20"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 function SunIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4">
@@ -54,13 +32,12 @@ function MoonIcon() {
 }
 
 const OPTIONS = [
-  { key: "system" as const, label: "System mood", Icon: SystemIcon },
   { key: "light" as const, label: "Light mood", Icon: SunIcon },
   { key: "dark" as const, label: "Dark mood", Icon: MoonIcon },
 ];
 
 export default function ThemeToggle() {
-  const { mode, setMode } = useTheme();
+  const { resolved, setMode } = useTheme();
   const { consent, hydrated } = useCookieConsent();
   const bannerVisible = hydrated && consent === "unset";
 
@@ -74,7 +51,7 @@ export default function ThemeToggle() {
       )}
     >
       {OPTIONS.map(({ key, label, Icon }) => {
-        const active = mode === key;
+        const active = resolved === key;
         return (
           <button
             key={key}
