@@ -1,7 +1,7 @@
 ---
 title: "Cringe Is a Signal, Not a Failure"
 dek: "Cringe isn’t embarrassment. It’s feedback. You just don’t like what it’s saying."
-lens: all
+lens: inwards
 date: "2026-02-14"
 cover: "/covers/cringe-is-a-signal.png"
 author: kamilla

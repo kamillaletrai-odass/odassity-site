@@ -1,7 +1,7 @@
 ---
 title: "Stop Improving Yourself, Start Observing Yourself"
 dek: "Self-improvement culture skipped the most important step: noticing."
-lens: all
+lens: inwards
 date: "2026-02-07"
 cover: "/covers/stop-improving-yourself-start-observing-yourself.png"
 author: kamilla

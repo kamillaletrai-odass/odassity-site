@@ -1,7 +1,7 @@
 ---
 title: "Why “Authentic” Content Almost Always Fails"
 dek: "Everyone says “be authentic.” No one agrees on what that means."
-lens: all
+lens: autopsy
 date: "2026-02-19"
 cover: "/covers/why-authentic-content-almost-always-fails.png"
 author: kamilla

@@ -1,7 +1,7 @@
 ---
 title: "Maybe We're Asking the Wrong Questions About Celebrity Activism"
 dek: "Brands spend millions trying to become predictable. People are still allowed to be works in progress."
-lens: all
+lens: outwards
 date: "2026-07-26"
 cover: "/covers/maybe-we-re-asking-the-wrong-questions-about-celebrity-activism.png"
 author: andra

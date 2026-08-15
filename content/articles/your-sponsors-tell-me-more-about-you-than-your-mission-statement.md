@@ -1,7 +1,7 @@
 ---
 title: "Your Sponsors Tell Me More About You Than Your Mission Statement"
 dek: "You are shaped as much by the opportunities you turn down as the ones you accept."
-lens: all
+lens: outwards
 date: "2026-06-21"
 cover: "/covers/your-sponsors-tell-me-more-about-you-than-your-mission-statement.png"
 author: andra

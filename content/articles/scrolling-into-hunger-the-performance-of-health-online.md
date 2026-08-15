@@ -1,7 +1,7 @@
 ---
 title: "Scrolling Into Hunger: The Performance of Health Online"
 dek: "From “what I eat in a day” videos to endless mukbangs, social media doesn’t just tell us what to eat. It shows us how to be seen eating."
-lens: all
+lens: digicore
 date: "2026-05-18"
 cover: "/covers/scrolling-into-hunger-the-performance-of-health-online.png"
 author: serena

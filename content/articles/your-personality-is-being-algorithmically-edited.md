@@ -1,7 +1,7 @@
 ---
 title: "Your Personality Is Being Algorithmically Edited"
 dek: "Prove me wrong. What you publicly interact with is a curated performance of who you want to appear to be."
-lens: all
+lens: digicore
 date: "2026-03-28"
 cover: "/covers/your-personality-is-being-algorithmically-edited.png"
 author: kamilla

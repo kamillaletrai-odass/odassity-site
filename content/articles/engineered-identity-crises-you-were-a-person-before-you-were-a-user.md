@@ -1,7 +1,7 @@
 ---
 title: "Engineered Identity Crises: You Were a Person Before You Were a User"
 dek: "Your identity crisis isn't a personal problem but a predictable outcome of growing up inside systems designed to tell you who you are."
-lens: all
+lens: digicore
 date: "2026-05-31"
 cover: "/covers/engineered-identity-crises-you-were-a-person-before-you-were-a-user.png"
 author: kamilla
